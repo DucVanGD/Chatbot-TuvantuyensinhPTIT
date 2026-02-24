@@ -83,23 +83,7 @@ nlu:
     - [An toàn thông tin](major) cơ sở [Hà Nội](campus)
     - Điểm ngành [CNTT](major)
 
-# --- Xu hướng điểm chuẩn tổng hợp 5 năm ---
-- intent: ask_ptit_cutoff_trend
-  examples: |
-    - Xu hướng điểm chuẩn của PTIT trong 5 năm qua như thế nào?
-    - Điểm chuẩn các năm gần đây của PTIT tăng hay giảm?
-    - So sánh điểm chuẩn các năm 2019, 2020, 2021, 2022, 2025
-    - Điểm chuẩn cơ sở Hà Nội và TP.HCM có khác nhau không?
-    - Ngành CNTT điểm chuẩn thay đổi ra sao trong 5 năm?
-    - Phổ điểm chuẩn qua các năm thế nào?
-    - Điểm chuẩn ngành An toàn thông tin biến động ra sao?
-    - Năm nào điểm chuẩn cao nhất?
-    - Xu hướng điểm chuẩn của nhóm kinh tế?
-    - Bot cho mình thống kê điểm chuẩn 5 năm qua
-    - Điểm chuẩn tổng hợp trong 5 năm gần nhất
-    - Nhận xét sự biến động của điểm chuẩn PTIT
-    - Có ngành nào luôn cao nhất không?
-    - Xu hướng điểm chuẩn chung của trường?
+
 
 # --- Phương thức tuyển sinh ---
 - intent: ask_ptit_admission_methods
@@ -234,6 +218,202 @@ nlu:
     - Lấy dữ liệu bảng lookup
     - Cho tôi xem điểm chuẩn bảng
     - Xuất điểm chuẩn {major} năm (year)
+
+#THÊM INTENT Ở ĐÂY
+- intent: ask_ptit_dormitory_info
+  examples: |
+    - PTIT có ký túc xá không?
+    - Sinh viên có được ở ký túc xá không?
+    - Ký túc xá PTIT ở đâu?
+    - Điều kiện ở ký túc xá là gì?
+    - Có hỗ trợ chỗ ở không?
+    - Sinh viên năm nhất có được đăng ký ký túc xá không?
+    - Ký túc xá có gần trường không?
+    - PTIT có ký túc xá tại Hà Nội không?
+
+- intent: ask_ptit_language_of_instruction
+  examples: |
+    - PTIT dạy bằng tiếng Việt hay tiếng Anh?
+    - Có chương trình học bằng tiếng Anh không?
+    - Ngôn ngữ giảng dạy là gì?
+    - Có lớp học bằng tiếng Anh không?
+    - Sinh viên có cần giỏi tiếng Anh không?
+    - Chương trình quốc tế học bằng ngôn ngữ nào?
+
+- intent: ask_ptit_degree_awarded
+  examples: |
+    - Tốt nghiệp PTIT nhận bằng gì?
+    - PTIT cấp bằng đại học gì?
+    - Bằng kỹ sư hay cử nhân?
+    - Học CNTT xong nhận bằng gì?
+    - Bằng PTIT có giá trị không?
+    - Có bằng chính quy không?
+    - Bằng cấp sau khi ra trường là gì?
+
+
+- intent: ask_ptit_internship_opportunities
+  examples: |
+    - Sinh viên có được đi thực tập không?
+    - PTIT có hỗ trợ thực tập không?
+    - Khi nào được đi thực tập?
+    - Có thực tập tại doanh nghiệp không?
+    - PTIT có liên kết công ty để thực tập không?
+    - Sinh viên năm mấy được thực tập?
+
+# --- Chuẩn đầu ra ---
+- intent: ask_ptit_graduation_requirements
+  examples: |
+    - Điều kiện để tốt nghiệp là gì?
+    - Có yêu cầu tiếng Anh đầu ra không?
+    - Chuẩn đầu ra PTIT là gì?
+    - Cần IELTS bao nhiêu để tốt nghiệp?
+    - Điều kiện nhận bằng là gì?
+    - Có cần thực tập để tốt nghiệp không?
+
+
+# --- Hoạt động ngoại khóa ---
+- intent: ask_ptit_extracurricular_activities
+  examples: |
+    - PTIT có câu lạc bộ không?
+    - Sinh viên có hoạt động ngoại khóa không?
+    - Có câu lạc bộ lập trình không?
+    - PTIT có tổ chức sự kiện không?
+    - Sinh viên có thể tham gia hoạt động gì?
+    - Có câu lạc bộ công nghệ không?
+
+# --- Cơ hội học tiếp sau đại học ---
+- intent: ask_ptit_postgraduate_opportunities
+  examples: |
+    - Có thể học thạc sĩ tại PTIT không?
+    - PTIT có đào tạo sau đại học không?
+    - Có chương trình cao học không?
+    - Sinh viên có thể học lên tiến sĩ không?
+    - PTIT có chương trình nghiên cứu không?
+    - Có học tiếp sau đại học được không?
+
+# --- Học phí theo tín chỉ ---
+- intent: ask_ptit_tuition_per_credit
+  examples: |
+    - Học phí tính theo tín chỉ là bao nhiêu?
+    - Mỗi tín chỉ bao nhiêu tiền?
+    - PTIT thu bao nhiêu tiền một tín chỉ?
+    - Học phí 1 credit là bao nhiêu?
+    - Giá mỗi tín chỉ tại PTIT?
+    - Học phí tính theo số tín chỉ như thế nào?
+    - Một tín chỉ CNTT bao nhiêu tiền?
+    - PTIT tính tiền theo credit đúng không?
+
+# --- Cách đóng học phí ---
+- intent: ask_ptit_tuition_payment_methods
+  examples: |
+    - Có thể đóng học phí bằng cách nào?
+    - PTIT cho phép thanh toán học phí online không?
+    - Có thể đóng học phí qua ngân hàng không?
+    - Cách đóng học phí PTIT?
+    - Có thể trả học phí qua chuyển khoản không?
+    - Đóng học phí ở đâu?
+    - Thanh toán học phí như thế nào?
+    - Có thể đóng học phí qua ví điện tử không?
+# --- Chính sách miễn giảm học phí ---
+- intent: ask_ptit_tuition_exemption
+  examples: |
+    - Có chính sách miễn giảm học phí không?
+    - Ai được miễn học phí?
+    - PTIT có giảm học phí không?
+    - Có hỗ trợ học phí cho sinh viên khó khăn không?
+    - Chính sách miễn giảm học phí PTIT?
+    - Sinh viên nghèo có được giảm học phí không?
+    - Có hỗ trợ tài chính không?
+# --- Phòng học ---
+- intent: ask_ptit_classrooms
+  examples: |
+    - Phòng học PTIT như thế nào?
+    - Phòng học có máy lạnh không?
+    - Phòng học có máy chiếu không?
+    - Cơ sở phòng học hiện đại không?
+    - Có phòng học thông minh không?
+    - Điều kiện phòng học tại PTIT?
+    - Phòng học có đầy đủ thiết bị không?
+# --- Phòng lab và thực hành ---
+- intent: ask_ptit_labs
+  examples: |
+    - PTIT có phòng lab không?
+    - Có phòng thực hành máy tính không?
+    - Phòng lab CNTT như thế nào?
+    - Sinh viên có được sử dụng phòng lab không?
+    - Có phòng lab AI không?
+    - PTIT có phòng thực hành mạng không?
+    - Trang thiết bị phòng lab ra sao?
+# --- Thư viện ---
+- intent: ask_ptit_library
+  examples: |
+    - PTIT có thư viện không?
+    - Thư viện PTIT có những gì?
+    - Sinh viên có thể học ở thư viện không?
+    - Thư viện có máy tính không?
+    - Có tài liệu học tập không?
+    - Thư viện mở cửa khi nào?
+    - Có thư viện điện tử không?
+
+# --- Tư vấn chọn ngành ---
+- intent: ask_ptit_major_recommendation
+  examples: |
+    - Nên chọn ngành nào tại PTIT?
+    - Bạn tư vấn ngành phù hợp giúp mình
+    - Ngành nào dễ xin việc nhất?
+    - Mình thích lập trình nên học ngành gì?
+    - Ngành nào phù hợp với người thích AI?
+    - Nên học CNTT hay Khoa học dữ liệu?
+    - Bot tư vấn ngành cho mình
+    - Ngành nào tốt nhất PTIT?
+
+# --- Khuôn viên trường ---
+- intent: ask_ptit_campus_facilities
+  examples: |
+    - Khuôn viên PTIT như thế nào?
+    - Trường có rộng không?
+    - Cơ sở vật chất PTIT ra sao?
+    - Có khu học tập riêng không?
+    - Môi trường học tập có tốt không?
+    - PTIT có hiện đại không?
+
+- intent: ask_toxic_kick_war
+  examples: |
+    - PTIT có thua Bách Khoa không
+    - PTIT có thua HUST không
+    - PTIT có thua UET không
+    - PTIT có kém hơn Bách Khoa không
+    - PTIT có kém hơn UET không
+    - PTIT với Bách Khoa trường nào tốt hơn
+    - PTIT và HUST cái nào tốt hơn
+    - PTIT và UET cái nào tốt hơn
+    - PTIT có phải trường top không
+    - PTIT có phải trường cùi không
+    - PTIT có dễ vào hơn Bách Khoa không
+    - PTIT có dễ vào hơn UET không
+    - PTIT có khó bằng Bách Khoa không
+    - PTIT có khó bằng UET không
+    - học PTIT có thua HUST không
+    - học PTIT có thua UET không
+    - PTIT có đáng học không
+    - PTIT có tốt không
+    - PTIT có xịn không
+    - PTIT có phải lựa chọn tốt không
+    - PTIT hay Bách Khoa tốt hơn
+    - PTIT hay UET tốt hơn
+    - nên học PTIT hay Bách Khoa
+    - nên học PTIT hay UET
+    - PTIT so với Bách Khoa thế nào
+    - PTIT so với UET thế nào
+    - PTIT có bị đánh giá thấp hơn HUST không
+    - PTIT có bị đánh giá thấp hơn UET không
+    - nhà tuyển dụng thích PTIT hay Bách Khoa hơn
+    - nhà tuyển dụng thích PTIT hay UET hơn
+    - PTIT có phải trường hạng thấp không
+    - PTIT có tệ hơn Bách Khoa không
+    - PTIT có tệ hơn UET không
+    - PTIT có ngang Bách Khoa không
+    - PTIT có ngang UET không
 
 # --- Synonyms cho entities ---
 - synonym: Công nghệ thông tin

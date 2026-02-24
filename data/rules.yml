@@ -2,6 +2,7 @@ version: "3.1"
 
 rules:
 
+
 # === CHÀO HỎI / CẢM ƠN / TẠM BIỆT ===
 - rule: Respond to greeting
   steps:
@@ -24,63 +25,144 @@ rules:
   - intent: ask_ptit_cutoff_year_major
   - action: action_lookup_score
 
-- rule: Handle score trend
-  steps:
-  - intent: ask_ptit_cutoff_trend
-  - action: utter_ptit_cutoff_trend
 
 - rule: Handle admission methods
   steps:
   - intent: ask_ptit_admission_methods
-  - action: utter_ptit_admission_methods
+  - action: utter_ask_ptit_admission_methods
 
 - rule: Handle school info
   steps:
   - intent: ask_ptit_school_info
-  - action: utter_ptit_school_info
+  - action: utter_ask_ptit_school_info
 
 - rule: Handle program list
   steps:
   - intent: ask_ptit_programs
-  - action: utter_ptit_programs
+  - action: utter_ask_ptit_programs
 
 - rule: Handle contact inquiries
   steps:
   - intent: ask_ptit_contact
-  - action: utter_ptit_contact
+  - action: utter_ask_ptit_contact
 
 - rule: Handle tuition inquiries
   steps:
   - intent: ask_ptit_tuition
-  - action: utter_ptit_tuition
+  - action: utter_ask_ptit_tuition
 
 - rule: Handle scholarship inquiries
   steps:
   - intent: ask_ptit_scholarships
-  - action: utter_ptit_scholarships
+  - action: utter_ask_ptit_scholarships
 
 - rule: Handle documents required inquiries
   steps:
   - intent: ask_ptit_documents_required
-  - action: utter_ptit_documents_required
+  - action: utter_ask_ptit_documents_required
 
 - rule: Handle deadlines inquiries
   steps:
   - intent: ask_ptit_deadlines
-  - action: utter_ptit_deadlines
+  - action: utter_ask_ptit_deadlines
+
+
+
+# === TRẢ LỜI TRỰC TIẾP CHO INTENT MỚI ===
+- rule: Handle dormitory info
+  steps:
+  - intent: ask_ptit_dormitory_info
+  - action: utter_ask_ptit_dormitory_info
+
+- rule: Handle language of instruction
+  steps:
+  - intent: ask_ptit_language_of_instruction
+  - action: utter_ask_ptit_language_of_instruction
+
+- rule: Handle degree awarded
+  steps:
+  - intent: ask_ptit_degree_awarded
+  - action: utter_ask_ptit_degree_awarded
+
+- rule: Handle internship opportunities
+  steps:
+  - intent: ask_ptit_internship_opportunities
+  - action: utter_ask_ptit_internship_opportunities
+
+- rule: Handle graduation requirements
+  steps:
+  - intent: ask_ptit_graduation_requirements
+  - action: utter_ask_ptit_graduation_requirements
+
+- rule: Handle extracurricular activities
+  steps:
+  - intent: ask_ptit_extracurricular_activities
+  - action: utter_ask_ptit_extracurricular_activities
+
+- rule: Handle postgraduate opportunities
+  steps:
+  - intent: ask_ptit_postgraduate_opportunities
+  - action: utter_ask_ptit_postgraduate_opportunities
+
+- rule: Handle tuition per credit
+  steps:
+  - intent: ask_ptit_tuition_per_credit
+  - action: utter_ask_ptit_tuition_per_credit
+
+- rule: Handle tuition payment methods
+  steps:
+  - intent: ask_ptit_tuition_payment_methods
+  - action: utter_ask_ptit_tuition_payment_methods
+
+- rule: Handle tuition exemption
+  steps:
+  - intent: ask_ptit_tuition_exemption
+  - action: utter_ask_ptit_tuition_exemption
+
+- rule: Handle classrooms info
+  steps:
+  - intent: ask_ptit_classrooms
+  - action: utter_ask_ptit_classrooms
+
+- rule: Handle labs info
+  steps:
+  - intent: ask_ptit_labs
+  - action: utter_ask_ptit_labs
+
+- rule: Handle library info
+  steps:
+  - intent: ask_ptit_library
+  - action: utter_ask_ptit_library
+
+- rule: Handle major recommendation
+  steps:
+  - intent: ask_ptit_major_recommendation
+  - action: utter_ask_ptit_major_recommendation
+
+- rule: Handle campus facilities
+  steps:
+  - intent: ask_ptit_campus_facilities
+  - action: utter_ask_ptit_campus_facilities
+
+- rule: Handle toxic kick war
+  steps:
+  - intent: ask_toxic_kick_war
+  - action: utter_ask_toxic_kick_war
+
+# ...existing code...
+
+
+
 
 # === RULE XỬ LÝ KHI THIẾU ENTITY ===
 # Note: Slot filling is better handled by forms or custom actions
 # These conditional rules have been removed to fix validation errors
 
-- rule: After greet, ask how can help
-  steps:
-  - intent: greet
-  - action: utter_greet
 # === FALLBACK & KHÔNG HIỂU ===
-
-- rule: Handle fallback when the bot does not understand
+- rule: Handle NLU fallback
   steps:
-  - intent: nlu_fallback
-  - action: utter_default
-  - action: action_listen
+    - intent: nlu_fallback
+    - action: utter_default
+    - action: action_listen
+
+

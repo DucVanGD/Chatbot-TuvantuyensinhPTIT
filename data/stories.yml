@@ -24,87 +24,160 @@ stories:
   - intent: ask_ptit_cutoff_year_major
   - action: action_lookup_score
 
-# --- Story: hỏi xu hướng điểm chuẩn ---
-- story: user asks about trend of scores
-  steps:
-  - intent: ask_ptit_cutoff_trend
-  - action: utter_ptit_cutoff_trend
 
 # --- Story: hỏi phương thức tuyển sinh ---
 - story: user asks different admission methods
   steps:
   - intent: ask_ptit_admission_methods
-  - action: utter_ptit_admission_methods
+  - action: utter_ask_ptit_admission_methods
 
 # --- Story: hỏi thông tin chung về trường ---
 - story: user asks for school info
   steps:
   - intent: ask_ptit_school_info
-  - action: utter_ptit_school_info
+  - action: utter_ask_ptit_school_info
 
 # --- Story: hỏi các ngành và chỉ tiêu ---
 - story: user asks about programs and majors
   steps:
   - intent: ask_ptit_programs
-  - action: utter_ptit_programs
+  - action: utter_ask_ptit_programs
 
 # --- Story: hỏi thông tin liên hệ ---
 - story: user wants contact information
   steps:
   - intent: ask_ptit_contact
-  - action: utter_ptit_contact
+  - action: utter_ask_ptit_contact
 
 # --- Story: hỏi học phí ---
 - story: user asks about tuition
   steps:
   - intent: ask_ptit_tuition
-  - action: utter_ptit_tuition
+  - action: utter_ask_ptit_tuition
 
 # --- Story: hỏi học bổng ---
 - story: user asks about scholarships
   steps:
   - intent: ask_ptit_scholarships
-  - action: utter_ptit_scholarships
+  - action: utter_ask_ptit_scholarships
 
 # --- Story: hỏi hồ sơ cần chuẩn bị ---
 - story: user asks documents required for admission
   steps:
   - intent: ask_ptit_documents_required
-  - action: utter_ptit_documents_required
+  - action: utter_ask_ptit_documents_required
 
 # --- Story: hỏi các mốc thời gian tuyển sinh ---
 - story: user asks about deadlines
   steps:
   - intent: ask_ptit_deadlines
-  - action: utter_ptit_deadlines
+  - action: utter_ask_ptit_deadlines
 
 # --- Story: kết hợp hỏi nhiều intent trong 1 chuỗi ---
 - story: user asks about school then tuition
   steps:
   - intent: ask_ptit_school_info
-  - action: utter_ptit_school_info
+  - action: utter_ask_ptit_school_info
   - intent: ask_ptit_tuition
-  - action: utter_ptit_tuition
+  - action: utter_ask_ptit_tuition
 
-- story: user asks about programs then cutoff trends
-  steps:
-  - intent: ask_ptit_programs
-  - action: utter_ptit_programs
-  - intent: ask_ptit_cutoff_trend
-  - action: utter_ptit_cutoff_trend
 
 - story: user asks admission methods then deadlines
   steps:
   - intent: ask_ptit_admission_methods
-  - action: utter_ptit_admission_methods
+  - action: utter_ask_ptit_admission_methods
   - intent: ask_ptit_deadlines
-  - action: utter_ptit_deadlines
+  - action: utter_ask_ptit_deadlines
 
 - story: "user asks full process: admission -> documents -> contact"
   steps:
   - intent: ask_ptit_admission_methods
-  - action: utter_ptit_admission_methods
+  - action: utter_ask_ptit_admission_methods
   - intent: ask_ptit_documents_required
-  - action: utter_ptit_documents_required
+  - action: utter_ask_ptit_documents_required
   - intent: ask_ptit_contact
-  - action: utter_ptit_contact
+  - action: utter_ask_ptit_contact
+
+
+# --- Stories cho intent mới ---
+- story: user asks dormitory info
+  steps:
+  - intent: ask_ptit_dormitory_info
+  - action: utter_ask_ptit_dormitory_info
+
+- story: user asks language of instruction
+  steps:
+  - intent: ask_ptit_language_of_instruction
+  - action: utter_ask_ptit_language_of_instruction
+
+- story: user asks degree awarded
+  steps:
+  - intent: ask_ptit_degree_awarded
+  - action: utter_ask_ptit_degree_awarded
+
+- story: user asks internship opportunities
+  steps:
+  - intent: ask_ptit_internship_opportunities
+  - action: utter_ask_ptit_internship_opportunities
+
+- story: user asks graduation requirements
+  steps:
+  - intent: ask_ptit_graduation_requirements
+  - action: utter_ask_ptit_graduation_requirements
+
+- story: user asks extracurricular activities
+  steps:
+  - intent: ask_ptit_extracurricular_activities
+  - action: utter_ask_ptit_extracurricular_activities
+
+- story: user asks postgraduate opportunities
+  steps:
+  - intent: ask_ptit_postgraduate_opportunities
+  - action: utter_ask_ptit_postgraduate_opportunities
+
+- story: user asks tuition per credit
+  steps:
+  - intent: ask_ptit_tuition_per_credit
+  - action: utter_ask_ptit_tuition_per_credit
+
+- story: user asks tuition payment methods
+  steps:
+  - intent: ask_ptit_tuition_payment_methods
+  - action: utter_ask_ptit_tuition_payment_methods
+
+- story: user asks tuition exemption
+  steps:
+  - intent: ask_ptit_tuition_exemption
+  - action: utter_ask_ptit_tuition_exemption
+
+- story: user asks classrooms info
+  steps:
+  - intent: ask_ptit_classrooms
+  - action: utter_ask_ptit_classrooms
+
+- story: user asks labs info
+  steps:
+  - intent: ask_ptit_labs
+  - action: utter_ask_ptit_labs
+
+- story: user asks library info
+  steps:
+  - intent: ask_ptit_library
+  - action: utter_ask_ptit_library
+
+- story: user asks major recommendation
+  steps:
+  - intent: ask_ptit_major_recommendation
+  - action: utter_ask_ptit_major_recommendation
+
+- story: user asks campus facilities
+  steps:
+  - intent: ask_ptit_campus_facilities
+  - action: utter_ask_ptit_campus_facilities
+
+- story: user asks school comparison
+  steps:
+  - intent: ask_toxic_kick_war
+  - action: utter_ask_toxic_kick_war
+
+# ...existing code...
