@@ -1,0 +1,133 @@
+version: "3.1"
+
+################################################################
+# Intents – trùng với nlu.yml
+################################################################
+intents:
+  - greet
+  - thanks
+  - goodbye
+  - ask_ptit_cutoff_year_major
+  - ask_ptit_cutoff_trend
+  - ask_ptit_admission_methods
+  - ask_ptit_school_info
+  - ask_ptit_programs
+  - ask_ptit_contact
+  - ask_ptit_tuition
+  - ask_ptit_scholarships
+  - ask_ptit_documents_required
+  - ask_ptit_deadlines
+  - ask_ptit_lookup
+
+################################################################
+# Entities – trích xuất trong NLU
+################################################################
+entities:
+  - major
+  - year
+  - campus
+
+################################################################
+# Slots – lưu giá trị
+################################################################
+slots:
+  major:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: major
+  year:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: year
+  campus:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: campus
+
+################################################################
+# Responses – Bot trả lời
+################################################################
+responses:
+
+  # --- Greetings ---
+  utter_greet:
+  - text: "Xin chào! Mình có thể giúp gì cho bạn về tuyển sinh PTIT hôm nay?"
+
+  # --- Thank you ---
+  utter_thanks:
+  - text: "Không có gì! Nếu bạn cần thêm thông tin gì cứ hỏi nhé!"
+
+  # --- Goodbye ---
+  utter_goodbye:
+  - text: "Tạm biệt! Chúc bạn may mắn và học tốt nhé 👋"
+
+  # --- Xu hướng điểm chuẩn ---
+  utter_ptit_cutoff_trend:
+  - text: "Tổng quan điểm chuẩn PTIT qua các năm cho thấy các ngành công nghệ và kỹ thuật thường dẫn đầu. Ngành CNTT và Khoa học máy tính luôn duy trì mức điểm rất cao và ổn định qua các năm, với điểm chuẩn thường xuyên ở top trong nhóm các trường kỹ thuật tại Việt Nam như PTIT." 
+
+  # --- Phương thức tuyển sinh ---
+  utter_ptit_admission_methods:
+  - text: "PTIT áp dụng nhiều phương thức tuyển sinh linh hoạt, bao gồm xét tuyển dựa trên hồ sơ học sinh giỏi/năng lực, chứng chỉ quốc tế, điểm thi đánh giá năng lực/thi THPT quốc gia 2025, và các phương thức xét tuyển kết hợp. Bạn thích tra cứu phương thức cụ thể nào không?"
+
+  # --- Giới thiệu trường ---
+  utter_ptit_school_info:
+  - text: "Học viện Công nghệ Bưu chính Viễn thông (PTIT) là trường công lập trọng điểm quốc gia về kỹ thuật – công nghệ, trực thuộc Bộ Thông tin và Truyền thông, nổi bật với các chương trình đào tạo CNTT và các ngành kỹ thuật công nghệ. PTIT có cơ sở đào tạo ở Hà Nội và TP.HCM, và thường xuyên nằm trong các bảng xếp hạng đổi mới sáng tạo hàng đầu Việt Nam."
+
+  # --- Chương trình & chỉ tiêu ---
+  utter_ptit_programs:
+  - text: "PTIT tuyển sinh nhiều ngành đào tạo cả khối Kỹ thuật – Công nghệ và Kinh tế – Truyền thông, với số lượng chỉ tiêu lớn tại cả hai cơ sở ở Hà Nội và TP.HCM. Bạn muốn tra cứu chỉ tiêu theo ngành hay theo cơ sở?"
+
+  # --- Contact info ---
+  utter_ptit_contact:
+  - text: "Thông tin liên hệ PTIT:\n📍 Hà Nội: Km10 Nguyễn Trãi, Hà Đông; 📞 Tuyển sinh: tuyensinh@ptit.edu.vn.\n📍 TP.HCM: 97 Man Thiện & 11 Nguyễn Đình Chiểu; 📞 Tuyển sinh: tuyensinh@ptithcm.edu.vn\n🌐 Website: xettuyen.ptit.edu.vn."
+
+  # --- Học phí ---
+  utter_ptit_tuition:
+  - text: "Học phí PTIT dự kiến năm 2025 dao động khoảng 29.6 – 62.5 triệu/năm tùy chương trình, trong đó chương trình đại trà thấp hơn, chương trình chất lượng cao và liên kết quốc tế cao hơn."
+
+  # --- Học bổng ---
+  utter_ptit_scholarships:
+  - text: "PTIT có nhiều chương trình học bổng, trong đó các suất lớn có thể lên tới giá trị cao và được xét theo tiêu chí điểm cao, giải thưởng học sinh giỏi tỉnh/quốc gia, hoặc từ các công ty đối tác."
+
+  # --- Hồ sơ xét tuyển ---
+  utter_ptit_documents_required:
+  - text: "Để xét tuyển PTIT, bạn thường cần khai báo hồ sơ trực tuyến theo hướng dẫn hệ thống xettuyen.ptit.edu.vn, upload minh chứng giải thưởng hoặc chứng chỉ (nếu có), và xác nhận các thông tin giấy tờ yêu cầu theo phương thức bạn dùng."
+
+  # --- Deadlines / Thời gian tuyển sinh ---
+  utter_ptit_deadlines:
+  - text: "Thời gian tuyển sinh 2025 thường có các mốc như: mở đăng ký nguyện vọng, thời hạn nộp lệ phí, thời gian công bố điểm chuẩn và xác nhận nhập học cuối cùng. Bạn muốn tra cứu mốc cụ thể nào không?"
+
+  # --- Lookup data (tra cứu điểm chuẩn) ---
+  utter_ptit_lookup:
+  - text: "Bot nhận được yêu cầu tra cứu điểm chuẩn. Mình sẽ kết nối dữ liệu lookup để trả kết quả nhanh nhất!"
+  
+  utter_ask_major:
+  - text: "Bạn muốn tra cứu điểm chuẩn ngành gì?"
+
+  utter_ask_year:
+  - text: "Bạn muốn tra cứu điểm chuẩn năm nào?"
+
+  utter_ask_campus:
+  - text: "Bạn cần tra cứu điểm ở cơ sở nào (Hà Nội hoặc TP.HCM)?"
+
+  # --- Default fallback ---
+  utter_default:
+  - text: "Xin lỗi mình chưa hiểu. Bạn có thể nói lại rõ hơn không?"
+################################################################
+# Actions
+################################################################
+actions:
+  - action_lookup_score
+
+################################################################
+# Session config
+################################################################
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

@@ -1,0 +1,110 @@
+version: "3.1"
+
+stories:
+
+# --- Stories cơ bản cho chào hỏi và kết thúc ---
+- story: user greets and bot replies
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- story: user thanks and bot responds
+  steps:
+  - intent: thanks
+  - action: utter_thanks
+
+- story: user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+# --- Story: tra cứu điểm chuẩn theo ngành/năm ---
+- story: user asks cutoff score for major and year
+  steps:
+  - intent: ask_ptit_cutoff_year_major
+  - action: action_lookup_score
+
+# --- Story: hỏi xu hướng điểm chuẩn ---
+- story: user asks about trend of scores
+  steps:
+  - intent: ask_ptit_cutoff_trend
+  - action: utter_ptit_cutoff_trend
+
+# --- Story: hỏi phương thức tuyển sinh ---
+- story: user asks different admission methods
+  steps:
+  - intent: ask_ptit_admission_methods
+  - action: utter_ptit_admission_methods
+
+# --- Story: hỏi thông tin chung về trường ---
+- story: user asks for school info
+  steps:
+  - intent: ask_ptit_school_info
+  - action: utter_ptit_school_info
+
+# --- Story: hỏi các ngành và chỉ tiêu ---
+- story: user asks about programs and majors
+  steps:
+  - intent: ask_ptit_programs
+  - action: utter_ptit_programs
+
+# --- Story: hỏi thông tin liên hệ ---
+- story: user wants contact information
+  steps:
+  - intent: ask_ptit_contact
+  - action: utter_ptit_contact
+
+# --- Story: hỏi học phí ---
+- story: user asks about tuition
+  steps:
+  - intent: ask_ptit_tuition
+  - action: utter_ptit_tuition
+
+# --- Story: hỏi học bổng ---
+- story: user asks about scholarships
+  steps:
+  - intent: ask_ptit_scholarships
+  - action: utter_ptit_scholarships
+
+# --- Story: hỏi hồ sơ cần chuẩn bị ---
+- story: user asks documents required for admission
+  steps:
+  - intent: ask_ptit_documents_required
+  - action: utter_ptit_documents_required
+
+# --- Story: hỏi các mốc thời gian tuyển sinh ---
+- story: user asks about deadlines
+  steps:
+  - intent: ask_ptit_deadlines
+  - action: utter_ptit_deadlines
+
+# --- Story: kết hợp hỏi nhiều intent trong 1 chuỗi ---
+- story: user asks about school then tuition
+  steps:
+  - intent: ask_ptit_school_info
+  - action: utter_ptit_school_info
+  - intent: ask_ptit_tuition
+  - action: utter_ptit_tuition
+
+- story: user asks about programs then cutoff trends
+  steps:
+  - intent: ask_ptit_programs
+  - action: utter_ptit_programs
+  - intent: ask_ptit_cutoff_trend
+  - action: utter_ptit_cutoff_trend
+
+- story: user asks admission methods then deadlines
+  steps:
+  - intent: ask_ptit_admission_methods
+  - action: utter_ptit_admission_methods
+  - intent: ask_ptit_deadlines
+  - action: utter_ptit_deadlines
+
+- story: "user asks full process: admission -> documents -> contact"
+  steps:
+  - intent: ask_ptit_admission_methods
+  - action: utter_ptit_admission_methods
+  - intent: ask_ptit_documents_required
+  - action: utter_ptit_documents_required
+  - intent: ask_ptit_contact
+  - action: utter_ptit_contact

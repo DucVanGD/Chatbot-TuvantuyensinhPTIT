@@ -1,0 +1,69 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - thanks
+  - ask_ptit_cutoff_year_major
+  - ask_ptit_cutoff_trend
+  - ask_ptit_admission_methods
+  - ask_ptit_school_info
+  - ask_ptit_programs
+  - ask_ptit_contact
+  - ask_ptit_tuition
+  - ask_ptit_scholarships
+  - ask_ptit_documents_required
+  - ask_ptit_deadlines
+  - ask_ptit_lookup
+  - nlu_fallback
+
+entities:
+  - major
+  - year
+  - campus
+
+slots:
+  major:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: major
+  year:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: year
+  campus:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: campus
+
+responses:
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+actions:
+  - action_lookup_score
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

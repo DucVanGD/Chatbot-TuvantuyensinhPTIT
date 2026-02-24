@@ -1,0 +1,301 @@
+version: "3.1"
+
+nlu:
+# --- Greetings (Chào hỏi) ---
+- intent: greet
+  examples: |
+    - Xin chào
+    - Chào bạn
+    - Hello bot
+    - Hey
+    - Hi
+    - Chào buổi sáng
+    - Chào buổi chiều
+    - Chào buổi tối
+    - Bot ơi chào
+    - Xin chào PTIT bot
+    - Chào bạn nhé
+    - Hey bot xin hỏi
+    - Hi bạn
+    - Bot trả lời mình nhé
+    - Hello bạn
+
+# --- Thank you (Cảm ơn) ---
+- intent: thanks
+  examples: |
+    - Cảm ơn bạn
+    - Thanks
+    - Tks nha
+    - Cảm ơn bot
+    - Xin cảm ơn
+    - Cảm ơn rất nhiều
+    - Rất biết ơn bạn
+    - Mình cảm ơn
+    - Cảm ơn nhé
+    - Thanks bot
+    - Cảm ơn nhiều lắm
+    - Tks bạn
+    - Bot dễ thương cảm ơn
+    - Cảm ơn đã giúp
+
+# --- Goodbye (Tạm biệt) ---
+- intent: goodbye
+  examples: |
+    - Tạm biệt
+    - Chào nhé
+    - Hẹn gặp lại
+    - Bye
+    - Bye bot
+    - See you
+    - Bot tạm biệt
+    - Mình đi đây
+    - Kết thúc rồi cảm ơn
+    - Hẹn gặp bạn lần sau
+    - Chào tạm biệt
+    - Bye bạn
+
+# --- Điểm chuẩn theo năm & ngành ---
+- intent: ask_ptit_cutoff_year_major
+  examples: |
+    - Cho mình hỏi điểm chuẩn ngành [Công nghệ thông tin](major) năm [2025](year) cơ sở [Hà Nội](campus) là bao nhiêu?
+    - Ngành [An toàn thông tin](major) năm [2024](year) lấy bao nhiêu điểm vậy?
+    - Điểm chuẩn [Kế toán](major) PTIT [TP.HCM](campus) năm [2023](year)
+    - Năm [2025](year), ngành [Khoa học máy tính](major) điểm đầu vào là bao nhiêu?
+    - Trường lấy điểm chuẩn ngành [Marketing](major) [2025](year) thế nào?
+    - Bạn ơi tra giúp mình điểm chuẩn [Trí tuệ nhân tạo](major) năm [2024](year)
+    - Ngành [IoT](major) năm [2023](year) ở [TP.HCM](campus) lấy bao nhiêu?
+    - Cho hỏi điểm trúng tuyển [Quản trị kinh doanh](major) năm [2025](year)
+    - Xem giúp tôi điểm ngành [Thương mại điện tử](major) năm [2022](year)
+    - Mức điểm chuẩn [2025](year) ngành [Truyền thông đa phương tiện](major)
+    - Điểm chuẩn ngành [Báo chí](major) năm [2024](year)
+    - Tra điểm chuẩn [Công nghệ điện tử viễn thông](major) [2023](year)
+    - Điểm chuẩn ngành [Thiết kế game](major) [2025](year)
+    - Bot ơi tra giúp điểm ngành [Công nghệ đa phương tiện](major) [2024](year)
+    - Điểm chuẩn ngành [Quản trị mạng](major) [2025](year) ở [Hà Nội](campus)
+    - Cho mình điểm chuẩn ngành [Công nghệ thông tin](major) của PTIT
+    - Điểm chuẩn [An toàn thông tin](major) là bao nhiêu
+    - Ngành [Khoa học máy tính](major) lấy điểm chuẩn bao nhiêu
+    - [Truyền thông đa phương tiện](major) điểm chuẩn
+    - Tra điểm [Kỹ thuật Điện tử viễn thông](major)
+    - [Marketing](major) điểm chuẩn năm [2025](year)
+    - Năm [2024](year) ngành [CNTT](major) cơ sở [Hà Nội](campus)
+    - Điểm [Công nghệ thông tin](major) [TP.HCM](campus) năm [2025](year)
+    - [An toàn thông tin](major) cơ sở [Hà Nội](campus)
+    - Điểm ngành [CNTT](major)
+
+# --- Xu hướng điểm chuẩn tổng hợp 5 năm ---
+- intent: ask_ptit_cutoff_trend
+  examples: |
+    - Xu hướng điểm chuẩn của PTIT trong 5 năm qua như thế nào?
+    - Điểm chuẩn các năm gần đây của PTIT tăng hay giảm?
+    - So sánh điểm chuẩn các năm 2019, 2020, 2021, 2022, 2025
+    - Điểm chuẩn cơ sở Hà Nội và TP.HCM có khác nhau không?
+    - Ngành CNTT điểm chuẩn thay đổi ra sao trong 5 năm?
+    - Phổ điểm chuẩn qua các năm thế nào?
+    - Điểm chuẩn ngành An toàn thông tin biến động ra sao?
+    - Năm nào điểm chuẩn cao nhất?
+    - Xu hướng điểm chuẩn của nhóm kinh tế?
+    - Bot cho mình thống kê điểm chuẩn 5 năm qua
+    - Điểm chuẩn tổng hợp trong 5 năm gần nhất
+    - Nhận xét sự biến động của điểm chuẩn PTIT
+    - Có ngành nào luôn cao nhất không?
+    - Xu hướng điểm chuẩn chung của trường?
+
+# --- Phương thức tuyển sinh ---
+- intent: ask_ptit_admission_methods
+  examples: |
+    - Trường có những phương thức xét tuyển nào?
+    - PTIT tuyển sinh theo cách gì?
+    - Có xét tuyển học bạ không?
+    - Phương thức xét tuyển kết hợp là thế nào?
+    - Điều kiện xét tuyển tài năng là gì?
+    - Có xét tuyển bằng SAT/ACT không?
+    - PTIT dùng thi đánh giá năng lực không?
+    - Cách PTIT xét tuyển?
+    - Có xét bằng tiếng Anh quốc tế không?
+    - Phương thức tuyển sinh chính năm 2025?
+    - Cách tuyển sinh theo chứng chỉ IELTS?
+    - PTIT xét tuyển qua học bạ + IELTS ra sao?
+    - Quy chế tuyển sinh đại học PTIT?
+    - Xét điểm thi THPT như thế nào?
+    - Nên chọn phương thức nào?
+
+# --- Giới thiệu Trường & thông tin chung ---
+- intent: ask_ptit_school_info
+  examples: |
+    - Giới thiệu sơ lược về PTIT
+    - PTIT là trường gì?
+    - Học viện Công nghệ Bưu chính Viễn thông đào tạo gì?
+    - PTIT có bao nhiêu cơ sở?
+    - Môi trường học tập PTIT như thế nào?
+    - PTIT thuộc Bộ nào?
+    - Ưu điểm khi học tại PTIT?
+    - Sinh viên PTIT ra trường lương cao không?
+    - PTIT top bao nhiêu về công nghệ?
+    - Có cơ sở tại TP.HCM không?
+    - PTIT có phải trường trọng điểm quốc gia?
+    - Học viện có đội ngũ giảng viên không?
+    - PTIT có nghiên cứu AI không?
+    - Đại học PTIT có uy tín không?
+
+# --- Các ngành đào tạo & chỉ tiêu ---
+- intent: ask_ptit_programs
+  examples: |
+    - Trường đang đào tạo những ngành nào?
+    - Chỉ tiêu tuyển sinh từng ngành là bao nhiêu?
+    - Có bao nhiêu chỉ tiêu cho cơ sở Hà Nội?
+    - Cơ sở TP.HCM có những ngành nào?
+    - Tổng chỉ tiêu tuyển sinh 2025 là bao nhiêu?
+    - PTIT có chương trình chất lượng cao không?
+    - Các chương trình liên kết quốc tế?
+    - Ngành Trí tuệ nhân tạo tuyển bao nhiêu?
+    - Danh sách ngành đào tạo tại PTIT?
+    - Ngành Khoa học dữ liệu có không?
+    - Mã ngành PTIT là gì?
+    - Chương trình Fintech có trong PTIT không?
+    - PTIT có chương trình thạc sĩ không?
+    - Các khối ngành kỹ thuật?
+
+# --- Liên hệ & Contact ---
+- intent: ask_ptit_contact
+  examples: |
+    - Địa chỉ PTIT ở đâu?
+    - Số điện thoại phòng tuyển sinh?
+    - Email liên hệ tuyển sinh?
+    - Cơ sở Hà Nội ở quận nào?
+    - Liên hệ TP.HCM ở đâu?
+    - Fanpage PTIT?
+    - Website tuyển sinh là gì?
+    - Hotline hỗ trợ?
+    - PTIT có channel Zalo không?
+    - Địa chỉ fanpage Facebook của PTIT?
+    - Địa chỉ gửi mail liên hệ?
+    - Số Fax PTIT?
+
+# --- Học phí & chi phí ---
+- intent: ask_ptit_tuition
+  examples: |
+    - Học phí PTIT 2025 là bao nhiêu?
+    - Học phí hệ đại trà?
+    - Học phí chương trình chất lượng cao?
+    - Học phí chương trình quốc tế?
+    - Phí học một học kỳ là bao nhiêu?
+    - Học phí ngành CNTT?
+    - Học phí PTIT Hà Nội vs TP.HCM?
+    - Học phí có tăng không?
+    - Có phụ phí ngoài học phí không?
+    - Mức thu học phí đại học PTIT?
+    - Chênh lệch học phí giữa ngành?
+
+# --- Học bổng & hỗ trợ tài chính ---
+- intent: ask_ptit_scholarships
+  examples: |
+    - PTIT có chính sách học bổng gì không?
+    - Điều kiện để nhận học bổng là gì?
+    - Học bổng toàn phần có không?
+    - Làm sao để miễn học phí?
+    - Học bổng Tài năng Tinh hoa?
+    - Yêu cầu duy trì học bổng?
+    - Học bổng khuyến khích học tập?
+    - Suất học bổng 500 triệu là gì?
+    - Học bổng dành cho giải quốc gia?
+    - Các học bổng quốc tế?
+
+# --- Hồ sơ xét tuyển ---
+- intent: ask_ptit_documents_required
+  examples: |
+    - Hồ sơ xét tuyển cần gì?
+    - Thủ tục nộp hồ sơ trực tuyến như thế nào?
+    - Có cần xác nhận của trường cấp 3 không?
+    - Nộp chứng chỉ IELTS có cần bản gốc không?
+    - Hướng dẫn nộp lệ phí xét tuyển?
+    - Cách khai thông tin hồ sơ?
+
+# --- Thời gian tuyển sinh & mốc quan trọng ---
+- intent: ask_ptit_deadlines
+  examples: |
+    - Khi nào công bố điểm chuẩn?
+    - Thời gian đăng ký nguyện vọng là khi nào?
+    - Deadline nộp lệ phí xét tuyển?
+    - Ngày công bố trúng tuyển đợt 1?
+    - Thời hạn xác nhận nhập học?
+    - Lịch tuyển sinh 2025?
+    - Bao giờ nhập học trực tiếp?
+
+# --- Tra cứu bảng dữ liệu điểm chuẩn lookup ---
+- intent: ask_ptit_lookup
+  examples: |
+    - Giúp mình tra cứu điểm chuẩn nhé
+    - Bot có thể tìm điểm theo ngành và năm giúp mình?
+    - Tra cứu điểm chuẩn PTIT
+    - Đây là lookup điểm chuẩn chi tiết
+    - Xem bảng điểm chuẩn theo {major} {year}
+    - Tra lookup {major} {campus}
+    - Lấy dữ liệu bảng lookup
+    - Cho tôi xem điểm chuẩn bảng
+    - Xuất điểm chuẩn {major} năm (year)
+
+# --- Synonyms cho entities ---
+- synonym: Công nghệ thông tin
+  examples: |
+    - CNTT
+    - Cong nghe thong tin
+    - công nghệ thông tin
+    - cntt
+    - IT
+    - Khoa CNTT
+
+- synonym: An toàn thông tin
+  examples: |
+    - ATTT
+    - An toan thong tin
+    - an toàn thông tin
+    - attt
+    - Information Security
+
+- synonym: Khoa học máy tính
+  examples: |
+    - KHMT
+    - Khoa hoc may tinh
+    - khoa học máy tính
+    - Computer Science
+    - CS
+
+- synonym: Truyền thông đa phương tiện
+  examples: |
+    - TTĐPT
+    - Truyen thong da phuong tien
+    - truyền thông đa phương tiện
+    - Multimedia
+
+- synonym: Kế toán
+  examples: |
+    - Ke toan
+    - kế toán
+    - Accounting
+
+- synonym: Marketing
+  examples: |
+    - marketing
+    - MKT
+    - Maketing
+
+- synonym: Hà Nội
+  examples: |
+    - Ha Noi
+    - hà nội
+    - Hanoi
+    - HN
+    - cơ sở 1
+    - Hà Đông
+
+- synonym: TP.HCM
+  examples: |
+    - TP HCM
+    - TPHCM
+    - Ho Chi Minh
+    - HCM
+    - Sai Gon
+    - Sài Gòn
+    - cơ sở 2
+    - thành phố hồ chí minh

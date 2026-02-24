@@ -1,0 +1,86 @@
+version: "3.1"
+
+rules:
+
+# === CHÀO HỎI / CẢM ƠN / TẠM BIỆT ===
+- rule: Respond to greeting
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Respond to thanks
+  steps:
+  - intent: thanks
+  - action: utter_thanks
+
+- rule: Respond to goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+# === TRẢ LỜI TRỰC TIẾP THEO INTENT ===
+- rule: Handle cutoff score lookup
+  steps:
+  - intent: ask_ptit_cutoff_year_major
+  - action: action_lookup_score
+
+- rule: Handle score trend
+  steps:
+  - intent: ask_ptit_cutoff_trend
+  - action: utter_ptit_cutoff_trend
+
+- rule: Handle admission methods
+  steps:
+  - intent: ask_ptit_admission_methods
+  - action: utter_ptit_admission_methods
+
+- rule: Handle school info
+  steps:
+  - intent: ask_ptit_school_info
+  - action: utter_ptit_school_info
+
+- rule: Handle program list
+  steps:
+  - intent: ask_ptit_programs
+  - action: utter_ptit_programs
+
+- rule: Handle contact inquiries
+  steps:
+  - intent: ask_ptit_contact
+  - action: utter_ptit_contact
+
+- rule: Handle tuition inquiries
+  steps:
+  - intent: ask_ptit_tuition
+  - action: utter_ptit_tuition
+
+- rule: Handle scholarship inquiries
+  steps:
+  - intent: ask_ptit_scholarships
+  - action: utter_ptit_scholarships
+
+- rule: Handle documents required inquiries
+  steps:
+  - intent: ask_ptit_documents_required
+  - action: utter_ptit_documents_required
+
+- rule: Handle deadlines inquiries
+  steps:
+  - intent: ask_ptit_deadlines
+  - action: utter_ptit_deadlines
+
+# === RULE XỬ LÝ KHI THIẾU ENTITY ===
+# Note: Slot filling is better handled by forms or custom actions
+# These conditional rules have been removed to fix validation errors
+
+- rule: After greet, ask how can help
+  steps:
+  - intent: greet
+  - action: utter_greet
+# === FALLBACK & KHÔNG HIỂU ===
+
+- rule: Handle fallback when the bot does not understand
+  steps:
+  - intent: nlu_fallback
+  - action: utter_default
+  - action: action_listen
