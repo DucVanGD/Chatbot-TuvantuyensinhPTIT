@@ -645,12 +645,6 @@
       "Chào bạn! Mình là chatbot tư vấn tuyển sinh PTIT. Bạn có thể hỏi về:\n• Điểm chuẩn các ngành (2020-2025)\n• Cơ sở Hà Nội / TP.HCM\n• Thông tin ngành học, tổ hợp xét tuyển..."
     );
 
-    if (window.location.protocol === "file:") {
-      appendMessage(
-        "bot",
-        "Bạn đang mở giao diện bằng file trực tiếp. Để kết nối bot ổn định, hãy chạy `start_chat_ui.ps1` để mở giao diện qua `http://localhost:8000`."
-      );
-    }
 
     setBotStatus("checking");
     checkServer();
