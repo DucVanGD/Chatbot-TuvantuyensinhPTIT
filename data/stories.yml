@@ -24,11 +24,6 @@ stories:
   - intent: ask_ptit_cutoff_year_major
   - action: action_lookup_score
 
-# --- Story: hỏi xu hướng điểm chuẩn ---
-- story: user asks about trend of scores
-  steps:
-  - intent: ask_ptit_cutoff_trend
-  - action: utter_ptit_cutoff_trend
 
 # --- Story: hỏi phương thức tuyển sinh ---
 - story: user asks different admission methods
@@ -64,7 +59,7 @@ stories:
 - story: user asks about scholarships
   steps:
   - intent: ask_ptit_scholarships
-  - action: action_show_scholarships
+  - action: utter_ptit_scholarships
 
 # --- Story: hỏi hồ sơ cần chuẩn bị ---
 - story: user asks documents required for admission
@@ -86,12 +81,6 @@ stories:
   - intent: ask_ptit_tuition
   - action: utter_ptit_tuition
 
-- story: user asks about programs then cutoff trends
-  steps:
-  - intent: ask_ptit_programs
-  - action: utter_ptit_programs
-  - intent: ask_ptit_cutoff_trend
-  - action: utter_ptit_cutoff_trend
 
 - story: user asks admission methods then deadlines
   steps:
@@ -109,131 +98,86 @@ stories:
   - intent: ask_ptit_contact
   - action: utter_ptit_contact
 
-# --- NEW STORIES: Conversation flows with follow-up ---
 
-- story: user asks facility without campus then provides campus
+# --- Stories cho intent mới ---
+- story: user asks dormitory info
   steps:
-  - intent: ask_facility
-  - action: action_show_facility
-  - intent: ask_facility
-    entities:
-    - campus: "Hà Nội"
-  - action: action_show_facility
+  - intent: ask_ptit_dormitory_info
+  - action: utter_ask_ptit_dormitory_info
 
-- story: user asks facility and specifies campus immediately 
+- story: user asks language of instruction
   steps:
-  - intent: ask_facility
-    entities:
-    - campus: "Hà Nội"
-  - action: action_show_facility
+  - intent: ask_ptit_language_of_instruction
+  - action: utter_ask_ptit_language_of_instruction
 
-- story: user asks dorm without campus then provides campus
+- story: user asks degree awarded
   steps:
-  - intent: ask_dorm
-  - action: action_show_dorm
-  - intent: ask_dorm
-    entities:
-    - campus: "TP.HCM"
-  - action: action_show_dorm
+  - intent: ask_ptit_degree_awarded
+  - action: utter_ask_ptit_degree_awarded
 
-- story: user asks about majors then asks major detail
+- story: user asks internship opportunities
   steps:
-  - intent: ask_major
-  - action: utter_list_majors
-  - intent: ask_major_detail
-    entities:
-    - major: "CNTT"
-  - action: action_show_major_detail
+  - intent: ask_ptit_internship_opportunities
+  - action: utter_ask_ptit_internship_opportunities
 
-- story: user checks admission chance with score and major
+- story: user asks graduation requirements
   steps:
-  - intent: check_admission_chance
-    entities:
-    - score: "26"
-    - major: "CNTT"
-  - action: action_estimate_admission_chance
+  - intent: ask_ptit_graduation_requirements
+  - action: utter_ask_ptit_graduation_requirements
 
-- story: user asks for major suggestion by score
+- story: user asks extracurricular activities
   steps:
-  - intent: suggest_major_by_score
-    entities:
-    - score: "27"
-  - action: action_suggest_majors
+  - intent: ask_ptit_extracurricular_activities
+  - action: utter_ask_ptit_extracurricular_activities
 
-- story: user compares two majors
+- story: user asks postgraduate opportunities
   steps:
-  - intent: compare_majors
-    entities:
-    - major: "CNTT"
-  - action: action_compare_majors
+  - intent: ask_ptit_postgraduate_opportunities
+  - action: utter_ask_ptit_postgraduate_opportunities
 
-- story: user asks about scholarships then wants details
+- story: user asks tuition per credit
   steps:
-  - intent: ask_ptit_scholarships
-  - action: action_show_scholarships
+  - intent: ask_ptit_tuition_per_credit
+  - action: utter_ask_ptit_tuition_per_credit
 
-- story: user asks job opportunities for major
+- story: user asks tuition payment methods
   steps:
-  - intent: ask_job_opportunity
-    entities:
-    - major: "AI"
-  - action: action_show_job_opportunities
+  - intent: ask_ptit_tuition_payment_methods
+  - action: utter_ask_ptit_tuition_payment_methods
 
-- story: user asks about internships
+- story: user asks tuition exemption
   steps:
-  - intent: ask_internship
-  - action: action_show_internships
+  - intent: ask_ptit_tuition_exemption
+  - action: utter_ask_ptit_tuition_exemption
 
-- story: user asks campus comparison
+- story: user asks classrooms info
   steps:
-  - intent: ask_campus_comparison
-  - action: action_show_campus_comparison
+  - intent: ask_ptit_classrooms
+  - action: utter_ask_ptit_classrooms
 
-- story: full flow - greet, ask majors, check admission chance
+- story: user asks labs info
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: ask_major
-  - action: utter_list_majors
-  - intent: check_admission_chance
-    entities:
-    - score: "28"
-    - major: "CNTT"
-  - action: action_estimate_admission_chance
-  - intent: thanks
-  - action: utter_thanks
+  - intent: ask_ptit_labs
+  - action: utter_ask_ptit_labs
 
-- story: user asks about school, then facilities, then dorm
+- story: user asks library info
   steps:
-  - intent: ask_ptit_school_info
-  - action: utter_ptit_school_info
-  - intent: ask_facility
-  - action: action_show_facility
-  - intent: ask_dorm
-  - action: action_show_dorm
+  - intent: ask_ptit_library
+  - action: utter_ask_ptit_library
 
-# --- Stories with affirm/deny for follow-up responses ---
-
-- story: user asks facility, bot shows, user affirms understanding
+- story: user asks major recommendation
   steps:
-  - intent: ask_facility
-  - action: action_show_facility
-  - intent: affirm
+  - intent: ask_ptit_major_recommendation
+  - action: utter_ask_ptit_major_recommendation
 
-- story: user denies and asks something else
+- story: user asks campus facilities
   steps:
-  - intent: ask_ptit_school_info
-  - action: utter_ptit_school_info
-  - intent: deny
-  - intent: ask_ptit_contact
-  - action: utter_ptit_contact
+  - intent: ask_ptit_campus_facilities
+  - action: utter_ask_ptit_campus_facilities
 
-- story: user agrees to more info
+- story: user asks school comparison
   steps:
-  - intent: ask_major
-  - action: utter_list_majors
-  - intent: affirm
-  - intent: ask_major_detail
-    entities:
-    - major: "CNTT"
-  - action: action_show_major_detail
+  - intent: ask_toxic_kick_war
+  - action: utter_ask_toxic_kick_war
+
+# ...existing code...

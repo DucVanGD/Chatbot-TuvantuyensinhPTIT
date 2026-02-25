@@ -278,35 +278,59 @@ class ActionSuggestMajors(Action):
         
         data = load_ptit_data()
         cutoff_scores = data.get("cutoff_scores", [])
-        year = "2025"
+        year = "2025"  # Sử dụng điểm chuẩn năm 2025 làm tham khảo
         
-        # Lọc các ngành có điểm chuẩn phù hợp
-        suitable_majors = []
+        # Tính hiệu số và lọc các ngành trong phạm vi
+        all_candidates = []
         for item in cutoff_scores:
             if str(item.get("year")) == str(year):
                 cutoff = item.get("score")
-                if user_score >= cutoff - 0.5:  # Cho phép sai lệch 0.5 điểm
-                    percentage, _ = compute_admission_estimate(user_score, cutoff)
-                    suitable_majors.append({
+                diff = cutoff - user_score  # Hiệu số (điểm chuẩn - điểm user)
+                
+                # Lọc các ngành có khoảng cách <= 4 điểm
+                if abs(diff) <= 4:
+                    percentage, message = compute_admission_estimate(user_score, cutoff)
+                    all_candidates.append({
                         "major": item.get("major"),
                         "campus": item.get("campus"),
                         "cutoff": cutoff,
-                        "percentage": percentage
+                        "diff": diff,
+                        "percentage": percentage,
+                        "message": message
                     })
         
-        if not suitable_majors:
+        if not all_candidates:
             dispatcher.utter_message(
-                text=f"Với {user_score} điểm, bạn có thể cần xem xét các phương thức tuyển sinh khác hoặc các ngành có điểm chuẩn thấp hơn."
+                text="Điểm bạn vượt ngoài phạm vi điểm của trường, bạn nên cân nhắc chọn trường khác phù hợp với khả năng của bản thân hơn."
             )
             return []
         
-        # Sắp xếp theo khả năng trúng tuyển
-        suitable_majors.sort(key=lambda x: x["percentage"], reverse=True)
+        # Tách thành 2 nhóm: dương (điểm chuẩn > điểm user) và âm (điểm chuẩn < điểm user)
+        positive_group = [m for m in all_candidates if m["diff"] >= 0]  # diff >= 0
+        negative_group = [m for m in all_candidates if m["diff"] < 0]   # diff < 0
         
-        msg = f"💡 Gợi ý các ngành phù hợp với {user_score} điểm:\n\n"
-        for i, major in enumerate(suitable_majors[:5], 1):  # Top 5
-            msg += f"{i}. **{major['major']}** - {major['campus']}\n"
-            msg += f"   Điểm chuẩn: {major['cutoff']} | Khả năng: {major['percentage']}%\n\n"
+        suitable_majors = []
+        
+        # Lấy 1 ngành gần nhất từ nhóm dương (diff nhỏ nhất)
+        if positive_group:
+            positive_group.sort(key=lambda x: x["diff"])
+            suitable_majors.append(positive_group[0])
+        
+        # Lấy tất cả ngành từ nhóm âm, sắp xếp theo diff giảm dần (gần 0 nhất lên đầu)
+        if negative_group:
+            negative_group.sort(key=lambda x: x["diff"], reverse=True)  # -0.5, -1, -2...
+            suitable_majors.extend(negative_group)
+        
+        msg = f"Gợi ý các ngành phù hợp với {user_score} điểm (dựa trên điểm chuẩn năm {year}):\n\n"
+        for i, major in enumerate(suitable_majors, 1):
+            msg += f"{i}. {major['major']} - {major['campus']}\n"
+            if major['diff'] >= 0:
+                msg += f"   Điểm chuẩn {year}: {major['cutoff']} (cần thêm {major['diff']:.2f} điểm)\n"
+            else:
+                msg += f"   Điểm chuẩn {year}: {major['cutoff']} (vượt {abs(major['diff']):.2f} điểm)\n"
+            msg += f"   Khả năng: {major['percentage']}% - {major['message']}\n\n"
+        
+        msg += f"\nLưu ý: Dựa trên điểm chuẩn năm {year}, điểm năm 2026 có thể thay đổi."
         
         dispatcher.utter_message(text=msg)
         return []
@@ -391,10 +415,6 @@ class ActionShowMajorDetail(Action):
             msg += f"• {job}\n"
         
         msg += f"\n**Mức lương:**\n{info.get('average_salary', 'N/A')}\n\n"
-        
-        msg += f"**Nội dung học:**\n"
-        for course in info.get("curriculum_highlights", [])[:5]:
-            msg += f"• {course}\n"
         
         dispatcher.utter_message(text=msg)
         return []
@@ -561,23 +581,36 @@ class ActionShowDorm(Action):
                     matching_campus = c
                     break
             
-            if matching_campus:
-                for facility in matching_campus.get("facilities", []):
-                    if normalize_string(facility["name"]) == normalize_string("Ký túc xá"):
-                        msg = f"🏠 **Ký túc xá cơ sở {matching_campus['name']}**\n\n"
-                        msg += facility['description']
-                        dispatcher.utter_message(text=msg)
-                        return []
+            if matching_campus and matching_campus.get("dorms"):
+                msg = f"Thông tin ký túc xá cơ sở {matching_campus['name']}:\n\n"
+                for dorm in matching_campus.get("dorms", []):
+                    msg += f"** {dorm['name']}**\n"
+                    msg += f"- Sức chứa: {dorm['capacity']} sinh viên\n"
+                    msg += f"- Loại phòng: {dorm['room_type']}\n"
+                    msg += f"- Giá: {dorm['price']}\n"
+                    msg += f"- Tiện nghi: {', '.join(dorm['amenities'])}\n"
+                    if dorm.get('note'):
+                        msg += f"- Ghi chú: {dorm['note']}\n"
+                    msg += "\n"
+                
+                if matching_campus.get("dorm_payment_note"):
+                    msg += f"Lưu ý thanh toán: {matching_campus['dorm_payment_note']}"
+                
+                dispatcher.utter_message(text=msg)
+                return []
         
         # Nếu không có campus hoặc không tìm thấy, hiển thị tất cả
-        msg = "🏠 **Thông tin ký túc xá PTIT:**\n\n"
+        msg = "Thông tin ký túc xá PTIT:\n\n"
         
         for campus in campuses:
-            msg += f"**Cơ sở {campus['name']}:**\n"
-            for facility in campus.get("facilities", []):
-                if normalize_string(facility["name"]) == normalize_string("Ký túc xá"):
-                    msg += f"{facility['description']}\n\n"
-                    break
+            if campus.get("dorms"):
+                msg += f"**Cơ sở {campus['name']}:**\n"
+                for dorm in campus.get("dorms", []):
+                    msg += f"- {dorm['name']}: {dorm['room_type']}, {dorm['price']}\n"
+                msg += "\n"
+            else:
+                msg += f"**Cơ sở {campus['name']}:**\n"
+                msg += "Không có thông tin ký túc xá tại cơ sở này.\n\n"
         
         dispatcher.utter_message(text=msg)
         return []
@@ -606,6 +639,90 @@ class ActionShowCampusComparison(Action):
             msg += f"• Số cơ sở vật chất: {len(campus.get('facilities', []))} hạng mục\n\n"
         
         msg += "💡 **Lưu ý:** Cả 2 cơ sở đều có chất lượng đào tạo tương đương, chỉ khác về quy mô và số lượng sinh viên. Cơ sở Hà Nội là trụ sở chính với quy mô lớn hơn, cơ sở TP.HCM tập trung vào phát triển CNTT và ĐTVT tại miền Nam."
+        
+        dispatcher.utter_message(text=msg)
+        return []
+
+
+class ActionListAllCutoffScores(Action):
+    """Liệt kê điểm chuẩn tất cả các ngành trong một năm"""
+    
+    def name(self) -> Text:
+        return "action_list_all_cutoff_scores"
+    
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict) -> List[Dict]:
+        year = tracker.get_slot("year")
+        campus = tracker.get_slot("campus")
+        
+        if not year:
+            year = "2025"
+        
+        data = load_ptit_data()
+        cutoff_scores = data.get("cutoff_scores", [])
+        
+        # Lọc theo năm và campus (nếu có)
+        filtered_scores = []
+        for item in cutoff_scores:
+            if str(item.get("year")) == str(year):
+                if campus:
+                    campus_normalized = normalize_string(campus)
+                    item_campus = normalize_string(item.get("campus", ""))
+                    if item_campus == campus_normalized:
+                        filtered_scores.append(item)
+                else:
+                    filtered_scores.append(item)
+        
+        if not filtered_scores:
+            dispatcher.utter_message(
+                text=f"Xin lỗi, mình không tìm thấy điểm chuẩn năm {year}."
+            )
+            return []
+        
+        # Sắp xếp theo campus và điểm giảm dần
+        filtered_scores.sort(key=lambda x: (x.get("campus", ""), -x.get("score", 0)))
+        
+        campus_text = f" cơ sở {campus}" if campus else ""
+        msg = f"Điểm chuẩn tất cả các ngành{campus_text} năm {year}:\n\n"
+        
+        current_campus = None
+        for item in filtered_scores:
+            item_campus = item.get("campus", "")
+            if item_campus != current_campus:
+                current_campus = item_campus
+                msg += f"\n**Cơ sở {current_campus}:**\n"
+            
+            msg += f"- {item.get('major')}: {item.get('score')} điểm"
+            if item.get('subject_blocks'):
+                msg += f" (Khối: {', '.join(item['subject_blocks'])})"
+            msg += "\n"
+        
+        dispatcher.utter_message(text=msg)
+        return []
+
+
+class ActionShowEnterprisePartners(Action):
+    """Hiển thị thông tin các doanh nghiệp liên kết"""
+    
+    def name(self) -> Text:
+        return "action_show_enterprise_partners"
+    
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict) -> List[Dict]:
+        data = load_ptit_data()
+        partners = data.get("internship_partners", [])
+        
+        if not partners:
+            dispatcher.utter_message(text="Xin lỗi, mình không có thông tin về các doanh nghiệp liên kết.")
+            return []
+        
+        msg = "Các doanh nghiệp liên kết với PTIT:\n\n"
+        msg += "PTIT có quan hệ đối tác chiến lược với nhiều doanh nghiệp lớn trong và ngoài nước, mang lại cơ hội thực tập và việc làm cho sinh viên:\n\n"
+        
+        for partner in partners:
+            msg += f"**{partner['company']}**\n"
+            msg += f"- Vị trí thực tập/tuyển dụng: {', '.join(partner.get('positions', []))}\n"
+            msg += f"- Mô tả: {partner['description']}\n\n"
+        
+        msg += "\nNgoài ra, PTIT còn hợp tác với nhiều doanh nghiệp khác như Samsung, Mobifone, CMC, TMA Solutions, VNG, Sendo, Tiki... tạo cơ hội rộng mở cho sinh viên."
         
         dispatcher.utter_message(text=msg)
         return []

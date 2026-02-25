@@ -125,23 +125,7 @@ nlu:
     - [An toàn thông tin](major) cơ sở [Hà Nội](campus)
     - Điểm ngành [CNTT](major)
 
-# --- Xu hướng điểm chuẩn tổng hợp 5 năm ---
-- intent: ask_ptit_cutoff_trend
-  examples: |
-    - Xu hướng điểm chuẩn của PTIT trong 5 năm qua như thế nào?
-    - Điểm chuẩn các năm gần đây của PTIT tăng hay giảm?
-    - So sánh điểm chuẩn các năm 2019, 2020, 2021, 2022, 2025
-    - Điểm chuẩn cơ sở Hà Nội và TP.HCM có khác nhau không?
-    - Ngành CNTT điểm chuẩn thay đổi ra sao trong 5 năm?
-    - Phổ điểm chuẩn qua các năm thế nào?
-    - Điểm chuẩn ngành An toàn thông tin biến động ra sao?
-    - Năm nào điểm chuẩn cao nhất?
-    - Xu hướng điểm chuẩn của nhóm kinh tế?
-    - Bot cho mình thống kê điểm chuẩn 5 năm qua
-    - Điểm chuẩn tổng hợp trong 5 năm gần nhất
-    - Nhận xét sự biến động của điểm chuẩn PTIT
-    - Có ngành nào luôn cao nhất không?
-    - Xu hướng điểm chuẩn chung của trường?
+
 
 # --- Phương thức tuyển sinh ---
 - intent: ask_ptit_admission_methods
@@ -272,6 +256,7 @@ nlu:
   examples: |
     - Giúp mình tra cứu điểm chuẩn nhé
     - Bot có thể tìm điểm theo ngành và năm giúp mình?
+    - Điểm chuẩn ngành [Công nghệ thông tin](major) năm [2025](year) là bao nhiêu?
     - Tra cứu điểm chuẩn PTIT
     - Đây là lookup điểm chuẩn chi tiết
     - Xem bảng điểm chuẩn theo {major} {year}
@@ -333,6 +318,290 @@ nlu:
     - Giới thiệu ngành [AI](major)
     - [Quản trị kinh doanh](major) lương ra trường
     - Tìm hiểu về [KHMT](major)
+    - Ngành [AI](major)
+    - Ngành [CNTT](major)
+    - [Công nghệ thông tin](major)
+    - [An toàn thông tin](major)
+    - [ATTT](major)
+    - [AI](major)
+    - [ĐTVT](major)
+    - [KHMT](major)
+    - [QTKD](major)
+    - Tìm hiểu [Công nghệ thông tin](major)
+    - Cho mình xem ngành [AI](major)
+    - Hỏi về ngành [CNTT](major)
+    - Thông tin [ATTT](major)
+    - Chi tiết ngành [Khoa học máy tính](major)
+    - Ngành [IoT](major)
+    - [Internet vạn vật](major)
+    - [Fintech](major)
+    - [Công nghệ tài chính](major)
+    - Ngành [thiết kế game](major)
+    - [Game](major)
+    - [Marketing](major)
+    - [MKT](major)
+    - Ngành [Kế toán](major)
+    - [Logistics](major)
+    - [Thương mại điện tử](major)
+    - [TMĐT](major)
+    - [Truyền thông đa phương tiện](major)
+    - [TTĐPT](major)
+    - [Công nghệ đa phương tiện](major)
+    - [CNĐPT](major)
+    - [Vi mạch bán dẫn](major)
+    - [Kỹ thuật dữ liệu](major)
+    - Ngành [IoT](major)
+    - [Internet vạn vật](major)
+    - [Fintech](major)
+    - [Công nghệ tài chính](major)
+    - Ngành [thiết kế game](major)
+    - [Game](major)
+    - [Marketing](major)
+    - [MKT](major)
+    - Ngành [Kế toán](major)
+    - [Logistics](major)
+    - [Thương mại điện tử](major)
+    - [TMĐT](major)
+    - [Truyền thông đa phương tiện](major)
+    - [TTĐPT](major)
+    - [Công nghệ đa phương tiện](major)
+    - [CNĐPT](major)
+    - [Vi mạch bán dẫn](major)
+    - [Kỹ thuật dữ liệu](major)
+    - Nói về ngành [Công nghệ thông tin](major)
+    - Thông tin về ngành [An toàn thông tin](major)
+    - Ngành [Khoa học máy tính](major) có gì nổi bật?
+    - Chương trình học ngành [Trí tuệ nhân tạo](major) có gì đặc biệt?
+
+# --- Xu hướng điểm chuẩn ---
+- intent: ask_ptit_cutoff_trend
+  examples: |
+    - Điểm chuẩn PTIT có xu hướng thế nào?
+    - Xu hướng điểm chuẩn các năm gần đây
+    - Điểm chuẩn PTIT tăng hay giảm?
+    - Xu hướng điểm chuẩn ngành công nghệ
+    - Điểm chuẩn các ngành có thay đổi không?
+    - So sánh điểm chuẩn qua các năm
+    - Biến động điểm chuẩn PTIT
+
+# --- Liệt kê tất cả điểm chuẩn ---
+- intent: ask_ptit_list_all_cutoff_scores
+  examples: |
+    - Điểm chuẩn tất cả các ngành năm [2022](year)
+    - Cho mình xem điểm chuẩn các ngành năm [2023](year)
+    - Liệt kê điểm chuẩn năm [2024](year)
+    - Tất cả điểm chuẩn [2025](year)
+    - Điểm chuẩn các ngành [2022](year)
+    - Xem điểm chuẩn hết các ngành
+    - Bảng điểm chuẩn năm [2023](year)
+    - Danh sách điểm chuẩn các ngành
+    - Điểm chuẩn tất cả ngành năm [2024](year)
+
+# --- Thông tin doanh nghiệp liên kết ---
+- intent: ask_ptit_enterprise_partners
+  examples: |
+    - Trường liên kết các doanh nghiệp nào
+    - PTIT hợp tác với công ty gì
+    - Các đối tác của PTIT
+    - Doanh nghiệp liên kết với trường
+    - PTIT làm việc với doanh nghiệp nào
+    - Nói về FPT
+    - Thông tin về Viettel
+    - PTIT có hợp tác với Samsung không
+
+# --- Thông tin ký túc xá ---
+- intent: ask_ptit_dormitory_info
+  examples: |
+    - Thông tin về ký túc xá PTIT
+    - KTX PTIT như thế nào?
+    - Ký túc xá có điều hòa không?
+    - Chi phí ở ký túc xá
+    - Địa chỉ ký túc xá [Hà Nội](campus)
+    - Quy định ở KTX
+    - Ký túc xá có wifi không?
+    - Liên hệ ban quản lý KTX
+    - Ký túc xá [TP.HCM](campus)
+    - Hỗ trợ chỗ ở cho sinh viên
+    - Học bổng ký túc xá
+
+# --- Ngôn ngữ giảng dạy ---
+- intent: ask_ptit_language_of_instruction
+  examples: |
+    - PTIT giảng dạy bằng tiếng gì?
+    - Có học bằng tiếng Anh không?
+    - Chương trình quốc tế giảng dạy thế nào?
+    - Ngôn ngữ giảng dạy tại PTIT
+    - Có lớp song ngữ không?
+    - Yêu cầu tiếng Anh như thế nào?
+
+# --- Bằng cấp sau tốt nghiệp ---
+- intent: ask_ptit_degree_awarded
+  examples: |
+    - Tốt nghiệp PTIT được cấp bằng gì?
+    - Loại bằng tốt nghiệp
+    - Bằng Kỹ sư hay Cử nhân?
+    - Bằng cấp PTIT
+    - Chứng chỉ tốt nghiệp
+    - Sau khi học xong được bằng gì?
+    - Thời gian học là bao lâu
+    - Mất bao lâu để tốt nghiệp?
+
+# --- Cơ hội thực tập ---
+- intent: ask_ptit_internship_opportunities
+  examples: |
+    - Cơ hội thực tập tại PTIT
+    - Có chương trình thực tập không?
+    - Thực tập ở đâu?
+    - Thời gian thực tập
+    - Các đối tác thực tập
+    - Trường có hỗ trợ thực tập không?
+    - Thực tập có lương không?
+
+# --- Điều kiện tốt nghiệp ---
+- intent: ask_ptit_graduation_requirements
+  examples: |
+    - Điều kiện tốt nghiệp PTIT
+    - Cần bao nhiêu tín chỉ để tốt nghiệp?
+    - Yêu cầu tốt nghiệp
+    - Chuẩn đầu ra tiếng Anh
+    - GPA tốt nghiệp tối thiểu
+    - Điều kiện để lấy bằng
+    - Yêu cầu về học phí
+
+# --- Hoạt động ngoại khóa ---
+- intent: ask_ptit_extracurricular_activities
+  examples: |
+    - Hoạt động ngoại khóa tại PTIT
+    - Có câu lạc bộ nào không?
+    - CLB công nghệ
+    - Hoạt động tình nguyện
+    - Câu lạc bộ thể thao
+    - Đội nhóm văn hóa văn nghệ
+    - Cuộc thi học thuật
+    - Khởi nghiệp tại PTIT
+
+# --- Cơ hội học sau đại học ---
+- intent: ask_ptit_postgraduate_opportunities
+  examples: |
+    - PTIT có đào tạo thạc sĩ không?
+    - Học tiếp sau đại học
+    - Chương trình cao học
+    - Tiến sĩ tại PTIT
+    - Học bổng sau đại học
+    - Điều kiện học thạc sĩ
+
+# --- Học phí theo tín chỉ ---
+- intent: ask_ptit_tuition_per_credit
+  examples: |
+    - Học phí bao nhiêu tiền một tín?
+    - Mức phí mỗi tín chỉ
+    - Giá một tín chỉ
+    - Học phí tính theo tín chỉ
+    - Tín chỉ giá bao nhiêu?
+    - Chi phí học theo tín
+
+# --- Phương thức thanh toán học phí ---
+- intent: ask_ptit_tuition_payment_methods
+  examples: |
+    - Cách đóng học phí
+    - Thanh toán học phí như thế nào?
+    - Có thể chuyển khoản học phí không?
+    - Đóng học phí qua app gì?
+    - Phương thức thanh toán học phí
+    - Đóng học phí online
+    - Tài khoản ngân hàng đóng học phí
+
+# --- Miễn giảm học phí ---
+- intent: ask_ptit_tuition_exemption
+  examples: |
+    - Chính sách miễn giảm học phí
+    - Ai được giảm học phí?
+    - Miễn học phí cho ai?
+    - Hỗ trợ tài chính cho sinh viên
+    - Học bổng toàn phần
+    - Giảm học phí hộ nghèo
+    - Con liệt sĩ được miễn học phí không?
+    - Đối tượng được miễn giảm học phí
+    - Hộ nghèo được miễn giảm không?
+    - Sinh viên có hoàn cảnh khó khăn được hỗ trợ gì?
+    - Con thương binh, bệnh binh được miễn giảm học phí không?
+
+# --- Phòng học ---
+- intent: ask_ptit_classrooms
+  examples: |
+    - Phòng học PTIT như thế nào?
+    - Giảng đường có điều hòa không?
+    - Trang thiết bị phòng học
+    - Phòng học có máy chiếu không?
+    - Smart classroom
+    - Phòng học hiện đại không?
+    - Phòng học có wifi không?
+    - Phòng học có đủ chỗ ngồi không?
+    - Phòng học có camera không?
+
+# --- Phòng lab ---
+- intent: ask_ptit_labs
+  examples: |
+    - Phòng lab PTIT
+    - Phòng thực hành
+    - Lab CNTT như thế nào?
+    - Samsung Lab
+    - AI Lab
+    - Cyber Security Lab
+    - Phòng lab có cấu hình tốt không?
+    - Có những lab nào
+    - Lab có hỗ trợ thực tập không?
+    - Lab có mở cửa cho sinh viên không?
+
+# --- Thư viện ---
+- intent: ask_ptit_library
+  examples: |
+    - Thư viện PTIT
+    - Thư viện số
+    - Giờ mở cửa thư viện
+    - Không gian tự học
+    - Thư viện có sách gì?
+    - Truy cập thư viện online
+    - Có thư viện không?
+    - Thời gian mở cưa thư viện là lúc nào?
+
+# --- Gợi ý chọn ngành ---
+- intent: ask_ptit_major_recommendation
+  examples: |
+    - Tư vấn chọn ngành
+    - Nên học ngành gì tại PTIT?
+    - Ngành nào phù hợp với mình?
+    - Gợi ý ngành học
+    - Ngành nào dễ xin việc?
+    - Chọn ngành hot
+    - Ngành tiềm năng
+    - Ngành nào lương cao?
+    - Nên chọn ngành nào?
+
+# --- Khuôn viên trường ---
+- intent: ask_ptit_campus_facilities
+  examples: |
+    - Khuôn viên PTIT như thế nào?
+    - Cơ sở vật chất trường
+    - Campus PTIT
+    - Tòa nhà A2
+    - Sân vận động
+    - Không gian xanh
+    - Smart Campus
+
+# --- So sánh với trường khác (toxic/kick war) ---
+- intent: ask_toxic_kick_war
+  examples: |
+    - PTIT có tốt hơn Bách Khoa không?
+    - So sánh PTIT với UET
+    - PTIT hay HUST?
+    - Trường nào tốt hơn?
+    - PTIT so với các trường khác
+    - Big 3 công nghệ
+    - PTIT đứng thứ mấy?
+    - Trồn lường có gì hay?
+    - PTIT ở đâu trong chuỗi thức ăn?
+    - PTIT có phải là trường tốt nhất về [CNTT](major) không?
 
 # --- Dự đoán khả năng trúng tuyển ---
 - intent: check_admission_chance
@@ -342,10 +611,12 @@ nlu:
     - Tôi [25 điểm](score) khối [A00](subject_block) vào được [Quản trị kinh doanh](major) không?
     - [26.5 điểm](score) trúng tuyển [ĐTVT](major) cơ sở [Hà Nội](campus) không?
     - Khả năng đỗ [Trí tuệ nhân tạo](major) với [29 điểm](score)
-    - Với [24 điểm](score) mình nên chọn ngành gì?
     - Ước tính cơ hội đỗ [KHMT](major) với [27 điểm](score)
     - Dự đoán trúng tuyển [AI](major) điểm [28.5](score)
     - Mình [26 điểm](score) có cơ hội vào [CNTT](major) không?
+    - Điểm [30](score) có chắc chắn đỗ [ATTT](major) không?
+    - [24 điểm](score) có đậu [Marketing](major) không?
+    - Với [25 điểm](score) đỗ được [Kế toán](major) ở [TP.HCM](campus) không?
 
 # --- Gợi ý ngành dựa trên điểm ---
 - intent: suggest_major_by_score
@@ -357,6 +628,17 @@ nlu:
     - [24 điểm](score) chọn ngành nào tại PTIT?
     - Tư vấn ngành với [29 điểm](score)
     - [23.5 điểm](score) nên đăng ký ngành gì?
+    - Ngành nào phù hợp với [22 điểm](score)?
+    - [30 điểm](score) nên học ngành nào?
+    - Tôi có [24 điểm](score) đỗ được ngành nào
+    - Có [24 điểm](score) đỗ được ngành nào
+    - [25 điểm](score) đỗ được ngành nào
+    - Với [26 điểm](score) thì đỗ được ngành nào
+    - [23 điểm](score) có thể đỗ ngành gì
+    - [27 điểm](score) vào được ngành nào
+    - [28.5 điểm](score) thì học ngành gì
+    - Điểm [22](score) chọn ngành nào
+    - [29 điểm](score) đăng ký ngành gì tốt
 
 # --- So sánh các ngành ---
 - intent: compare_majors
@@ -368,7 +650,8 @@ nlu:
     - [An toàn thông tin](major) hay [CNTT](major) tốt hơn?
     - So sánh lương [AI](major) với [KHMT](major)
     - Ngành nào dễ xin việc hơn: [CNTT](major) hay [QTKD](major)?
-
+    - [Truyền thông đa phương tiện](major) và [Công nghệ đa phương tiện](major) khác nhau thế nào?
+    - Nên học [Khoa học máy tính](major) hay [Trí tuệ nhân tạo](major)?
 # --- Hỏi về cơ sở vật chất ---
 - intent: ask_facility
   examples: |
@@ -392,23 +675,28 @@ nlu:
     - Thông tin [Hà Nội](campus)
     - Muốn biết [cơ sở Hà Nội](campus)
     - Cho mình xem cơ sở [TP.HCM](campus)
+    - Cơ sở [Hà Nội](campus) có gì đặc biệt?
+    - Cơ sở [TP.HCM](campus) có gì nổi bật?
 
 # --- Hỏi về ký túc xá ---
 - intent: ask_dorm
   examples: |
-    - KTX PTIT như thế nào?
     - Ký túc xá có bao nhiêu người một phòng?
     - Chi phí ở KTX
     - Điều kiện để ở ký túc xá
     - KTX [Hà Nội](campus) có điều hòa không?
     - Phòng ký túc xá có gì?
     - Giá thuê KTX một tháng
-    - Ký túc xá có wifi không?
     - Có KTX cho sinh viên năm 1 không?
     - Đăng ký ký túc xá như thế nào?
     - Thông tin KTX [Hà Nội](campus)
     - Ký túc xá [cơ sở Hà Nội](campus)
     - KTX [TP.HCM](campus) ra sao?
+    - Ký túc xá [cơ sở TP.HCM](campus)
+    - KTX có hỗ trợ sinh viên không?
+    - Ký túc xá có an ninh không?
+    - Chi phí ở KTX có đắt không?
+    - KTX có đầy đủ tiện nghi không?
 
 # --- So sánh cơ sở Hà Nội và TP.HCM ---
 - intent: ask_campus_comparison
@@ -419,6 +707,11 @@ nlu:
     - Khác biệt giữa 2 cơ sở
     - Hà Nội hay TP.HCM có uy tín hơn?
     - Cơ sở nào có nhiều sinh viên hơn?
+    - Cơ sở nào có nhiều ngành hơn?
+    - Cơ sở nào có học phí cao hơn?
+    - Cơ sở nào có cơ sở vật chất tốt hơn?
+    - Cơ sở nào có nhiều hoạt động ngoại khóa hơn?
+    - Cơ sở nào có nhiều cơ hội thực tập hơn?
 
 # --- Cơ hội việc làm ---
 - intent: ask_job_opportunity
@@ -432,30 +725,40 @@ nlu:
     - Lương khởi điểm là bao nhiêu?
     - Ngành [AI](major) lương ra trường
     - PTIT có hỗ trợ tìm việc không?
+    - Cơ hội việc làm cho ngành [Khoa học máy tính](major)
+    - Sinh viên PTIT thường làm ở đâu?
+    - Mức lương trung bình của sinh viên PTIT sau khi ra trường
+    - Có nhiều công ty tuyển dụng sinh viên PTIT không?
+    - Ngành [An toàn thông tin](major) có dễ xin việc không?
 
 # --- Thực tập & đối tác doanh nghiệp ---
 - intent: ask_internship
   examples: |
     - PTIT có chương trình thực tập không?
-    - Thực tập ở đâu?
     - Các đối tác doanh nghiệp của PTIT
     - Có cơ hội thực tập tại Viettel không?
     - FPT có hợp tác với PTIT không?
     - Chương trình thực tập như thế nào?
     - Khi nào được đi thực tập?
     - Thực tập có lương không?
+    - Thực tập ở đâu?
+    - Có nhiều cơ hội thực tập không?
+    - Sinh viên PTIT thường thực tập ở đâu?
 
 # --- Đời sống sinh viên ---
 - intent: ask_student_life
   examples: |
     - Đời sống sinh viên PTIT như thế nào?
-    - Có câu lạc bộ nào không?
     - Hoạt động ngoại khóa
     - PTIT có sự kiện gì?
     - Sinh viên có đi du lịch không?
     - Có hoạt động thể thao không?
     - CLB công nghệ nào hay?
     - Cuộc sống ở PTIT vui không?
+    - Sinh viên PTIT có năng động không?
+    - PTIT có nhiều câu lạc bộ không?
+    - PTIT có clb nào?
+    - Các CLB ở PTIT?
 
 # --- Chương trình học ---
 - intent: ask_curriculum
@@ -466,6 +769,9 @@ nlu:
     - Có thực hành nhiều không?
     - Chương trình có cập nhật không?
     - Giáo trình có hiện đại không?
+    - Chương trình có nhiều môn tự chọn không?
+    - Chương trình học có khó không?
+    - Chương trình học có nhiều môn chuyên ngành không?
 
 # --- Synonyms cho entities ---
 - synonym: Công nghệ thông tin
@@ -485,6 +791,8 @@ nlu:
     - An toan thong tin
     - an toàn thông tin
     - attt
+    - IS
+    - is
     - Information Security
 
 - synonym: Khoa học máy tính
@@ -493,11 +801,15 @@ nlu:
     - Khoa hoc may tinh
     - khoa học máy tính
     - Computer Science
+    - cs
     - CS
 
 - synonym: Trí tuệ nhân tạo
   examples: |
     - AI
+    - ai
+    - ttnt
+    - Học máy
     - Artificial Intelligence
     - trí tuệ nhân tạo
     - Tri tue nhan tao

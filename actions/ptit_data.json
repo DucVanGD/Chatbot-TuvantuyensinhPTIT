@@ -264,6 +264,226 @@
       ]
     },
     {
+      "name": "Công nghệ Internet vạn vật",
+      "code": "7520208",
+      "description": "Đào tạo kỹ sư về các hệ thống IoT, cảm biến thông minh, ứng dụng trong Smart Home, Smart City và Industry 4.0.",
+      "career_opportunities": [
+        "IoT Developer",
+        "Smart City Engineer",
+        "Embedded Systems Engineer",
+        "IoT Solution Architect",
+        "IoT Security Specialist"
+      ],
+      "average_salary": "12-22 triệu/tháng (fresher), 28-55 triệu/tháng (3-5 năm kinh nghiệm)",
+      "curriculum_highlights": [
+        "Thiết kế hệ thống IoT",
+        "Cảm biến và thu thập dữ liệu",
+        "Giao thức truyền thông IoT",
+        "Cloud Computing cho IoT",
+        "Bảo mật IoT"
+      ]
+    },
+    {
+      "name": "Kế toán",
+      "code": "7340301",
+      "description": "Kết hợp kế toán truyền thống với công nghệ số, đào tạo kế toán viên hiện đại có khả năng sử dụng phần mềm và phân tích dữ liệu tài chính.",
+      "career_opportunities": [
+        "Kế toán viên",
+        "Kiểm toán viên",
+        "Chuyên viên phân tích tài chính",
+        "Kế toán trưởng",
+        "CFO"
+      ],
+      "average_salary": "7-12 triệu/tháng (fresher), 15-35 triệu/tháng (3-5 năm kinh nghiệm)",
+      "curriculum_highlights": [
+        "Kế toán tài chính",
+        "Kế toán quản trị",
+        "Kiểm toán",
+        "Phần mềm kế toán (SAP, MISA)",
+        "Phân tích báo cáo tài chính"
+      ]
+    },
+    {
+      "name": "Marketing",
+      "code": "7340115",
+      "description": "Đào tạo chuyên gia marketing kỹ thuật số, hiểu sâu về thị trường công nghệ và có khả năng ứng dụng công cụ số trong chiến lược marketing.",
+      "career_opportunities": [
+        "Digital Marketing Specialist",
+        "Brand Manager",
+        "Content Marketing",
+        "SEO/SEM Specialist",
+        "Social Media Manager"
+      ],
+      "average_salary": "8-15 triệu/tháng (fresher), 18-40 triệu/tháng (3-5 năm kinh nghiệm)",
+      "curriculum_highlights": [
+        "Marketing căn bản",
+        "Digital Marketing",
+        "Social Media Marketing",
+        "Google Analytics & SEO",
+        "E-commerce Marketing"
+      ]
+    },
+    {
+      "name": "Công nghệ tài chính",
+      "code": "7340205",
+      "description": "Ngành học liên ngành giữa tài chính, ngân hàng và công nghệ thông tin, đào tạo chuyên gia về ví điện tử, blockchain, thanh toán số.",
+      "career_opportunities": [
+        "Fintech Developer",
+        "Blockchain Engineer",
+        "Payment System Analyst",
+        "Digital Banking Specialist",
+        "Fintech Product Manager"
+      ],
+      "average_salary": "12-25 triệu/tháng (fresher), 30-70 triệu/tháng (3-5 năm kinh nghiệm)",
+      "curriculum_highlights": [
+        "Công nghệ Blockchain",
+        "Hệ thống thanh toán điện tử",
+        "Ví điện tử và Mobile Banking",
+        "An ninh tài chính",
+        "Phân tích dữ liệu tài chính"
+      ]
+    },
+    {
+      "name": "Thương mại điện tử",
+      "code": "7340122",
+      "description": "Đào tạo chuyên gia về kinh doanh trực tuyến, vận hành sàn thương mại điện tử, marketing online và quản lý chuỗi cung ứng số.",
+      "career_opportunities": [
+        "E-commerce Manager",
+        "Online Business Analyst",
+        "Marketplace Manager",
+        "Digital Supply Chain Specialist",
+        "E-commerce Marketing"
+      ],
+      "average_salary": "9-16 triệu/tháng (fresher), 20-45 triệu/tháng (3-5 năm kinh nghiệm)",
+      "curriculum_highlights": [
+        "Quản trị sàn thương mại điện tử",
+        "Digital Marketing",
+        "Logistics và chuỗi cung ứng",
+        "Phân tích dữ liệu khách hàng",
+        "Luật thương mại điện tử"
+      ]
+    },
+    {
+      "name": "Truyền thông đa phương tiện",
+      "code": "7320104",
+      "description": "Đào tạo nhà sáng tạo nội dung số, biết cách sản xuất video, thiết kế đồ họa và phát triển nội dung cho các nền tảng số.",
+      "career_opportunities": [
+        "Content Creator",
+        "Video Producer",
+        "Multimedia Designer",
+        "Social Media Specialist",
+        "Digital Content Manager"
+      ],
+      "average_salary": "8-14 triệu/tháng (fresher), 18-35 triệu/tháng (3-5 năm kinh nghiệm)",
+      "curriculum_highlights": [
+        "Thiết kế đồ họa",
+        "Sản xuất video và phim",
+        "Animation và Motion Graphics",
+        "Content Marketing",
+        "Social Media Management"
+      ]
+    },
+    {
+      "name": "Công nghệ đa phương tiện",
+      "code": "7329001",
+      "description": "Tập trung vào kỹ thuật phát triển ứng dụng đa phương tiện, xử lý hình ảnh, âm thanh và video bằng công nghệ.",
+      "career_opportunities": [
+        "Multimedia Developer",
+        "Game Developer",
+        "AR/VR Developer",
+        "Image Processing Engineer",
+        "Video Streaming Engineer"
+      ],
+      "average_salary": "10-18 triệu/tháng (fresher), 22-45 triệu/tháng (3-5 năm kinh nghiệm)",
+      "curriculum_highlights": [
+        "Xử lý ảnh và video",
+        "Đồ họa máy tính",
+        "Game Development",
+        "AR/VR Technology",
+        "Multimedia Database"
+      ]
+    },
+    {
+      "name": "Thiết kế và phát triển Game",
+      "code": "7329001_GAM",
+      "description": "Chương trình chuyên sâu về phát triển game, từ lập trình đến thiết kế đồ họa, âm thanh và gameplay.",
+      "career_opportunities": [
+        "Game Programmer",
+        "Game Designer",
+        "Unity/Unreal Developer",
+        "Mobile Game Developer",
+        "Game Artist"
+      ],
+      "average_salary": "10-20 triệu/tháng (fresher), 25-60 triệu/tháng (3-5 năm kinh nghiệm)",
+      "curriculum_highlights": [
+        "Game Engine (Unity, Unreal)",
+        "Game Design và Gameplay",
+        "3D Modeling và Animation",
+        "Game AI",
+        "Mobile Game Development"
+      ]
+    },
+    {
+      "name": "Kỹ thuật dữ liệu",
+      "code": "7480102",
+      "description": "Đào tạo chuyên gia về xây dựng hệ thống lưu trữ và xử lý dữ liệu lớn, Data Pipeline và Data Engineering.",
+      "career_opportunities": [
+        "Data Engineer",
+        "Big Data Engineer",
+        "ETL Developer",
+        "Database Administrator",
+        "Cloud Data Engineer"
+      ],
+      "average_salary": "14-28 triệu/tháng (fresher), 35-75 triệu/tháng (3-5 năm kinh nghiệm)",
+      "curriculum_highlights": [
+        "Big Data Technologies (Hadoop, Spark)",
+        "Data Warehousing",
+        "ETL và Data Pipeline",
+        "Cloud Platforms (AWS, Azure)",
+        "Database Design"
+      ]
+    },
+    {
+      "name": "Logistics và quản trị chuỗi cung ứng",
+      "code": "7340101_LOG",
+      "description": "Đào tạo chuyên gia về quản lý vận chuyển, kho bãi và tối ưu hóa chuỗi cung ứng với công nghệ số.",
+      "career_opportunities": [
+        "Supply Chain Manager",
+        "Logistics Coordinator",
+        "Warehouse Manager",
+        "Procurement Specialist",
+        "Operations Manager"
+      ],
+      "average_salary": "9-16 triệu/tháng (fresher), 20-45 triệu/tháng (3-5 năm kinh nghiệm)",
+      "curriculum_highlights": [
+        "Quản lý chuỗi cung ứng",
+        "Logistics và vận tải",
+        "Quản lý kho",
+        "ERP Systems",
+        "Tối ưu hóa vận hành"
+      ]
+    },
+    {
+      "name": "Công nghệ vi mạch bán dẫn",
+      "code": "7510301_MBD",
+      "description": "Ngành mới, trọng điểm quốc gia, đào tạo kỹ sư thiết kế vi mạch và công nghệ bán dẫn.",
+      "career_opportunities": [
+        "IC Design Engineer",
+        "VLSI Engineer",
+        "Semiconductor Process Engineer",
+        "Chip Verification Engineer",
+        "FPGA Engineer"
+      ],
+      "average_salary": "15-30 triệu/tháng (fresher), 40-100 triệu/tháng (3-5 năm kinh nghiệm)",
+      "curriculum_highlights": [
+        "Thiết kế vi mạch số",
+        "Công nghệ bán dẫn",
+        "VLSI Design",
+        "FPGA Programming",
+        "Chip Fabrication"
+      ]
+    },
+    {
       "name": "Quản trị kinh doanh",
       "code": "7340101",
       "description": "Kết hợp kiến thức quản trị với công nghệ, đào tạo nhà quản lý hiện đại có khả năng ứng dụng công nghệ số trong kinh doanh.",

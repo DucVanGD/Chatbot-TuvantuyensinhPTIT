@@ -1,4 +1,4 @@
-version: "3.1"
+# version: "3.1"
 
 ################################################################
 # Intents – trùng với nlu.yml
@@ -23,6 +23,23 @@ intents:
   - ask_ptit_scholarships
   - ask_ptit_documents_required
   - ask_ptit_deadlines
+  - ask_ptit_lookup
+  - ask_ptit_dormitory_info
+  - ask_ptit_language_of_instruction  
+  - ask_ptit_degree_awarded
+  - ask_ptit_internship_opportunities
+  - ask_ptit_graduation_requirements
+  - ask_ptit_extracurricular_activities
+  - ask_ptit_postgraduate_opportunities
+  - ask_ptit_tuition_per_credit
+  - ask_ptit_tuition_payment_methods
+  - ask_ptit_tuition_exemption
+  - ask_ptit_classrooms
+  - ask_ptit_labs
+  - ask_ptit_library
+  - ask_ptit_major_recommendation
+  - ask_ptit_campus_facilities
+  - ask_toxic_kick_war
   - check_admission_chance
   - suggest_major_by_score
   - compare_majors
@@ -33,6 +50,9 @@ intents:
   - ask_internship
   - ask_student_life
   - ask_curriculum
+  - ask_ptit_enterprise_partners
+  - ask_ptit_list_all_cutoff_scores
+  - nlu_fallback
 
 ################################################################
 # Entities – trích xuất trong NLU
@@ -86,15 +106,15 @@ responses:
 
   # --- Greetings ---
   utter_greet:
-    - text: "Xin chào! Mình có thể hỗ trợ bạn thông tin tuyển sinh của PTIT hôm nay"
+    - text: "Xin chào! Mình có thể giúp gì cho bạn về tuyển sinh PTIT hôm nay?"
 
   # --- Thank you ---
   utter_thanks:
-    - text: "Rất vui được hỗ trợ bạn! Nếu cần thêm thông tin gì cứ hỏi mình nhé!"
+    - text: "Không có gì! Nếu bạn cần thêm thông tin gì cứ hỏi nhé!"
 
   # --- Goodbye ---
   utter_goodbye:
-    - text: "Tạm biệt! Chúc bạn đạt được kết quả tốt trong kỳ tuyển sinh"
+    - text: "Tạm biệt! Chúc bạn may mắn và học tốt nhé!"
 
   # --- Xu hướng điểm chuẩn ---
   utter_ptit_cutoff_trend:
@@ -102,47 +122,110 @@ responses:
 
   # --- Phương thức tuyển sinh ---
   utter_ptit_admission_methods:
-    - text: "PTIT áp dụng nhiều phương thức tuyển sinh như: xét điểm thi THPT, xét học bạ, xét tuyển kết hợp chứng chỉ quốc tế, và xét điểm đánh giá năng lực. Bạn muốn tìm hiểu phương thức nào cụ thể?"
+    - text: |
+        Học viện Công nghệ Bưu chính Viễn thông duy trì tính ổn định trong công tác tuyển sinh năm 2026 với 5 phương thức xét tuyển chính. Điều này giúp thí sinh có nhiều cơ hội để bước chân vào giảng đường PTIT:
+        
+        1. Xét tuyển tài năng (Xét tuyển thẳng và ưu tiên xét tuyển): Dành cho thí sinh đạt giải học sinh giỏi quốc gia, quốc tế hoặc có thành tích xuất sắc tại các cuộc thi khoa học kỹ thuật.
+        2. Xét tuyển dựa trên kết quả thi đánh giá năng lực và đánh giá tư duy: Học viện chấp nhận kết quả từ các kỳ thi của Đại học Quốc gia Hà Nội, Đại học Quốc gia TP.HCM và Đại học Bách Khoa Hà Nội.
+        3. Xét tuyển kết hợp theo đề án riêng: Đây là phương thức rất phổ biến, xét dựa trên chứng chỉ quốc tế như SAT, ACT hoặc kết hợp chứng chỉ tiếng Anh (IELTS từ 5.5 trở lên) với kết quả học tập 3 năm THPT.
+        4. Xét tuyển dựa trên kết quả kỳ thi tốt nghiệp THPT năm 2026: Phương thức truyền thống dựa trên các tổ hợp môn như A00, A01, D01.
+        5. Xét tuyển dựa trên kết quả học tập THPT (Học bạ): Thường áp dụng cho một số ngành hoặc chương trình nhất định với các điều kiện kèm theo về điểm trung bình môn.
+        
+        Lời khuyên cho bạn: Nên chủ động chuẩn bị chứng chỉ ngoại ngữ và tham gia các kỳ thi đánh giá năng lực sớm để tăng tỉ lệ trúng tuyển vào các ngành hot như Công nghệ thông tin hay AI.
 
   # --- Giới thiệu trường ---
   utter_ptit_school_info:
-    - text: "PTIT là trường công lập trọng điểm về công nghệ – kỹ thuật, trực thuộc Bộ Thông tin và Truyền thông. Trường có cơ sở tại Hà Nội và TP.HCM, nổi bật với các ngành CNTT, An toàn thông tin và Kỹ thuật điện tử viễn thông."
+    - text: |
+        Học viện Công nghệ Bưu chính Viễn thông (PTIT) là đơn vị sự nghiệp trực thuộc Bộ Thông tin và Truyền thông. Đây là trường đại học trọng điểm quốc gia trong lĩnh vực Công nghệ thông tin, Viễn thông và Truyền thông đa phương tiện.
+        
+        Tại sao PTIT luôn là lựa chọn hàng đầu của sinh viên công nghệ?
+        - Bề dày lịch sử: Với hơn 70 năm truyền thống, PTIT là cái nôi đào tạo ra những chuyên gia, lãnh đạo hàng đầu trong ngành ICT tại Việt Nam.
+        - Quy mô đào tạo: Trường có hai cơ sở đào tạo tại Hà Nội và TP.HCM với hệ thống phòng Lab hiện đại, đáp ứng tiêu chuẩn quốc tế.
+        - Đội ngũ giảng viên: Hầu hết các thầy cô đều có học hàm, học vị cao và được đào tạo bài bản tại các nước phát triển.
+        - Tỉ lệ việc làm: Theo thống kê, hơn 95% sinh viên PTIT có việc làm ngay sau khi ra trường với mức lương khởi điểm thuộc nhóm cao nhất trong khối ngành kỹ thuật.
+        
+        PTIT không chỉ dạy bạn về kỹ thuật, mà còn tạo ra một môi trường để bạn kết nối với các doanh nghiệp lớn như Samsung, Viettel, VNPT hay FPT ngay từ khi còn ngồi trên ghế nhà trường.
 
   # --- Chương trình & chỉ tiêu ---
   utter_ptit_programs:
-    - text: "PTIT đào tạo nhiều ngành thuộc khối Công nghệ – Kỹ thuật và Kinh tế – Truyền thông. Bạn muốn xem thông tin theo ngành hay theo cơ sở đào tạo?"
+    - text: |
+        Năm 2026, PTIT dự kiến tuyển sinh khoảng 8.000 chỉ tiêu cho cả hai cơ sở. Các ngành đào tạo được thiết kế bám sát nhu cầu của thị trường lao động trong kỷ nguyên số.
+        
+        Danh sách các ngành tiêu biểu tại cơ sở Hà Nội và TP.HCM:
+        - Nhóm ngành Kỹ thuật: Công nghệ thông tin, An toàn thông tin, Khoa học dữ liệu, Trí tuệ nhân tạo (AI), Kỹ thuật Điện tử viễn thông, Công nghệ kỹ thuật điện - điện tử.
+        - Nhóm ngành Kinh tế & Quản lý: Công nghệ tài chính (Fintech), Quản trị kinh doanh, Thương mại điện tử, Kế toán, Logistics và Quản lý chuỗi cung ứng.
+        - Nhóm ngành Truyền thông & Ngôn ngữ: Truyền thông đa phương tiện, Công nghệ đa phương tiện, Ngôn ngữ Anh.
+        - Ngành mới nổi: Kỹ thuật Vi mạch bán dẫn - đây là ngành trọng điểm được đầu tư mạnh mẽ trong năm 2026.
+        
+        Hầu hết các ngành đều có chương trình đại trà và chương trình chất lượng cao. Chương trình chất lượng cao sẽ có chỉ tiêu ít hơn nhưng điều kiện học tập và cơ hội thực tập tại nước ngoài sẽ nhiều hơn.
 
   # --- Contact info ---
   utter_ptit_contact:
     - text: |
-        📍 Cơ sở Hà Nội: Km10 Nguyễn Trãi, Hà Đông  
-        📍 Cơ sở TP.HCM: 97 Man Thiện, TP. Thủ Đức  
-        📧 Email tuyển sinh: tuyensinh@ptit.edu.vn  
-        🌐 Website: https://xettuyen.ptit.edu.vn
+        Nếu bạn cần hỗ trợ trực tiếp hoặc tư vấn sâu hơn về hồ sơ, bạn có thể liên hệ với Học viện qua các kênh chính thức sau đây:
+        
+        Cơ sở Hà Nội (Mã trường BVH):
+        - Địa chỉ: KM10 đường Nguyễn Trãi, Quận Hà Đông, Hà Nội.
+        - Hotline tuyển sinh: 024.3352.8122 hoặc 024.3351.2252.
+        - Email: tuyensinh@ptit.edu.vn.
+        
+        Cơ sở TP. Hồ Chí Minh (Mã trường BVS):
+        - Địa chỉ: Số 11 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, TP.HCM.
+        - Hotline tuyển sinh: 028.3829.7220.
+        - Email: tuyensinh@ptithcm.edu.vn.
+        
+        Các kênh trực tuyến:
+        - Website tuyển sinh chính thức: tuyensinh.ptit.edu.vn.
+        - Fanpage Facebook: facebook.com/ptittuyensinh.
+        - Zalo OA: Học viện Công nghệ Bưu chính Viễn thông.
+        
+        Ban tư vấn luôn trực điện thoại trong giờ hành chính để giải đáp mọi thắc mắc của các bạn thí sinh và phụ huynh.
 
   # --- Học phí ---
   utter_ptit_tuition:
     - text: |
-        Học phí được tính theo tín chỉ và tùy chương trình đào tạo.
-
-        • Hệ đại trà: khoảng 820.000 – 1.020.000đ/tín chỉ  
-        • Chương trình tiên tiến: khoảng 1.140.000đ/tín chỉ  
-        • Chất lượng cao: 1.350.000 – 1.470.000đ/tín chỉ  
-        • Liên kết quốc tế: khoảng 1.500.000đ/tín chỉ  
-
-        (Mức thu có thể thay đổi theo từng năm học.)
+        Học phí tại Học viện Công nghệ Bưu chính Viễn thông được tính toán công khai và minh bạch cho từng hệ đào tạo. Đối với năm học 2025 - 2026, mức thu dự kiến có sự phân hóa như sau:
+        
+        * Hệ Đại trà: Mức học phí trung bình rơi vào khoảng 27 triệu đến 33 triệu đồng/năm học (tùy vào số lượng tín chỉ kỹ thuật hay kinh tế bạn đăng ký). Các ngành Công nghệ thông tin và An toàn thông tin thường có mức tín chỉ cao hơn một chút so với khối ngành quản trị.
+        * Hệ Chất lượng cao và Cử nhân quốc tế: Mức học phí dao động từ 45 triệu đến 55 triệu đồng/năm. Điểm khác biệt là bạn được học trong môi trường máy lạnh 100%, sĩ số lớp thấp và chương trình học tăng cường tiếng Anh chuyên sâu.
+        * Học phí giữa cơ sở Hà Nội và TP.HCM: Về cơ bản là thống nhất theo khung học phí chung của Học viện, tuy nhiên có thể chênh lệch nhỏ ở các khoản lệ phí dịch vụ tùy theo đặc thù cơ sở vật chất từng nơi.
+        
+        Lưu ý: Ngoài học phí chính thức, sinh viên chỉ cần đóng thêm các khoản bảo hiểm y tế theo quy định nhà nước và phí làm thẻ sinh viên, đồng phục ban đầu. Học viện cam kết lộ trình tăng học phí không vượt quá 15%/năm.
 
   # --- Học bổng ---
   utter_ptit_scholarships:
-    - text: "Trường có nhiều học bổng dành cho sinh viên có thành tích cao trong tuyển sinh hoặc học tập, cũng như học bổng từ doanh nghiệp đối tác. Bạn muốn biết điều kiện cụ thể không?"
+    - text: |
+        PTIT nổi tiếng là ngôi trường chịu chi cho các gói học bổng để thu hút nhân tài. Năm 2026, các bạn có cơ hội nhận các loại học bổng sau:
+        
+        * Học bổng Tài năng Tinh hoa: Đây là gói học bổng khủng nhất với tổng giá trị lên đến 500 triệu đồng. Đối tượng thường là các bạn đạt giải quốc gia, quốc tế hoặc có điểm xét tuyển thuộc top đầu cả nước. Học bổng bao gồm miễn phí toàn bộ học phí, phí ký túc xá và hỗ trợ sinh hoạt phí hàng tháng.
+        * Học bổng khuyến khích học tập: Được xét định kỳ mỗi học kỳ dựa trên điểm trung bình (GPA) và điểm rèn luyện. Chỉ cần bạn nằm trong top 10-15% của lớp là đã có cơ hội nhận các mức học bổng Khá, Giỏi hoặc Xuất sắc.
+        * Học bổng Doanh nghiệp: Các đối tác chiến lược như Samsung, Viettel, VNPT thường xuyên trao các suất học bổng từ 10 - 30 triệu đồng cho sinh viên có kỹ năng lập trình tốt hoặc có dự án nghiên cứu tiềm năng.
+        
+        Để duy trì học bổng qua các năm, bạn cần đảm bảo điểm GPA không thấp hơn mức quy định (thường là từ 3.2/4.0 trở lên) và không vi phạm kỷ luật trường.
 
   # --- Hồ sơ xét tuyển ---
   utter_ptit_documents_required:
-    - text: "Bạn cần đăng ký trực tuyến trên hệ thống tuyển sinh, cung cấp thông tin cá nhân và tải lên các minh chứng cần thiết theo phương thức xét tuyển đã chọn."
+    - text: |
+        Thủ tục nộp hồ sơ tại PTIT năm 2026 đã được đơn giản hóa tối đa thông qua hình thức trực tuyến. Các giấy tờ cơ bản bạn cần chuẩn bị bao gồm:
+        
+        1. Bản sao công chứng học bạ THPT (thường là 5 hoặc 6 học kỳ tùy phương thức xét tuyển).
+        2. Bản sao Căn cước công dân và Ảnh thẻ (file ảnh chất lượng cao để upload lên hệ thống).
+        3. Chứng chỉ ngoại ngữ (IELTS, TOEFL) hoặc chứng chỉ quốc tế (SAT, ACT) nếu bạn xét tuyển theo phương thức kết hợp. Lưu ý chỉ cần upload bản chụp, bản gốc sẽ mang đối chiếu khi nhập học chính thức.
+        4. Giấy chứng nhận đạt giải học sinh giỏi hoặc các chứng nhận năng lực khác (nếu có).
+        
+        Toàn bộ quy trình khai báo thông tin và nộp lệ phí xét tuyển đều thực hiện trên cổng xettuyen.ptit.edu.vn. Sau khi hoàn tất, hệ thống sẽ gửi email xác nhận hồ sơ hợp lệ cho bạn.
 
   # --- Deadlines / Thời gian tuyển sinh ---
   utter_ptit_deadlines:
-    - text: "Các mốc tuyển sinh thường bao gồm: đăng ký nguyện vọng, nộp lệ phí, công bố điểm chuẩn và xác nhận nhập học. Bạn muốn tra cứu mốc cụ thể nào?"
+    - text: |
+        Để không bỏ lỡ cơ hội trở thành tân sinh viên PTIT, bạn cần ghi nhớ các mốc thời gian quan trọng của kỳ tuyển sinh 2026 như sau:
+        
+        * Tháng 4 - Tháng 6: Đây là giai đoạn nhận hồ sơ cho các phương thức xét tuyển sớm (Xét học bạ, Xét tuyển tài năng, Xét chứng chỉ quốc tế).
+        * Đầu tháng 7: Thời gian thí sinh đăng ký và điều chỉnh nguyện vọng trên hệ thống chung của Bộ Giáo dục và Đào tạo.
+        * Cuối tháng 7 - Đầu tháng 8: Học viện công bố điểm chuẩn và danh sách trúng tuyển chính thức cho tất cả các phương thức.
+        * Tháng 9: Thời hạn xác nhận nhập học trực tuyến và làm thủ tục nhập học trực tiếp tại trường.
+        
+        Lịch trình chi tiết có thể thay đổi nhẹ tùy theo kế hoạch thi tốt nghiệp THPT của Bộ. Bạn nên cài đặt app S-Link để nhận thông báo đẩy về các deadline này một cách nhanh nhất.
 
   # --- Lookup data ---
   utter_ptit_lookup:
@@ -157,25 +240,198 @@ responses:
   utter_ask_campus:
     - text: "Bạn muốn xem điểm ở cơ sở Hà Nội hay TP.HCM?"
 
+  # --- Thông tin ký túc xá ---
+  utter_ask_ptit_dormitory_info:
+    - text: |
+        Chào bạn, Học viện Công nghệ Bưu chính Viễn thông (PTIT) có ký túc xá phục vụ nhu cầu lưu trú của sinh viên tại cả hai cơ sở:
+        1. Địa chỉ và thông tin liên hệ:
+          • Tại Hà Nội: Ký túc xá nằm ngay trong khuôn viên cơ sở đào tạo tại Km10, Đường Nguyễn Trãi, Hà Đông, gồm các tòa nhà KTX B1, B2 và B5. Liên hệ Ban quản lý KTX tại Tầng 1, nhà B2 & B5 qua số điện thoại: 024.33510435 (KTX B2) hoặc 024.33525248 (KTX B5).
+          • Tại TP. Hồ Chí Minh: Ký túc xá nằm tại cơ sở số 97 Man Thiện, phường Tăng Nhơn Phú, TP. Hồ Chí Minh. Liên hệ Tổ Quản lý Ký túc xá qua số điện thoại: (028) 37305753.
+        2. Quyền lợi và hỗ trợ chỗ ở:
+          • Sinh viên có quyền lợi được xét tiếp nhận vào ký túc xá theo quy định của Học viện.
+          • Đặc biệt, nếu sinh viên đạt Học bổng đầu vào loại 1, bạn sẽ được Học viện bố trí lưu trú tại Ký túc xá và hỗ trợ 100% phí lưu trú trong toàn khóa đào tạo (với điều kiện điểm trung bình chung tích lũy năm học phải duy trì liên tục từ loại Giỏi trở lên).
+
+  # --- Ngôn ngữ giảng dạy ---
+  utter_ask_ptit_language_of_instruction:
+    - text: |
+        Ngôn ngữ giảng dạy tại PTIT phụ thuộc vào chương trình học:
+        - Chương trình đại trà: chủ yếu giảng dạy bằng tiếng Việt, có các học phần tiếng Anh bắt buộc.
+        - Chương trình chất lượng cao: yêu cầu chuẩn tiếng Anh cao hơn; một số học phần chuyên ngành học bằng tiếng Anh hoặc song ngữ.
+        - Chương trình quốc tế: giảng dạy hoàn toàn bằng tiếng Anh.
+
+  # --- Bằng cấp sau tốt nghiệp ---
+  utter_ask_ptit_degree_awarded:
+    - text: |
+        Sau khi tốt nghiệp PTIT, sinh viên được cấp bằng đại học chính quy.
+        Loại bằng phụ thuộc chương trình đào tạo:
+        - Bằng Kỹ sư: thường áp dụng cho chương trình 4,5 năm.
+        - Bằng Cử nhân: thường áp dụng cho chương trình 4 năm.
+        Bằng tốt nghiệp ghi rõ ngành/chuyên ngành và xếp loại tốt nghiệp.
+
+  # --- Cơ hội thực tập ---
+  utter_ask_ptit_internship_opportunities:
+    - text: |
+        PTIT có học phần thực tập trong chương trình đào tạo.
+        - Thời gian thực tập: thường vào học kỳ cuối của khóa học.
+        - Hỗ trợ từ trường: sinh viên có thể tự tìm nơi thực tập hoặc được khoa/bộ môn hỗ trợ phân công.
+        - Cơ hội thực tế: nhà trường có liên kết với nhiều doanh nghiệp để hỗ trợ thực tập.
+
+  # --- Điều kiện tốt nghiệp ---
+  utter_ask_ptit_graduation_requirements:
+    - text: |
+        Điều kiện tốt nghiệp tại PTIT thường gồm:
+        1. Tích lũy đủ số tín chỉ theo chương trình.
+        2. Đạt điểm trung bình tích lũy theo quy định.
+        3. Đạt chuẩn đầu ra tiếng Anh theo chương trình học.
+        4. Hoàn thành các yêu cầu về tin học, giáo dục thể chất, giáo dục quốc phòng và kỹ năng mềm.
+        5. Hoàn thành nghĩa vụ học phí và không vi phạm kỷ luật ở mức đình chỉ.
+
+  # --- Hoạt động ngoại khóa ---
+  utter_ask_ptit_extracurricular_activities:
+    - text: |
+        Hoạt động ngoại khóa tại PTIT khá đa dạng, gồm nhiều câu lạc bộ và đội nhóm:
+        - Học thuật và công nghệ
+        - Văn hóa văn nghệ
+        - Thể dục thể thao
+        - Kỹ năng mềm và truyền thông
+        - Tình nguyện và công tác xã hội
+        Sinh viên cũng có thể tham gia hội thảo, cuộc thi học thuật, nghiên cứu khoa học và các hoạt động khởi nghiệp.
+
+  # --- Cơ hội học sau đại học ---
+  utter_ask_ptit_postgraduate_opportunities:
+    - text: |
+        PTIT có đào tạo sau đại học gồm bậc Thạc sĩ và Tiến sĩ ở nhiều chuyên ngành.
+        Sinh viên có học lực tốt có thể được định hướng học lên cao học.
+        Nhà trường cũng có chính sách hỗ trợ học bổng theo từng thời kỳ và quy định tuyển sinh.
+
+  # --- Học phí theo tín chỉ ---
+  utter_ask_ptit_tuition_per_credit:
+    - text: |
+        Mức học phí của PTIT được tính dựa trên số lượng tín chỉ mà sinh viên đăng ký trong mỗi học kỳ. Cho năm học 2025 - 2026 (đối với sinh viên Khóa 2025), mức thu dự kiến cụ thể như sau:
+        + Chương trình Đại học chính quy đại trà: Dao động từ 820.000đ đến 1.020.000đ/tín chỉ tùy theo ngành học. Trung bình một năm sinh viên đóng khoảng 29,6 triệu đến 37,6 triệu đồng.
+        + Chương trình Cử nhân Tiên tiến, đặc thù (CNTT định hướng ứng dụng, CNTT Việt - Nhật, Thiết kế game, Trí tuệ nhân tạo): Mức phí là 1.140.000đ/tín chỉ. Tổng học phí năm khoảng 40 triệu đến 45,5 triệu đồng.
+        + Chương trình Chất lượng cao (CLC): Mức phí khoảng 1.350.000đ - 1.470.000đ/tín chỉ. Tổng học phí năm khoảng 49,2 triệu đến 55 triệu đồng.
+        + Chương trình Liên kết quốc tế: Mức phí là 1.500.000đ/tín chỉ. Tổng học phí năm khoảng 54 triệu đến 62,5 triệu đồng.
+          (Lưu ý: Môn Giáo dục quốc phòng áp dụng chung mức thu 880.000đ/tín chỉ cho các hệ đào tạo. Lộ trình tăng học phí các năm tiếp theo thực hiện theo quy định của Nhà nước).
+
+  # --- Phương thức thanh toán học phí ---
+  utter_ask_ptit_tuition_payment_methods:
+    - text: |
+        Hiện nay Học viện đã chuyển sang hình thức thanh toán không tiền mặt 100%. Bạn có thể lựa chọn các phương thức sau:
+        
+        1. Thanh toán qua App PTIT S-Link (Khuyên dùng): Đây là cách nhanh nhất. Bạn vào mục 'Học phí', chọn kỳ cần đóng và thanh toán qua cổng VNPAY.
+        2. Chuyển khoản qua số tài khoản định danh: Mỗi sinh viên sẽ được cấp một mã định danh tại ngân hàng VietinBank hoặc Agribank.
+        3. Cổng thông tin QLDT: Đăng nhập vào qldt.ptit.edu.vn, vào phần 'Thanh toán trực tuyến' để thực hiện giao dịch.
+
+  # --- Chính sách miễn giảm học phí ---
+  utter_ask_ptit_tuition_exemption:
+    - text: |
+        Học viện luôn có chính sách hỗ trợ tối đa cho sinh viên:
+        
+        * Miễn giảm theo quy định Nhà nước: Áp dụng theo Nghị định 81 cho sinh viên là con thương binh liệt sĩ, người dân tộc thiểu số vùng đặc biệt khó khăn, hoặc sinh viên thuộc hộ nghèo/cận nghèo. Mức miễn giảm từ 50%, 70% đến 100%.
+        * Học bổng khuyến khích học tập: Xét dựa trên điểm trung bình (GPA) và điểm rèn luyện mỗi học kỳ.
+        * Học bổng Doanh nghiệp: PTIT liên kết với Samsung, Naver, VNPT... trao các suất học bổng cho sinh viên có thành tích xuất sắc.
+
+  # --- Phòng học ---
+  utter_ask_ptit_classrooms:
+    - text: |
+        Hệ thống giảng đường tại cơ sở Hà Nội đã được nâng cấp mạnh mẽ để phục vụ chuyển đổi số:
+        
+        * Trang thiết bị: 100% phòng học tại các tòa nhà A2, C, B đều có máy chiếu hiệu suất cao hoặc màn hình tương tác thông minh, wifi phủ sóng toàn khu vực giảng đường.
+        * Tiện nghi: Đa phần các phòng học lớn và phòng học tại tòa A2 đều được trang bị hệ thống điều hòa nhiệt độ.
+        * Phòng học thông minh (Smart Classroom): Được trang bị camera AI hỗ trợ điểm danh tự động.
+
+  # --- Phòng lab ---
+  utter_ask_ptit_labs:
+    - text: |
+        Là ngôi trường trọng điểm về công nghệ, PTIT sở hữu hệ thống phòng Lab hiện đại:
+        
+        * Lab CNTT & An toàn thông tin: Nơi có các dàn máy cấu hình khủng phục vụ lập trình, diễn tập cyber-range và nghiên cứu mã độc.
+        * Samsung Innovation Campus: Phòng Lab chuyên biệt do Samsung đầu tư dành cho phát triển ứng dụng di động và IoT.
+        * Mixed Reality Lab: Phục vụ nghiên cứu thực tế ảo (VR/AR).
+        * AI Lab: Nơi tập trung các máy chủ GPU mạnh mẽ để sinh viên huấn luyện các mô hình học máy và trí tuệ nhân tạo.
+
+  # --- Thư viện ---
+  utter_ask_ptit_library:
+    - text: |
+        Thư viện PTIT (nằm tại tòa nhà A2) không chỉ là kho sách mà còn là không gian sáng tạo (Co-working space) hiện đại:
+        
+        * Thư viện số (Digital Library): Cho phép bạn truy cập từ xa vào hàng chục ngàn đầu giáo trình, tài liệu chuyên khảo và các tạp chí khoa học quốc tế uy tín (IEEE, Springer).
+        * Không gian tự học: Có khu vực yên tĩnh để nghiên cứu sâu và khu vực thảo luận nhóm.
+        * Thời gian phục vụ: Mở cửa liên tục từ 8h00 đến 21h00 các ngày trong tuần.
+
+  # --- Gợi ý chọn ngành ---
+  utter_ask_ptit_major_recommendation:
+    - text: |
+        Việc chọn ngành tại PTIT phụ thuộc rất lớn vào sở thích và mục tiêu nghề nghiệp của bạn. Các nhóm ngành mũi nhọn năm 2026:
+        
+        * Nếu bạn đam mê lập trình và phần mềm: Công nghệ thông tin, An toàn thông tin là lựa chọn tốt nhất.
+        * Nếu bạn thích dữ liệu và AI: Khoa học dữ liệu và Trí tuệ nhân tạo (AI) là hai ngành hot nhất hiện nay.
+        * Nếu bạn yêu thích phần cứng và kết nối: Kỹ thuật Điện tử Viễn thông là ngành truyền thống mạnh nhất của trường.
+        * Sự giao thoa giữa Kinh tế và Công nghệ: Fintech, Logistics & Chuỗi cung ứng, hoặc Thương mại điện tử.
+
+  # --- Khuôn viên trường ---
+  utter_ask_ptit_campus_facilities:
+    - text: |
+        Khuôn viên PTIT (Cơ sở Hà Nội tại KM10 Nguyễn Trãi) tuy không quá đồ sộ nhưng lại cực kỳ "chất" và mang đậm hơi hướng công nghệ:
+        
+        * Tòa nhà A2 (Biểu tượng): Là nơi đặt thư viện hiện đại, các phòng hội thảo và khu vực tự học có điều hòa toàn bộ.
+        * Hệ thống Lab tập trung: PTIT có các phòng thực hành chuyên sâu (Samsung Lab, AI Lab, Cyber Security Lab).
+        * Tiện ích: Sân vận động, sân bóng rổ và khu vực căng tin đều được quy hoạch gọn gàng.
+        * Môi trường: Không gian xanh được chăm sóc kỹ lưỡng, trường đang hoàn thiện các khu vực "Smart Campus".
+
+  # --- So sánh với trường khác ---
+  utter_ask_toxic_kick_war:
+    - text: |
+        Mỗi ngôi trường trong "Big 3" về công nghệ (PTIT, HUST - Bách Khoa, UET - Công nghệ ĐHQG) đều có những bản sắc và thế mạnh riêng:
+        
+        * PTIT (Học viện): Là "cái nôi" của ngành ICT Việt Nam. Thế mạnh lớn nhất là mối quan hệ mật thiết với các doanh nghiệp viễn thông và công nghệ lớn (VNPT, Viettel, Samsung). Chương trình đào tạo mang tính thực tiễn rất cao.
+        * HUST (Bách Khoa): Là trường đa ngành về kỹ thuật với quy mô cực lớn và áp lực học tập cao.
+        * UET (Công nghệ): Thiên hướng về nghiên cứu và tư duy học thuật chuyên sâu.
+        
+        Quan trọng nhất vẫn là nỗ lực cá nhân của bạn. PTIT cung cấp một hệ sinh thái đầy đủ từ Lab, giảng viên đầu ngành đến mạng lưới cựu sinh viên rộng khắp!
+
   # --- Bot identity ---
   utter_bot_identity:
-    - text: "Mình là chatbot tư vấn tuyển sinh của Học viện Công nghệ Bưu chính Viễn thông (PTIT), được thiết kế để giúp bạn tìm hiểu thông tin về các ngành học, điểm chuẩn, cơ sở vật chất và cơ hội việc làm! 🎓"
+    - text: "Mình là chatbot tư vấn tuyển sinh của Học viện Công nghệ Bưu chính Viễn thông (PTIT), được thiết kế để giúp bạn tìm hiểu thông tin về các ngành học, điểm chuẩn, cơ sở vật chất và cơ hội việc làm!"
 
   # --- Small talk ---
   utter_small_talk:
-    - text: "Cảm ơn bạn đã quan tâm! Mình rất vui được hỗ trợ bạn tìm hiểu về PTIT. Bạn có thắc mắc gì về tuyển sinh không? 😊"
+    - text: "Cảm ơn bạn đã quan tâm! Mình rất vui được hỗ trợ bạn tìm hiểu về PTIT. Bạn có thắc mắc gì về tuyển sinh không?"
 
   # --- List majors ---
   utter_list_majors:
     - text: |
-        🎓 Các ngành đào tạo tại PTIT:
-        • Công nghệ thông tin (CNTT)
-        • An toàn thông tin (ATTT)
-        • Khoa học máy tính (KHMT)
-        • Trí tuệ nhân tạo (AI)
-        • Kỹ thuật Điện tử viễn thông (ĐTVT)
-        • Quản trị kinh doanh (QTKD)
-        
+        Các ngành đào tạo tại PTIT:
+        • Công nghệ thông tin
+        • An toàn thông tin
+        • Khoa học máy tính (định hướng Khoa học dữ liệu)
+        • Trí tuệ nhân tạo
+        • Kỹ thuật dữ liệu (thuộc ngành Mạng máy tính và truyền thông dữ liệu)
+        • Kỹ thuật Điện tử viễn thông
+        • Trí tuệ nhân tạo vạn vật (AIoT)
+        • Công nghệ Kỹ thuật Điện, điện tử
+        • Công nghệ vi mạch bán dẫn
+        • Kỹ thuật Điều khiển và tự động hóa
+        • Công nghệ Internet vạn vật (IoT)
+        • Công nghệ đa phương tiện
+        • Truyền thông đa phương tiện
+        • Báo chí
+        • Quản trị kinh doanh
+        • Logistics và quản trị chuỗi cung ứng (thuộc ngành Quản trị kinh doanh)
+        • Thương mại điện tử
+        • Marketing
+        • Quan hệ công chúng (thuộc ngành Marketing)
+        • Kế toán
+        • Công nghệ tài chính (Fintech)
+        2. Các chương trình Chất lượng cao (CLC):
+        • Công nghệ thông tin CLC
+        • An toàn thông tin CLC
+        • Kế toán CLC (chuẩn quốc tế ACCA)
+        • Marketing CLC
+        • Truyền thông đa phương tiện CLC
+        3. PTIT còn là trường đầu tiên tại VN đào tạo ngành thiết kế và phát triển game tạo ra sân chơi cho các bạn trẻ đam mê sáng tạo nội dung số.
+        4. Ngoài ra còn các chương trình liên quốc tế, hay cử nhân hướng ứng dụng với các ngành tương ứng,...
         Bạn muốn tìm hiểu chi tiết ngành nào?
 
   # --- Facilities ---
@@ -194,7 +450,6 @@ responses:
 ################################################################
 actions:
   - action_lookup_score
-  - action_lookup_cutoff_score
   - action_estimate_admission_chance
   - action_suggest_majors
   - action_compare_majors
@@ -205,6 +460,9 @@ actions:
   - action_show_facility
   - action_show_dorm
   - action_show_campus_comparison
+  - action_list_all_cutoff_scores
+  - action_show_enterprise_partners
+  - action_default_fallback
 
 ################################################################
 # Session config

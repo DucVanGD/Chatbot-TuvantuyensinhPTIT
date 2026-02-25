@@ -18,4 +18,10 @@ Read-Host
 
 # Start RASA shell
 Write-Host "Starting RASA shell..." -ForegroundColor Yellow
+
+# Suppress warnings
+$env:LOG_LEVEL = "WARNING"
+$env:SQLALCHEMY_SILENCE_UBER_WARNING = "1"
+$env:PYTHONWARNINGS = "ignore"
+
 rasa shell

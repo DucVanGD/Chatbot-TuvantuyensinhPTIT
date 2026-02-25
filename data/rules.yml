@@ -2,6 +2,7 @@ version: "3.1"
 
 rules:
 
+
 # === CHÀO HỎI / CẢM ƠN / TẠM BIỆT ===
 - rule: Respond to greeting
   steps:
@@ -17,17 +18,33 @@ rules:
   steps:
   - intent: goodbye
   - action: utter_goodbye
+# === XỬ ĐịNH / TỪ CHỐI ===
+- rule: Handle affirm
+  steps:
+  - intent: affirm
+  - action: utter_default
 
+- rule: Handle deny
+  steps:
+  - intent: deny
+  - action: utter_default
+
+# === BOT IDENTITY & SMALL TALK ===
+- rule: Handle bot identity
+  steps:
+  - intent: bot_identity
+  - action: utter_bot_identity
+
+- rule: Handle small talk
+  steps:
+  - intent: small_talk
+  - action: utter_small_talk
 # === TRẢ LỜI TRỰC TIẾP THEO INTENT ===
 - rule: Handle cutoff score lookup
   steps:
   - intent: ask_ptit_cutoff_year_major
   - action: action_lookup_score
 
-- rule: Handle score trend
-  steps:
-  - intent: ask_ptit_cutoff_trend
-  - action: utter_ptit_cutoff_trend
 
 - rule: Handle admission methods
   steps:
@@ -57,7 +74,7 @@ rules:
 - rule: Handle scholarship inquiries
   steps:
   - intent: ask_ptit_scholarships
-  - action: action_show_scholarships
+  - action: utter_ptit_scholarships
 
 - rule: Handle documents required inquiries
   steps:
@@ -69,50 +86,128 @@ rules:
   - intent: ask_ptit_deadlines
   - action: utter_ptit_deadlines
 
-# === RULE XỬ LÝ KHI THIẾU ENTITY ===
-# Note: Slot filling is better handled by forms or custom actions
-# These conditional rules have been removed to fix validation errors
-
-- rule: After greet, ask how can help
+- rule: Handle cutoff trend
   steps:
-  - intent: greet
-  - action: utter_greet
+  - intent: ask_ptit_cutoff_trend
+  - action: utter_ptit_cutoff_trend
 
-# === NEW INTENT RULES ===
-- rule: Handle bot identity
+- rule: Handle lookup request
   steps:
-  - intent: bot_identity
-  - action: utter_bot_identity
+  - intent: ask_ptit_lookup
+  - action: utter_ptit_lookup
 
-- rule: Handle small talk
+- rule: List all cutoff scores
   steps:
-  - intent: small_talk
-  - action: utter_small_talk
+  - intent: ask_ptit_list_all_cutoff_scores
+  - action: action_list_all_cutoff_scores
 
-- rule: Handle ask major
+- rule: Show enterprise partners
   steps:
-  - intent: ask_major
-  - action: utter_list_majors
+  - intent: ask_ptit_enterprise_partners
+  - action: action_show_enterprise_partners
 
-- rule: Handle ask major detail
+
+# === TRẢ LỜI TRỰC TIẾP CHO INTENT MỚI ===
+- rule: Handle dormitory info
   steps:
-  - intent: ask_major_detail
-  - action: action_show_major_detail
+  - intent: ask_ptit_dormitory_info
+  - action: utter_ask_ptit_dormitory_info
 
-- rule: Handle check admission chance
+- rule: Handle language of instruction
+  steps:
+  - intent: ask_ptit_language_of_instruction
+  - action: utter_ask_ptit_language_of_instruction
+
+- rule: Handle degree awarded
+  steps:
+  - intent: ask_ptit_degree_awarded
+  - action: utter_ask_ptit_degree_awarded
+
+- rule: Handle internship opportunities
+  steps:
+  - intent: ask_ptit_internship_opportunities
+  - action: utter_ask_ptit_internship_opportunities
+
+- rule: Handle graduation requirements
+  steps:
+  - intent: ask_ptit_graduation_requirements
+  - action: utter_ask_ptit_graduation_requirements
+
+- rule: Handle extracurricular activities
+  steps:
+  - intent: ask_ptit_extracurricular_activities
+  - action: utter_ask_ptit_extracurricular_activities
+
+- rule: Handle postgraduate opportunities
+  steps:
+  - intent: ask_ptit_postgraduate_opportunities
+  - action: utter_ask_ptit_postgraduate_opportunities
+
+- rule: Handle tuition per credit
+  steps:
+  - intent: ask_ptit_tuition_per_credit
+  - action: utter_ask_ptit_tuition_per_credit
+
+- rule: Handle tuition payment methods
+  steps:
+  - intent: ask_ptit_tuition_payment_methods
+  - action: utter_ask_ptit_tuition_payment_methods
+
+- rule: Handle tuition exemption
+  steps:
+  - intent: ask_ptit_tuition_exemption
+  - action: utter_ask_ptit_tuition_exemption
+
+- rule: Handle classrooms info
+  steps:
+  - intent: ask_ptit_classrooms
+  - action: utter_ask_ptit_classrooms
+
+- rule: Handle labs info
+  steps:
+  - intent: ask_ptit_labs
+  - action: utter_ask_ptit_labs
+
+- rule: Handle library info
+  steps:
+  - intent: ask_ptit_library
+  - action: utter_ask_ptit_library
+
+- rule: Handle major recommendation
+  steps:
+  - intent: ask_ptit_major_recommendation
+  - action: utter_ask_ptit_major_recommendation
+
+- rule: Handle campus facilities
+  steps:
+  - intent: ask_ptit_campus_facilities
+  - action: utter_ask_ptit_campus_facilities
+
+- rule: Handle toxic kick war
+  steps:
+  - intent: ask_toxic_kick_war
+  - action: utter_ask_toxic_kick_war
+
+# === RULE CHO CÁC ACTIONS NÂNG CAO ===
+- rule: Handle admission chance estimation
   steps:
   - intent: check_admission_chance
   - action: action_estimate_admission_chance
 
-- rule: Handle suggest major by score
+- rule: Handle major suggestions
   steps:
   - intent: suggest_major_by_score
   - action: action_suggest_majors
 
-- rule: Handle compare majors
+- rule: Handle major comparison
   steps:
   - intent: compare_majors
   - action: action_compare_majors
+
+- rule: Handle major detail
+  steps:
+  - intent: ask_major_detail
+  - action: action_show_major_detail
 
 - rule: Handle facility inquiry
   steps:
@@ -139,20 +234,29 @@ rules:
   - intent: ask_internship
   - action: action_show_internships
 
+- rule: Handle curriculum inquiry
+  steps:
+  - intent: ask_curriculum
+  - action: utter_default
+
 - rule: Handle student life inquiry
   steps:
   - intent: ask_student_life
   - action: utter_student_life
 
-- rule: Handle curriculum inquiry
+- rule: Handle major list inquiry
   steps:
-  - intent: ask_curriculum
-  - action: action_show_major_detail
+  - intent: ask_major
+  - action: utter_list_majors
 
 # === FALLBACK & KHÔNG HIỂU ===
-
-- rule: Handle fallback when the bot does not understand
+- rule: Handle NLU fallback
   steps:
-  - intent: nlu_fallback
-  - action: utter_default
-  - action: action_listen
+    - intent: nlu_fallback
+    - action: utter_default
+
+- rule: Handle default fallback action
+  steps:
+    - action: action_default_fallback
+
+
