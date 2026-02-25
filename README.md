@@ -20,8 +20,8 @@ Chatbot tư vấn tuyển sinh cho Học viện Công nghệ Bưu chính Viễn 
 ### 1. Clone repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Vietnamese_Chatbot_RASA.git
-cd Vietnamese_Chatbot_RASA
+git clone https://github.com/DucVanGD/Chatbot-TuvantuyensinhPTIT.git
+cd Chatbot-TuvantuyensinhPTIT
 ```
 
 ### 2. Tạo virtual environment

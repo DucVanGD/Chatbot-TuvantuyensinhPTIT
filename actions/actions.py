@@ -7,8 +7,8 @@ import json
 import os
 import unicodedata
 
-# Đường dẫn đến file lookup trong cùng thư mục actions
-LOOKUP_FILE = os.path.join(os.path.dirname(__file__), "lookup_data.json")
+# Đường dẫn đến file data duy nhất
+PTIT_DATA_FILE = os.path.join(os.path.dirname(__file__), "ptit_data.json")
 
 
 def normalize_string(s: str) -> str:
@@ -24,20 +24,41 @@ def normalize_string(s: str) -> str:
     return s
 
 
-# --- Hàm tra lookup điểm chuẩn ---
-def load_lookup_data() -> List[Dict]:
+def load_ptit_data() -> Dict:
     """
-    Load JSON data chứa điểm chuẩn theo ngành, năm, cơ sở.
+    Load JSON data chứa toàn bộ thông tin PTIT.
     """
-    if not os.path.exists(LOOKUP_FILE):
-        return []
-    with open(LOOKUP_FILE, "r", encoding="utf-8") as f:
+    ptit_file = os.path.abspath(PTIT_DATA_FILE)
+    if not os.path.exists(ptit_file):
+        return {}
+    with open(ptit_file, "r", encoding="utf-8") as f:
         return json.load(f)
+
+
+def compute_admission_estimate(user_score: float, cutoff_score: float) -> tuple:
+    """
+    Đánh giá khả năng trúng tuyển dựa trên chênh lệch điểm.
+    Returns: (percentage, message)
+    """
+    diff = user_score - cutoff_score
+    
+    if diff >= 2.0:
+        return (95, "Khả năng trúng tuyển RẤT CAO! Bạn có điểm vượt xa điểm chuẩn.")
+    elif diff >= 1.0:
+        return (85, "Khả năng trúng tuyển CAO! Bạn có điểm tốt hơn điểm chuẩn đáng kể.")
+    elif diff >= 0.5:
+        return (70, "Khả năng trúng tuyển TỐT. Bạn có điểm cao hơn điểm chuẩn.")
+    elif diff >= 0:
+        return (50, "Khả năng trúng tuyển TRUNG BÌNH. Điểm của bạn ngang ngửa với điểm chuẩn năm trước.")
+    elif diff >= -0.5:
+        return (30, "Khả năng trúng tuyển THẤP. Điểm của bạn thấp hơn điểm chuẩn một chút.")
+    else:
+        return (10, "Khả năng trúng tuyển RẤT THẤP. Bạn nên cân nhắc các ngành khác hoặc cơ sở khác.")
 
 
 class ActionLookupScore(Action):
     """
-    Action lookup điểm chuẩn theo small JSON lookup_data.json
+    Action lookup điểm chuẩn từ ptit_data.json
     """
 
     def name(self) -> Text:
@@ -50,55 +71,42 @@ class ActionLookupScore(Action):
         domain: Dict[Text, Any],
     ) -> List[Dict]:
 
-        # lấy slot để tra
         major = tracker.get_slot("major")
         year = tracker.get_slot("year")
         campus = tracker.get_slot("campus")
 
-        # Logic: thiếu major -> hỏi lại
         if not major:
             dispatcher.utter_message(text="Bạn muốn tra cứu điểm chuẩn ngành gì?")
             return []
 
-        # Chuẩn hóa major
-        major_normalized = normalize_string(major)
-
-        # Logic: thiếu year -> mặc định 2025
         if not year:
             year = "2025"
 
-        data = load_lookup_data()
+        data = load_ptit_data()
+        cutoff_scores = data.get("cutoff_scores", [])
 
-        # Logic: thiếu campus -> tra cả Hà Nội và TP.HCM
-        if not campus:
-            # Tra cả 2 cơ sở
-            results = []
-            for item in data:
-                item_major = normalize_string(item.get("major", ""))
-                if (item_major == major_normalized and 
-                    str(item.get("year")) == str(year)):
-                    results.append(item)
-        else:
-            # Tra theo campus cụ thể
-            campus_normalized = normalize_string(campus)
-            results = []
-            for item in data:
-                item_major = normalize_string(item.get("major", ""))
-                item_campus = normalize_string(item.get("campus", ""))
-                if (item_major == major_normalized and 
-                    str(item.get("year")) == str(year) and 
-                    item_campus == campus_normalized):
+        major_normalized = normalize_string(major)
+        results = []
+
+        for item in cutoff_scores:
+            item_major = normalize_string(item.get("major", ""))
+            if item_major == major_normalized and str(item.get("year")) == str(year):
+                if campus:
+                    campus_normalized = normalize_string(campus)
+                    item_campus = normalize_string(item.get("campus", ""))
+                    if item_campus == campus_normalized:
+                        results.append(item)
+                else:
                     results.append(item)
 
         if results:
-            # có kết quả
             msg = f"📊 Điểm chuẩn ngành **{major}** năm {year}:\n\n"
             for r in results:
-                msg += f"▪ Cơ sở {r.get('campus')}: **{r.get('score')} điểm** (Khối {r.get('subject_groups', 'N/A')})\n"
+                blocks = ", ".join(r.get("subject_blocks", []))
+                msg += f"▪ Cơ sở {r.get('campus')}: **{r.get('score')} điểm** (Khối {blocks})\n"
             dispatcher.utter_message(text=msg)
         else:
-            # không có dữ liệu - thêm debug info
-            available_years = sorted(set(str(item.get("year")) for item in data))
+            available_years = sorted(set(str(item.get("year")) for item in cutoff_scores))
             dispatcher.utter_message(
                 text=f"Xin lỗi, mình không tìm thấy điểm chuẩn ngành '{major}' năm {year}.\n\n"
                      f"Các năm có dữ liệu: {', '.join(available_years[-5:])}\n"
@@ -172,4 +180,432 @@ class ActionProgramsInfo(Action):
             "Ngoài ra còn có chương trình chất lượng cao và học bổng hấp dẫn."
         )
         dispatcher.utter_message(text=text)
+        return []
+
+
+# ================================================================
+# ===== NEW ADVANCED ACTIONS USING PTIT_DATA.YML =====
+# ================================================================
+
+
+
+
+class ActionEstimateAdmissionChance(Action):
+    """Ước tính khả năng trúng tuyển của thí sinh"""
+    
+    def name(self) -> Text:
+        return "action_estimate_admission_chance"
+    
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict) -> List[Dict]:
+        major = tracker.get_slot("major")
+        score_str = tracker.get_slot("score")
+        campus = tracker.get_slot("campus")
+        
+        if not major or not score_str:
+            dispatcher.utter_message(
+                text="Để dự đoán khả năng trúng tuyển, bạn cần cho mình biết ngành và điểm số của bạn nhé!"
+            )
+            return []
+        
+        try:
+            # Xử lý điểm số: loại bỏ chữ "điểm" và thay dấu phẩy bằng dấu chấm
+            score_cleaned = score_str.replace("điểm", "").replace(",", ".").strip()
+            user_score = float(score_cleaned)
+        except:
+            dispatcher.utter_message(text="Điểm số không hợp lệ. Vui lòng nhập số điểm đúng định dạng (ví dụ: 27.5)")
+            return []
+        
+        data = load_ptit_data()
+        cutoff_scores = data.get("cutoff_scores", [])
+        
+        major_normalized = normalize_string(major)
+        year = "2025"  # Năm mặc định
+        
+        matching_cutoffs = []
+        for item in cutoff_scores:
+            item_major = normalize_string(item.get("major", ""))
+            if item_major == major_normalized and str(item.get("year")) == str(year):
+                if campus:
+                    campus_normalized = normalize_string(campus)
+                    item_campus = normalize_string(item.get("campus", ""))
+                    if item_campus == campus_normalized:
+                        matching_cutoffs.append(item)
+                else:
+                    matching_cutoffs.append(item)
+        
+        if not matching_cutoffs:
+            dispatcher.utter_message(
+                text=f"Mình không tìm thấy điểm chuẩn ngành {major} năm {year}."
+            )
+            return []
+        
+        # Hiển thị kết quả cho từng cơ sở
+        msg = f"📊 Dự đoán khả năng trúng tuyển ngành **{major}** với {user_score} điểm:\n\n"
+        
+        for cutoff in matching_cutoffs:
+            cutoff_score = cutoff.get("score")
+            campus_name = cutoff.get("campus")
+            percentage, message = compute_admission_estimate(user_score, cutoff_score)
+            
+            msg += f"**Cơ sở {campus_name}** (Điểm chuẩn {year}: {cutoff_score}):\n"
+            msg += f"  • Khả năng: {percentage}%\n"
+            msg += f"  • Nhận xét: {message}\n\n"
+        
+        dispatcher.utter_message(text=msg)
+        return []
+
+
+class ActionSuggestMajors(Action):
+    """Gợi ý các ngành phù hợp dựa trên điểm số"""
+    
+    def name(self) -> Text:
+        return "action_suggest_majors"
+    
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict) -> List[Dict]:
+        score_str = tracker.get_slot("score")
+        
+        if not score_str:
+            dispatcher.utter_message(text="Bạn có thể cho mình biết điểm số của bạn để mình gợi ý không?")
+            return []
+        
+        try:
+            # Xử lý điểm số: loại bỏ chữ "điểm" và thay dấu phẩy bằng dấu chấm
+            score_cleaned = score_str.replace("điểm", "").replace(",", ".").strip()
+            user_score = float(score_cleaned)
+        except:
+            dispatcher.utter_message(text="Điểm số không hợp lệ.")
+            return []
+        
+        data = load_ptit_data()
+        cutoff_scores = data.get("cutoff_scores", [])
+        year = "2025"
+        
+        # Lọc các ngành có điểm chuẩn phù hợp
+        suitable_majors = []
+        for item in cutoff_scores:
+            if str(item.get("year")) == str(year):
+                cutoff = item.get("score")
+                if user_score >= cutoff - 0.5:  # Cho phép sai lệch 0.5 điểm
+                    percentage, _ = compute_admission_estimate(user_score, cutoff)
+                    suitable_majors.append({
+                        "major": item.get("major"),
+                        "campus": item.get("campus"),
+                        "cutoff": cutoff,
+                        "percentage": percentage
+                    })
+        
+        if not suitable_majors:
+            dispatcher.utter_message(
+                text=f"Với {user_score} điểm, bạn có thể cần xem xét các phương thức tuyển sinh khác hoặc các ngành có điểm chuẩn thấp hơn."
+            )
+            return []
+        
+        # Sắp xếp theo khả năng trúng tuyển
+        suitable_majors.sort(key=lambda x: x["percentage"], reverse=True)
+        
+        msg = f"💡 Gợi ý các ngành phù hợp với {user_score} điểm:\n\n"
+        for i, major in enumerate(suitable_majors[:5], 1):  # Top 5
+            msg += f"{i}. **{major['major']}** - {major['campus']}\n"
+            msg += f"   Điểm chuẩn: {major['cutoff']} | Khả năng: {major['percentage']}%\n\n"
+        
+        dispatcher.utter_message(text=msg)
+        return []
+
+
+class ActionCompareMajors(Action):
+    """So sánh 2 ngành"""
+    
+    def name(self) -> Text:
+        return "action_compare_majors"
+    
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict) -> List[Dict]:
+        # Lấy các entity major từ tracker
+        entities = tracker.latest_message.get("entities", [])
+        majors = [e["value"] for e in entities if e["entity"] == "major"]
+        
+        if len(majors) < 2:
+            dispatcher.utter_message(
+                text="Bạn muốn so sánh 2 ngành nào? Ví dụ: 'So sánh CNTT và ATTT'"
+            )
+            return []
+        
+        major1, major2 = majors[0], majors[1]
+        data = load_ptit_data()
+        all_majors = data.get("majors", [])
+        
+        major1_normalized = normalize_string(major1)
+        major2_normalized = normalize_string(major2)
+        
+        info1 = next((m for m in all_majors if normalize_string(m.get("name", "")) == major1_normalized or 
+                      normalize_string(m.get("code", "")) == major1_normalized), None)
+        info2 = next((m for m in all_majors if normalize_string(m.get("name", "")) == major2_normalized or 
+                      normalize_string(m.get("code", "")) == major2_normalized), None)
+        
+        if not info1 or not info2:
+            dispatcher.utter_message(text="Xin lỗi, mình không tìm thấy thông tin về một trong hai ngành bạn hỏi.")
+            return []
+        
+        msg = f"📊 So sánh **{info1['name']}** và **{info2['name']}**:\n\n"
+        
+        msg += f"**{info1['name']} ({info1['code']})**\n"
+        msg += f"• Mô tả: {info1['description']}\n"
+        msg += f"• Lương TB: {info1.get('average_salary', 'N/A')}\n\n"
+        
+        msg += f"**{info2['name']} ({info2['code']})**\n"
+        msg += f"• Mô tả: {info2['description']}\n"
+        msg += f"• Lương TB: {info2.get('average_salary', 'N/A')}\n\n"
+        
+        dispatcher.utter_message(text=msg)
+        return []
+
+
+class ActionShowMajorDetail(Action):
+    """Hiển thị thông tin chi tiết về 1 ngành"""
+    
+    def name(self) -> Text:
+        return "action_show_major_detail"
+    
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict) -> List[Dict]:
+        major = tracker.get_slot("major")
+        
+        if not major:
+            dispatcher.utter_message(text="Bạn muốn tìm hiểu về ngành nào?")
+            return []
+        
+        data = load_ptit_data()
+        all_majors = data.get("majors", [])
+        
+        major_normalized = normalize_string(major)
+        info = next((m for m in all_majors if normalize_string(m.get("name", "")) == major_normalized or 
+                     normalize_string(m.get("code", "")) == major_normalized), None)
+        
+        if not info:
+            dispatcher.utter_message(text=f"Xin lỗi, mình không tìm thấy thông tin về ngành {major}.")
+            return []
+        
+        msg = f"🎓 **{info['name']} ({info['code']})**\n\n"
+        msg += f"**Giới thiệu:**\n{info['description']}\n\n"
+        
+        msg += f"**Cơ hội nghề nghiệp:**\n"
+        for job in info.get("career_opportunities", [])[:5]:
+            msg += f"• {job}\n"
+        
+        msg += f"\n**Mức lương:**\n{info.get('average_salary', 'N/A')}\n\n"
+        
+        msg += f"**Nội dung học:**\n"
+        for course in info.get("curriculum_highlights", [])[:5]:
+            msg += f"• {course}\n"
+        
+        dispatcher.utter_message(text=msg)
+        return []
+
+
+class ActionShowScholarships(Action):
+    """Hiển thị thông tin học bổng"""
+    
+    def name(self) -> Text:
+        return "action_show_scholarships"
+    
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict) -> List[Dict]:
+        data = load_ptit_data()
+        scholarships = data.get("scholarships", [])
+        
+        if not scholarships:
+            dispatcher.utter_message(text="Xin lỗi, mình không có thông tin về học bổng.")
+            return []
+        
+        msg = "🎓 **Các loại học bổng tại PTIT:**\n\n"
+        
+        for sch in scholarships:
+            msg += f"**{sch['name']}**\n"
+            msg += f"• Mô tả: {sch['description']}\n"
+            msg += f"• Giá trị: {sch['value']}\n"
+            msg += f"• Điều kiện:\n"
+            for cond in sch.get("conditions", []):
+                msg += f"  - {cond}\n"
+            
+            if "partners" in sch:
+                msg += f"• Đối tác: {', '.join(sch['partners'])}\n"
+            msg += "\n"
+        
+        dispatcher.utter_message(text=msg)
+        return []
+
+
+class ActionShowJobOpportunities(Action):
+    """Hiển thị cơ hội việc làm"""
+    
+    def name(self) -> Text:
+        return "action_show_job_opportunities"
+    
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict) -> List[Dict]:
+        major = tracker.get_slot("major")
+        data = load_ptit_data()
+        
+        if major:
+            # Hiển thị cơ hội việc làm cho ngành cụ thể
+            all_majors = data.get("majors", [])
+            major_normalized = normalize_string(major)
+            info = next((m for m in all_majors if normalize_string(m.get("name", "")) == major_normalized or 
+                        normalize_string(m.get("code", "")) == major_normalized), None)
+            
+            if info:
+                msg = f"💼 **Cơ hội việc làm ngành {info['name']}:**\n\n"
+                for job in info.get("career_opportunities", []):
+                    msg += f"• {job}\n"
+                msg += f"\n**Mức lương:**\n{info.get('average_salary', 'N/A')}"
+                dispatcher.utter_message(text=msg)
+            else:
+                dispatcher.utter_message(text=f"Không tìm thấy thông tin về ngành {major}.")
+        else:
+            # Hiển thị thông tin chung
+            msg = "💼 **Cơ hội việc làm tại PTIT:**\n\n"
+            msg += "Sinh viên PTIT có tỷ lệ có việc làm cao sau tốt nghiệp (>90%).\n\n"
+            msg += "**Các công ty đối tác:**\n"
+            
+            partners = data.get("internship_partners", [])
+            for partner in partners:
+                msg += f"• {partner.get('company')}\n"
+            
+            dispatcher.utter_message(text=msg)
+        
+        return []
+
+
+class ActionShowInternships(Action):
+    """Hiển thị thông tin thực tập"""
+    
+    def name(self) -> Text:
+        return "action_show_internships"
+    
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict) -> List[Dict]:
+        data = load_ptit_data()
+        partners = data.get("internship_partners", [])
+        
+        if not partners:
+            dispatcher.utter_message(text="Xin lỗi, mình không có thông tin về thực tập.")
+            return []
+        
+        msg = "💼 **Các đối tác thực tập của PTIT:**\n\n"
+        
+        for partner in partners:
+            msg += f"**{partner['company']}**\n"
+            msg += f"• Vị trí: {', '.join(partner.get('positions', []))}\n"
+            msg += f"• Mô tả: {partner['description']}\n\n"
+        
+        dispatcher.utter_message(text=msg)
+        return []
+
+
+class ActionShowFacility(Action):
+    """Hiển thị thông tin cơ sở vật chất theo campus"""
+    
+    def name(self) -> Text:
+        return "action_show_facility"
+    
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict) -> List[Dict]:
+        campus = tracker.get_slot("campus")
+        
+        if not campus:
+            dispatcher.utter_message(
+                text="PTIT có nhiều cơ sở vật chất hiện đại như thư viện, phòng thí nghiệm, ký túc xá, sân thể thao và căng tin. Bạn muốn biết về cơ sở nào: Hà Nội hay TP.HCM?"
+            )
+            return []
+        
+        data = load_ptit_data()
+        campuses = data.get("campuses", [])
+        
+        campus_normalized = normalize_string(campus)
+        
+        matching_campus = None
+        for c in campuses:
+            if normalize_string(c.get("name", "")) == campus_normalized:
+                matching_campus = c
+                break
+        
+        if not matching_campus:
+            dispatcher.utter_message(
+                text=f"Xin lỗi, mình không tìm thấy thông tin về cơ sở {campus}."
+            )
+            return []
+        
+        msg = f"🏫 **Cơ sở {matching_campus['name']}**\n\n"
+        msg += f"📍 Địa chỉ: {matching_campus.get('address')}\n"
+        msg += f"👥 Số sinh viên: ~{matching_campus.get('student_count', 'N/A'):,} sinh viên\n\n"
+        msg += "**Cơ sở vật chất:**\n\n"
+        
+        for facility in matching_campus.get("facilities", []):
+            msg += f"▪ **{facility['name']}**: {facility['description']}\n\n"
+        
+        dispatcher.utter_message(text=msg)
+        return []
+
+
+class ActionShowDorm(Action):
+    """Hiển thị thông tin ký túc xá"""
+    
+    def name(self) -> Text:
+        return "action_show_dorm"
+    
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict) -> List[Dict]:
+        campus = tracker.get_slot("campus")
+        
+        data = load_ptit_data()
+        campuses = data.get("campuses", [])
+        
+        if campus:
+            campus_normalized = normalize_string(campus)
+            matching_campus = None
+            for c in campuses:
+                if normalize_string(c.get("name", "")) == campus_normalized:
+                    matching_campus = c
+                    break
+            
+            if matching_campus:
+                for facility in matching_campus.get("facilities", []):
+                    if normalize_string(facility["name"]) == normalize_string("Ký túc xá"):
+                        msg = f"🏠 **Ký túc xá cơ sở {matching_campus['name']}**\n\n"
+                        msg += facility['description']
+                        dispatcher.utter_message(text=msg)
+                        return []
+        
+        # Nếu không có campus hoặc không tìm thấy, hiển thị tất cả
+        msg = "🏠 **Thông tin ký túc xá PTIT:**\n\n"
+        
+        for campus in campuses:
+            msg += f"**Cơ sở {campus['name']}:**\n"
+            for facility in campus.get("facilities", []):
+                if normalize_string(facility["name"]) == normalize_string("Ký túc xá"):
+                    msg += f"{facility['description']}\n\n"
+                    break
+        
+        dispatcher.utter_message(text=msg)
+        return []
+
+
+class ActionShowCampusComparison(Action):
+    """So sánh 2 cơ sở Hà Nội và TP.HCM"""
+    
+    def name(self) -> Text:
+        return "action_show_campus_comparison"
+    
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict) -> List[Dict]:
+        data = load_ptit_data()
+        campuses = data.get("campuses", [])
+        
+        if len(campuses) < 2:
+            dispatcher.utter_message(text="Xin lỗi, mình không đủ thông tin để so sánh.")
+            return []
+        
+        msg = "📊 **So sánh 2 cơ sở PTIT:**\n\n"
+        
+        for campus in campuses:
+            msg += f"**{campus['name']}**\n"
+            msg += f"• Địa chỉ: {campus.get('address')}\n"
+            msg += f"• Số sinh viên: ~{campus.get('student_count', 0):,} người\n"
+            msg += f"• Số cơ sở vật chất: {len(campus.get('facilities', []))} hạng mục\n\n"
+        
+        msg += "💡 **Lưu ý:** Cả 2 cơ sở đều có chất lượng đào tạo tương đương, chỉ khác về quy mô và số lượng sinh viên. Cơ sở Hà Nội là trụ sở chính với quy mô lớn hơn, cơ sở TP.HCM tập trung vào phát triển CNTT và ĐTVT tại miền Nam."
+        
+        dispatcher.utter_message(text=msg)
         return []

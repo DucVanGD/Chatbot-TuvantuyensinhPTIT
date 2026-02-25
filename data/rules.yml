@@ -57,7 +57,7 @@ rules:
 - rule: Handle scholarship inquiries
   steps:
   - intent: ask_ptit_scholarships
-  - action: utter_ptit_scholarships
+  - action: action_show_scholarships
 
 - rule: Handle documents required inquiries
   steps:
@@ -77,6 +77,78 @@ rules:
   steps:
   - intent: greet
   - action: utter_greet
+
+# === NEW INTENT RULES ===
+- rule: Handle bot identity
+  steps:
+  - intent: bot_identity
+  - action: utter_bot_identity
+
+- rule: Handle small talk
+  steps:
+  - intent: small_talk
+  - action: utter_small_talk
+
+- rule: Handle ask major
+  steps:
+  - intent: ask_major
+  - action: utter_list_majors
+
+- rule: Handle ask major detail
+  steps:
+  - intent: ask_major_detail
+  - action: action_show_major_detail
+
+- rule: Handle check admission chance
+  steps:
+  - intent: check_admission_chance
+  - action: action_estimate_admission_chance
+
+- rule: Handle suggest major by score
+  steps:
+  - intent: suggest_major_by_score
+  - action: action_suggest_majors
+
+- rule: Handle compare majors
+  steps:
+  - intent: compare_majors
+  - action: action_compare_majors
+
+- rule: Handle facility inquiry
+  steps:
+  - intent: ask_facility
+  - action: action_show_facility
+
+- rule: Handle dorm inquiry
+  steps:
+  - intent: ask_dorm
+  - action: action_show_dorm
+
+- rule: Handle campus comparison
+  steps:
+  - intent: ask_campus_comparison
+  - action: action_show_campus_comparison
+
+- rule: Handle job opportunity inquiry
+  steps:
+  - intent: ask_job_opportunity
+  - action: action_show_job_opportunities
+
+- rule: Handle internship inquiry
+  steps:
+  - intent: ask_internship
+  - action: action_show_internships
+
+- rule: Handle student life inquiry
+  steps:
+  - intent: ask_student_life
+  - action: utter_student_life
+
+- rule: Handle curriculum inquiry
+  steps:
+  - intent: ask_curriculum
+  - action: action_show_major_detail
+
 # === FALLBACK & KHÔNG HIỂU ===
 
 - rule: Handle fallback when the bot does not understand

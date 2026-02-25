@@ -64,7 +64,7 @@ stories:
 - story: user asks about scholarships
   steps:
   - intent: ask_ptit_scholarships
-  - action: utter_ptit_scholarships
+  - action: action_show_scholarships
 
 # --- Story: hỏi hồ sơ cần chuẩn bị ---
 - story: user asks documents required for admission
@@ -108,3 +108,132 @@ stories:
   - action: utter_ptit_documents_required
   - intent: ask_ptit_contact
   - action: utter_ptit_contact
+
+# --- NEW STORIES: Conversation flows with follow-up ---
+
+- story: user asks facility without campus then provides campus
+  steps:
+  - intent: ask_facility
+  - action: action_show_facility
+  - intent: ask_facility
+    entities:
+    - campus: "Hà Nội"
+  - action: action_show_facility
+
+- story: user asks facility and specifies campus immediately 
+  steps:
+  - intent: ask_facility
+    entities:
+    - campus: "Hà Nội"
+  - action: action_show_facility
+
+- story: user asks dorm without campus then provides campus
+  steps:
+  - intent: ask_dorm
+  - action: action_show_dorm
+  - intent: ask_dorm
+    entities:
+    - campus: "TP.HCM"
+  - action: action_show_dorm
+
+- story: user asks about majors then asks major detail
+  steps:
+  - intent: ask_major
+  - action: utter_list_majors
+  - intent: ask_major_detail
+    entities:
+    - major: "CNTT"
+  - action: action_show_major_detail
+
+- story: user checks admission chance with score and major
+  steps:
+  - intent: check_admission_chance
+    entities:
+    - score: "26"
+    - major: "CNTT"
+  - action: action_estimate_admission_chance
+
+- story: user asks for major suggestion by score
+  steps:
+  - intent: suggest_major_by_score
+    entities:
+    - score: "27"
+  - action: action_suggest_majors
+
+- story: user compares two majors
+  steps:
+  - intent: compare_majors
+    entities:
+    - major: "CNTT"
+  - action: action_compare_majors
+
+- story: user asks about scholarships then wants details
+  steps:
+  - intent: ask_ptit_scholarships
+  - action: action_show_scholarships
+
+- story: user asks job opportunities for major
+  steps:
+  - intent: ask_job_opportunity
+    entities:
+    - major: "AI"
+  - action: action_show_job_opportunities
+
+- story: user asks about internships
+  steps:
+  - intent: ask_internship
+  - action: action_show_internships
+
+- story: user asks campus comparison
+  steps:
+  - intent: ask_campus_comparison
+  - action: action_show_campus_comparison
+
+- story: full flow - greet, ask majors, check admission chance
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_major
+  - action: utter_list_majors
+  - intent: check_admission_chance
+    entities:
+    - score: "28"
+    - major: "CNTT"
+  - action: action_estimate_admission_chance
+  - intent: thanks
+  - action: utter_thanks
+
+- story: user asks about school, then facilities, then dorm
+  steps:
+  - intent: ask_ptit_school_info
+  - action: utter_ptit_school_info
+  - intent: ask_facility
+  - action: action_show_facility
+  - intent: ask_dorm
+  - action: action_show_dorm
+
+# --- Stories with affirm/deny for follow-up responses ---
+
+- story: user asks facility, bot shows, user affirms understanding
+  steps:
+  - intent: ask_facility
+  - action: action_show_facility
+  - intent: affirm
+
+- story: user denies and asks something else
+  steps:
+  - intent: ask_ptit_school_info
+  - action: utter_ptit_school_info
+  - intent: deny
+  - intent: ask_ptit_contact
+  - action: utter_ptit_contact
+
+- story: user agrees to more info
+  steps:
+  - intent: ask_major
+  - action: utter_list_majors
+  - intent: affirm
+  - intent: ask_major_detail
+    entities:
+    - major: "CNTT"
+  - action: action_show_major_detail

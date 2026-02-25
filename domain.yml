@@ -1,14 +1,18 @@
 version: "3.1"
 
+################################################################
+# Intents – trùng với nlu.yml
+################################################################
 intents:
   - greet
+  - thanks
   - goodbye
   - affirm
   - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - thanks
+  - bot_identity
+  - small_talk
+  - ask_major
+  - ask_major_detail
   - ask_ptit_cutoff_year_major
   - ask_ptit_cutoff_trend
   - ask_ptit_admission_methods
@@ -19,14 +23,30 @@ intents:
   - ask_ptit_scholarships
   - ask_ptit_documents_required
   - ask_ptit_deadlines
-  - ask_ptit_lookup
-  - nlu_fallback
+  - check_admission_chance
+  - suggest_major_by_score
+  - compare_majors
+  - ask_facility
+  - ask_dorm
+  - ask_campus_comparison
+  - ask_job_opportunity
+  - ask_internship
+  - ask_student_life
+  - ask_curriculum
 
+################################################################
+# Entities – trích xuất trong NLU
+################################################################
 entities:
   - major
   - year
   - campus
+  - score
+  - subject_block
 
+################################################################
+# Slots – lưu giá trị
+################################################################
 slots:
   major:
     type: text
@@ -46,24 +66,149 @@ slots:
     mappings:
     - type: from_entity
       entity: campus
+  score:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: score
+  subject_block:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: subject_block
 
+################################################################
+# Responses – Bot trả lời
+################################################################
 responses:
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
 
-  utter_did_that_help:
-  - text: "Did that help you?"
+  # --- Greetings ---
+  utter_greet:
+    - text: "Xin chào! Mình có thể hỗ trợ bạn thông tin tuyển sinh của PTIT hôm nay"
 
-  utter_happy:
-  - text: "Great, carry on!"
+  # --- Thank you ---
+  utter_thanks:
+    - text: "Rất vui được hỗ trợ bạn! Nếu cần thêm thông tin gì cứ hỏi mình nhé!"
 
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  # --- Goodbye ---
+  utter_goodbye:
+    - text: "Tạm biệt! Chúc bạn đạt được kết quả tốt trong kỳ tuyển sinh"
 
+  # --- Xu hướng điểm chuẩn ---
+  utter_ptit_cutoff_trend:
+    - text: "Nhìn chung, các ngành công nghệ và kỹ thuật của PTIT luôn có điểm chuẩn cao và ổn định qua các năm. Đặc biệt, Công nghệ thông tin và An toàn thông tin thường nằm trong nhóm ngành có mức điểm cao nhất."
+
+  # --- Phương thức tuyển sinh ---
+  utter_ptit_admission_methods:
+    - text: "PTIT áp dụng nhiều phương thức tuyển sinh như: xét điểm thi THPT, xét học bạ, xét tuyển kết hợp chứng chỉ quốc tế, và xét điểm đánh giá năng lực. Bạn muốn tìm hiểu phương thức nào cụ thể?"
+
+  # --- Giới thiệu trường ---
+  utter_ptit_school_info:
+    - text: "PTIT là trường công lập trọng điểm về công nghệ – kỹ thuật, trực thuộc Bộ Thông tin và Truyền thông. Trường có cơ sở tại Hà Nội và TP.HCM, nổi bật với các ngành CNTT, An toàn thông tin và Kỹ thuật điện tử viễn thông."
+
+  # --- Chương trình & chỉ tiêu ---
+  utter_ptit_programs:
+    - text: "PTIT đào tạo nhiều ngành thuộc khối Công nghệ – Kỹ thuật và Kinh tế – Truyền thông. Bạn muốn xem thông tin theo ngành hay theo cơ sở đào tạo?"
+
+  # --- Contact info ---
+  utter_ptit_contact:
+    - text: |
+        📍 Cơ sở Hà Nội: Km10 Nguyễn Trãi, Hà Đông  
+        📍 Cơ sở TP.HCM: 97 Man Thiện, TP. Thủ Đức  
+        📧 Email tuyển sinh: tuyensinh@ptit.edu.vn  
+        🌐 Website: https://xettuyen.ptit.edu.vn
+
+  # --- Học phí ---
+  utter_ptit_tuition:
+    - text: |
+        Học phí được tính theo tín chỉ và tùy chương trình đào tạo.
+
+        • Hệ đại trà: khoảng 820.000 – 1.020.000đ/tín chỉ  
+        • Chương trình tiên tiến: khoảng 1.140.000đ/tín chỉ  
+        • Chất lượng cao: 1.350.000 – 1.470.000đ/tín chỉ  
+        • Liên kết quốc tế: khoảng 1.500.000đ/tín chỉ  
+
+        (Mức thu có thể thay đổi theo từng năm học.)
+
+  # --- Học bổng ---
+  utter_ptit_scholarships:
+    - text: "Trường có nhiều học bổng dành cho sinh viên có thành tích cao trong tuyển sinh hoặc học tập, cũng như học bổng từ doanh nghiệp đối tác. Bạn muốn biết điều kiện cụ thể không?"
+
+  # --- Hồ sơ xét tuyển ---
+  utter_ptit_documents_required:
+    - text: "Bạn cần đăng ký trực tuyến trên hệ thống tuyển sinh, cung cấp thông tin cá nhân và tải lên các minh chứng cần thiết theo phương thức xét tuyển đã chọn."
+
+  # --- Deadlines / Thời gian tuyển sinh ---
+  utter_ptit_deadlines:
+    - text: "Các mốc tuyển sinh thường bao gồm: đăng ký nguyện vọng, nộp lệ phí, công bố điểm chuẩn và xác nhận nhập học. Bạn muốn tra cứu mốc cụ thể nào?"
+
+  # --- Lookup data ---
+  utter_ptit_lookup:
+    - text: "Mình đang tra cứu điểm chuẩn cho bạn, vui lòng chờ một chút nhé!"
+
+  utter_ask_major:
+    - text: "Bạn muốn tra cứu ngành nào?"
+
+  utter_ask_year:
+    - text: "Bạn muốn xem điểm chuẩn năm bao nhiêu?"
+
+  utter_ask_campus:
+    - text: "Bạn muốn xem điểm ở cơ sở Hà Nội hay TP.HCM?"
+
+  # --- Bot identity ---
+  utter_bot_identity:
+    - text: "Mình là chatbot tư vấn tuyển sinh của Học viện Công nghệ Bưu chính Viễn thông (PTIT), được thiết kế để giúp bạn tìm hiểu thông tin về các ngành học, điểm chuẩn, cơ sở vật chất và cơ hội việc làm! 🎓"
+
+  # --- Small talk ---
+  utter_small_talk:
+    - text: "Cảm ơn bạn đã quan tâm! Mình rất vui được hỗ trợ bạn tìm hiểu về PTIT. Bạn có thắc mắc gì về tuyển sinh không? 😊"
+
+  # --- List majors ---
+  utter_list_majors:
+    - text: |
+        🎓 Các ngành đào tạo tại PTIT:
+        • Công nghệ thông tin (CNTT)
+        • An toàn thông tin (ATTT)
+        • Khoa học máy tính (KHMT)
+        • Trí tuệ nhân tạo (AI)
+        • Kỹ thuật Điện tử viễn thông (ĐTVT)
+        • Quản trị kinh doanh (QTKD)
+        
+        Bạn muốn tìm hiểu chi tiết ngành nào?
+
+  # --- Facilities ---
+  utter_ask_facility:
+    - text: "PTIT có nhiều cơ sở vật chất hiện đại như thư viện, phòng thí nghiệm, ký túc xá, sân thể thao và căng tin. Bạn muốn biết về cơ sở nào: Hà Nội hay TP.HCM?"
+
+  # --- Student life ---
+  utter_student_life:
+    - text: "Sinh viên PTIT có môi trường học tập sôi động với nhiều câu lạc bộ, hoạt động ngoại khóa và sự kiện văn hóa. Ngoài ra còn có các hoạt động thể thao, tình nguyện và các cuộc thi công nghệ!"
+
+  # --- Default fallback ---
+  utter_default:
+    - text: "Mình chưa hiểu rõ câu hỏi. Bạn có thể diễn đạt lại hoặc cung cấp thêm thông tin giúp mình nhé?"
+################################################################
+# Actions
+################################################################
 actions:
   - action_lookup_score
+  - action_lookup_cutoff_score
+  - action_estimate_admission_chance
+  - action_suggest_majors
+  - action_compare_majors
+  - action_show_major_detail
+  - action_show_scholarships
+  - action_show_job_opportunities
+  - action_show_internships
+  - action_show_facility
+  - action_show_dorm
+  - action_show_campus_comparison
 
+################################################################
+# Session config
+################################################################
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

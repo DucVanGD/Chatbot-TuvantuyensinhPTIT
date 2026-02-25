@@ -1,0 +1,488 @@
+{
+  "cutoff_scores": [
+    {"major": "Kỹ thuật Điện tử viễn thông", "major_code": "7520207", "year": 2020, "campus": "Hà Nội", "score": 25.25, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ KT Điện, điện tử", "major_code": "7510301", "year": 2020, "campus": "Hà Nội", "score": 24.75, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ thông tin", "major_code": "7480201", "year": 2020, "campus": "Hà Nội", "score": 26.65, "subject_blocks": ["A00", "A01"]},
+    {"major": "An toàn thông tin", "major_code": "7480202", "year": 2020, "campus": "Hà Nội", "score": 26.25, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ đa phương tiện", "major_code": "7329001", "year": 2020, "campus": "Hà Nội", "score": 25.75, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Truyền thông đa phương tiện", "major_code": "7320104", "year": 2020, "campus": "Hà Nội", "score": 25.60, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Quản trị kinh doanh", "major_code": "7340101", "year": 2020, "campus": "Hà Nội", "score": 24.60, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Marketing", "major_code": "7340115", "year": 2020, "campus": "Hà Nội", "score": 25.50, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Kế toán", "major_code": "7340301", "year": 2020, "campus": "Hà Nội", "score": 24.35, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Thương mại điện tử", "major_code": "7340122", "year": 2020, "campus": "Hà Nội", "score": 25.70, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Kỹ thuật Điện tử viễn thông", "major_code": "7520207", "year": 2020, "campus": "TP.HCM", "score": 20.00, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ KT Điện, điện tử", "major_code": "7510301", "year": 2020, "campus": "TP.HCM", "score": 20.25, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ thông tin", "major_code": "7480201", "year": 2020, "campus": "TP.HCM", "score": 25.10, "subject_blocks": ["A00", "A01"]},
+    {"major": "An toàn thông tin", "major_code": "7480202", "year": 2020, "campus": "TP.HCM", "score": 24.20, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ đa phương tiện", "major_code": "7329001", "year": 2020, "campus": "TP.HCM", "score": 23.80, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Quản trị kinh doanh", "major_code": "7340101", "year": 2020, "campus": "TP.HCM", "score": 23.50, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Marketing", "major_code": "7340115", "year": 2020, "campus": "TP.HCM", "score": 24.60, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Kế toán", "major_code": "7340301", "year": 2020, "campus": "TP.HCM", "score": 21.70, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Kỹ thuật Điện tử viễn thông", "major_code": "7520207", "year": 2021, "campus": "Hà Nội", "score": 25.65, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ kỹ thuật Điện, điện tử", "major_code": "7510301", "year": 2021, "campus": "Hà Nội", "score": 25.35, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ thông tin", "major_code": "7480201", "year": 2021, "campus": "Hà Nội", "score": 26.90, "subject_blocks": ["A00", "A01"]},
+    {"major": "An toàn thông tin", "major_code": "7480202", "year": 2021, "campus": "Hà Nội", "score": 26.55, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ đa phương tiện", "major_code": "7329001", "year": 2021, "campus": "Hà Nội", "score": 26.35, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Truyền thông đa phương tiện", "major_code": "7320104", "year": 2021, "campus": "Hà Nội", "score": 26.55, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Quản trị kinh doanh", "major_code": "7340101", "year": 2021, "campus": "Hà Nội", "score": 25.90, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Thương mại điện tử", "major_code": "7340122", "year": 2021, "campus": "Hà Nội", "score": 26.50, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Marketing", "major_code": "7340115", "year": 2021, "campus": "Hà Nội", "score": 26.45, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Kế toán", "major_code": "7340301", "year": 2021, "campus": "Hà Nội", "score": 25.75, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Công nghệ Tài chính", "major_code": "7340208", "year": 2021, "campus": "Hà Nội", "score": 25.90, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Kỹ thuật Điện tử viễn thông", "major_code": "7520207", "year": 2021, "campus": "TP.HCM", "score": 22.70, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ KT Điện, điện tử", "major_code": "7510301", "year": 2021, "campus": "TP.HCM", "score": 19.30, "subject_blocks": ["A00", "A01"]},
+    {"major": "Kỹ thuật Điều khiển và tự động hóa", "major_code": "7520216", "year": 2021, "campus": "TP.HCM", "score": 19.40, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ thông tin", "major_code": "7480201", "year": 2021, "campus": "TP.HCM", "score": 25.90, "subject_blocks": ["A00", "A01"]},
+    {"major": "An toàn thông tin", "major_code": "7480202", "year": 2021, "campus": "TP.HCM", "score": 25.40, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ đa phương tiện", "major_code": "7329001", "year": 2021, "campus": "TP.HCM", "score": 25.05, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Quản trị kinh doanh", "major_code": "7340101", "year": 2021, "campus": "TP.HCM", "score": 25.00, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Marketing", "major_code": "7340115", "year": 2021, "campus": "TP.HCM", "score": 25.65, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Kế toán", "major_code": "7340301", "year": 2021, "campus": "TP.HCM", "score": 23.95, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Kỹ thuật Điện tử viễn thông", "major_code": "7520207", "year": 2022, "campus": "Hà Nội", "score": 25.60, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ kỹ thuật Điện, điện tử", "major_code": "7510301", "year": 2022, "campus": "Hà Nội", "score": 25.10, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ thông tin", "major_code": "7480201", "year": 2022, "campus": "Hà Nội", "score": 27.25, "subject_blocks": ["A00", "A01"]},
+    {"major": "An toàn thông tin", "major_code": "7480202", "year": 2022, "campus": "Hà Nội", "score": 26.70, "subject_blocks": ["A00", "A01"]},
+    {"major": "Khoa học máy tính", "major_code": "7480101", "year": 2022, "campus": "Hà Nội", "score": 26.90, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ đa phương tiện", "major_code": "7329001", "year": 2022, "campus": "Hà Nội", "score": 26.45, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Truyền thông đa phương tiện", "major_code": "7320104", "year": 2022, "campus": "Hà Nội", "score": 26.20, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Báo chí", "major_code": "7320101", "year": 2022, "campus": "Hà Nội", "score": 24.40, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Quản trị kinh doanh", "major_code": "7340101", "year": 2022, "campus": "Hà Nội", "score": 25.55, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Thương mại điện tử", "major_code": "7340122", "year": 2022, "campus": "Hà Nội", "score": 26.35, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Marketing", "major_code": "7340115", "year": 2022, "campus": "Hà Nội", "score": 26.10, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Kế toán", "major_code": "7340301", "year": 2022, "campus": "Hà Nội", "score": 25.35, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Công nghệ tài chính (Fintech)", "major_code": "7340205", "year": 2022, "campus": "Hà Nội", "score": 25.85, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Kỹ thuật Điện tử viễn thông", "major_code": "7520207", "year": 2022, "campus": "TP.HCM", "score": 21.00, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ Internet vạn vật (IoT)", "major_code": "7520208", "year": 2022, "campus": "TP.HCM", "score": 20.70, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ kỹ thuật Điện, điện tử", "major_code": "7510301", "year": 2022, "campus": "TP.HCM", "score": 19.00, "subject_blocks": ["A00", "A01"]},
+    {"major": "Kỹ thuật Điều khiển và tự động hóa", "major_code": "7520226", "year": 2022, "campus": "TP.HCM", "score": 19.05, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ thông tin", "major_code": "7480201", "year": 2022, "campus": "TP.HCM", "score": 25.85, "subject_blocks": ["A00", "A01"]},
+    {"major": "An toàn thông tin", "major_code": "7480202", "year": 2022, "campus": "TP.HCM", "score": 25.05, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ đa phương tiện", "major_code": "7329001", "year": 2022, "campus": "TP.HCM", "score": 24.25, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Quản trị kinh doanh", "major_code": "7340101", "year": 2022, "campus": "TP.HCM", "score": 21.70, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Marketing", "major_code": "7340115", "year": 2022, "campus": "TP.HCM", "score": 24.85, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Kế toán", "major_code": "7340301", "year": 2022, "campus": "TP.HCM", "score": 22.90, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Công nghệ kỹ thuật điện, điện tử", "major_code": "7510301", "year": 2023, "campus": "Hà Nội", "score": 25.10, "subject_blocks": ["A00", "A01"]},
+    {"major": "Kỹ thuật điện tử – viễn thông", "major_code": "7520207", "year": 2023, "campus": "Hà Nội", "score": 25.68, "subject_blocks": ["A00", "A01"]},
+    {"major": "Truyền thông đa phương tiện", "major_code": "7320104", "year": 2023, "campus": "Hà Nội", "score": 26.33, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Công nghệ đa phương tiện", "major_code": "7329001", "year": 2023, "campus": "Hà Nội", "score": 25.89, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Thương mại điện tử", "major_code": "7340122", "year": 2023, "campus": "Hà Nội", "score": 26.20, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Quản trị kinh doanh", "major_code": "7340101", "year": 2023, "campus": "Hà Nội", "score": 25.15, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Công nghệ thông tin", "major_code": "7480201", "year": 2023, "campus": "Hà Nội", "score": 26.59, "subject_blocks": ["A00", "A01"]},
+    {"major": "An toàn thông tin", "major_code": "7480202", "year": 2023, "campus": "Hà Nội", "score": 26.04, "subject_blocks": ["A00", "A01"]},
+    {"major": "Kế toán", "major_code": "7340301", "year": 2023, "campus": "Hà Nội", "score": 25.05, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Marketing", "major_code": "7340115", "year": 2023, "campus": "Hà Nội", "score": 25.80, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Công nghệ tài chính", "major_code": "7340208", "year": 2023, "campus": "Hà Nội", "score": 25.35, "subject_blocks": ["A00", "A01"]},
+    {"major": "Khoa học máy tính", "major_code": "7480101", "year": 2023, "campus": "Hà Nội", "score": 26.55, "subject_blocks": ["A00", "A01"]},
+    {"major": "Báo chí", "major_code": "7320101", "year": 2023, "campus": "Hà Nội", "score": 25.36, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Kỹ thuật Điều khiển – Tự động hóa", "major_code": "7520216", "year": 2023, "campus": "Hà Nội", "score": 25.40, "subject_blocks": ["A00", "A01"]},
+    {"major": "Mạng máy tính và Truyền thông dữ liệu", "major_code": "7480102", "year": 2023, "campus": "Hà Nội", "score": 24.88, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ thông tin (Định hướng ứng dụng)", "major_code": "7480201_UDU", "year": 2023, "campus": "Hà Nội", "score": 23.76, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ thông tin (Chương trình CLC)", "major_code": "7480201_CLC", "year": 2023, "campus": "Hà Nội", "score": 25.38, "subject_blocks": ["A00", "A01"]},
+    {"major": "Kỹ thuật điện tử, viễn thông", "major_code": "7520207", "year": 2023, "campus": "TP.HCM", "score": 21.90, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ kỹ thuật điện, điện tử", "major_code": "7510301", "year": 2023, "campus": "TP.HCM", "score": 18.15, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ thông tin", "major_code": "7480201", "year": 2023, "campus": "TP.HCM", "score": 25.10, "subject_blocks": ["A00", "A01"]},
+    {"major": "An toàn thông tin", "major_code": "7480202", "year": 2023, "campus": "TP.HCM", "score": 24.44, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ đa phương tiện", "major_code": "7329001", "year": 2023, "campus": "TP.HCM", "score": 24.05, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Quản trị kinh doanh", "major_code": "7340101", "year": 2023, "campus": "TP.HCM", "score": 22.80, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Marketing", "major_code": "7340115", "year": 2023, "campus": "TP.HCM", "score": 24.10, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Kế toán", "major_code": "7340301", "year": 2023, "campus": "TP.HCM", "score": 20.00, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Kỹ thuật điều khiển và tự động hóa", "major_code": "7520216", "year": 2023, "campus": "TP.HCM", "score": 18.00, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ Internet vạn vật (IoT)", "major_code": "7520208", "year": 2023, "campus": "TP.HCM", "score": 21.70, "subject_blocks": ["A00", "A01"]},
+    {"major": "Kỹ thuật Điện tử viễn thông", "major_code": "7520207", "year": 2024, "campus": "Hà Nội", "score": 25.75, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ Kỹ thuật Điện, điện tử", "major_code": "7510301", "year": 2024, "campus": "Hà Nội", "score": 25.46, "subject_blocks": ["A00", "A01"]},
+    {"major": "Kỹ thuật Điều khiển và tự động hóa", "major_code": "7520216", "year": 2024, "campus": "Hà Nội", "score": 26.08, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ thông tin", "major_code": "7480201", "year": 2024, "campus": "Hà Nội", "score": 26.40, "subject_blocks": ["A00", "A01"]},
+    {"major": "An toàn thông tin", "major_code": "7480202", "year": 2024, "campus": "Hà Nội", "score": 25.85, "subject_blocks": ["A00", "A01"]},
+    {"major": "Khoa học máy tính (định hướng Khoa học dữ liệu)", "major_code": "7480101", "year": 2024, "campus": "Hà Nội", "score": 26.31, "subject_blocks": ["A00", "A01"]},
+    {"major": "Kỹ thuật dữ liệu (ngành Mạng máy tính và truyền thông dữ liệu)", "major_code": "7480102", "year": 2024, "campus": "Hà Nội", "score": 25.59, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ thông tin Việt – Nhật", "major_code": "7480201_VNH", "year": 2024, "campus": "Hà Nội", "score": 24.25, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ thông tin (Cử nhân định hướng ứng dụng)", "major_code": "7480201_UDU", "year": 2024, "campus": "Hà Nội", "score": 24.87, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ đa phương tiện", "major_code": "7329001", "year": 2024, "campus": "Hà Nội", "score": 25.75, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Truyền thông đa phương tiện", "major_code": "7320104", "year": 2024, "campus": "Hà Nội", "score": 25.94, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Báo chí", "major_code": "7320101", "year": 2024, "campus": "Hà Nội", "score": 25.29, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Quản trị kinh doanh", "major_code": "7340101", "year": 2024, "campus": "Hà Nội", "score": 25.17, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Thương mại điện tử", "major_code": "7340122", "year": 2024, "campus": "Hà Nội", "score": 26.09, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Marketing", "major_code": "7340115", "year": 2024, "campus": "Hà Nội", "score": 25.85, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Kế toán", "major_code": "7340301", "year": 2024, "campus": "Hà Nội", "score": 25.29, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Công nghệ tài chính (Fintech)", "major_code": "7340205", "year": 2024, "campus": "Hà Nội", "score": 25.61, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Quan hệ công chúng (ngành Marketing)", "major_code": "7340115_QHC", "year": 2024, "campus": "Hà Nội", "score": 25.15, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Thiết kế và phát triển Game (ngành Công nghệ đa phương tiện)", "major_code": "7329001_GAM", "year": 2024, "campus": "Hà Nội", "score": 24.97, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Công nghệ thông tin chất lượng cao", "major_code": "7480201_CLC", "year": 2024, "campus": "Hà Nội", "score": 25.43, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Kế toán chất lượng cao (chuẩn quốc tế ACCA)", "major_code": "7340301_CLC", "year": 2024, "campus": "Hà Nội", "score": 22.50, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Marketing chất lượng cao", "major_code": "7340115_CLC", "year": 2024, "campus": "Hà Nội", "score": 24.25, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Kỹ thuật điện tử, viễn thông", "major_code": "7520207", "year": 2024, "campus": "TP.HCM", "score": 23.23, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ kỹ thuật điện, điện tử", "major_code": "7510301", "year": 2024, "campus": "TP.HCM", "score": 20.85, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ thông tin", "major_code": "7480201", "year": 2024, "campus": "TP.HCM", "score": 25.17, "subject_blocks": ["A00", "A01"]},
+    {"major": "An toàn thông tin", "major_code": "7480202", "year": 2024, "campus": "TP.HCM", "score": 24.68, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ đa phương tiện", "major_code": "7329001", "year": 2024, "campus": "TP.HCM", "score": 23.95, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Quản trị kinh doanh", "major_code": "7340101", "year": 2024, "campus": "TP.HCM", "score": 18.40, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Marketing", "major_code": "7340115", "year": 2024, "campus": "TP.HCM", "score": 24.24, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Kế toán", "major_code": "7340301", "year": 2024, "campus": "TP.HCM", "score": 20.95, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Kỹ thuật điều khiển và tự động hóa", "major_code": "7520216", "year": 2024, "campus": "TP.HCM", "score": 19.65, "subject_blocks": ["A00", "A01"]},
+    {"major": "Ngành Công nghệ Internet vạn vật (IoT)", "major_code": "7520208", "year": 2024, "campus": "TP.HCM", "score": 18.00, "subject_blocks": ["A00", "A01"]},
+    {"major": "Kỹ thuật Điện tử viễn thông", "major_code": "7520207", "year": 2025, "campus": "Hà Nội", "score": 25.10, "subject_blocks": ["A00", "A01"]},
+    {"major": "Trí tuệ nhân tạo vạn vật (AIoT)", "major_code": "7520207_AIoT", "year": 2025, "campus": "Hà Nội", "score": 24.87, "subject_blocks": ["A00", "A01"]},
+    {"major": "Kỹ thuật Điều khiển và tự động hóa", "major_code": "7520216", "year": 2025, "campus": "Hà Nội", "score": 26.19, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ Kỹ thuật Điện, điện tử", "major_code": "7510301", "year": 2025, "campus": "Hà Nội", "score": 24.61, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ vi mạch bán dẫn", "major_code": "7510301_MBD", "year": 2025, "campus": "Hà Nội", "score": 25.50, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ thông tin", "major_code": "7480201", "year": 2025, "campus": "Hà Nội", "score": 25.80, "subject_blocks": ["A00", "A01"]},
+    {"major": "An toàn thông tin", "major_code": "7480202", "year": 2025, "campus": "Hà Nội", "score": 25.21, "subject_blocks": ["A00", "A01"]},
+    {"major": "Trí tuệ nhân tạo", "major_code": "7480107", "year": 2025, "campus": "Hà Nội", "score": 25.67, "subject_blocks": ["A00", "A01"]},
+    {"major": "Khoa học máy tính (định hướng Khoa học dữ liệu)", "major_code": "7480101", "year": 2025, "campus": "Hà Nội", "score": 26.21, "subject_blocks": ["A00", "A01"]},
+    {"major": "Kỹ thuật dữ liệu (ngành Mạng máy tính và truyền thông dữ liệu)", "major_code": "7480102", "year": 2025, "campus": "Hà Nội", "score": 24.40, "subject_blocks": ["A00", "A01"]},
+    {"major": "Báo chí", "major_code": "7320101", "year": 2025, "campus": "Hà Nội", "score": 22.67, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Truyền thông đa phương tiện", "major_code": "7320104", "year": 2025, "campus": "Hà Nội", "score": 25.25, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Công nghệ đa phương tiện", "major_code": "7329001", "year": 2025, "campus": "Hà Nội", "score": 24.00, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Quản trị kinh doanh", "major_code": "7340101", "year": 2025, "campus": "Hà Nội", "score": 22.75, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Logistics và quản trị chuỗi cung ứng", "major_code": "7340101_LOG", "year": 2025, "campus": "Hà Nội", "score": 24.20, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Thương mại điện tử", "major_code": "7340122", "year": 2025, "campus": "Hà Nội", "score": 25.10, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Marketing", "major_code": "7340115", "year": 2025, "campus": "Hà Nội", "score": 24.00, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Quan hệ công chúng (ngành Marketing)", "major_code": "7340115_QHC", "year": 2025, "campus": "Hà Nội", "score": 23.47, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Kế toán", "major_code": "7340301", "year": 2025, "campus": "Hà Nội", "score": 22.50, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Công nghệ tài chính (Fintech)", "major_code": "7340205", "year": 2025, "campus": "Hà Nội", "score": 23.63, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Công nghệ thông tin CLC", "major_code": "7480201_CLC", "year": 2025, "campus": "Hà Nội", "score": 23.60, "subject_blocks": ["A00", "A01"]},
+    {"major": "An toàn thông tin CLC", "major_code": "7480202_CLC", "year": 2025, "campus": "Hà Nội", "score": 23.14, "subject_blocks": ["A00", "A01"]},
+    {"major": "Kế toán CLC (chuẩn quốc tế ACCA)", "major_code": "7340301_CLC", "year": 2025, "campus": "Hà Nội", "score": 21.00, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Truyền thông đa phương tiện CLC", "major_code": "7320104_CLC", "year": 2025, "campus": "Hà Nội", "score": 22.65, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Marketing CLC", "major_code": "7340115_CLC", "year": 2025, "campus": "Hà Nội", "score": 22.00, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Thiết kế và phát triển Game", "major_code": "7329001_GAM", "year": 2025, "campus": "Hà Nội", "score": 23.48, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Công nghệ thông tin Việt – Nhật", "major_code": "7480201_VNH", "year": 2025, "campus": "Hà Nội", "score": 23.48, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ thông tin (Cử nhân định hướng ứng dụng)", "major_code": "7480201_UDU", "year": 2025, "campus": "Hà Nội", "score": 22.20, "subject_blocks": ["A00", "A01"]},
+    {"major": "Kỹ thuật điện tử, viễn thông", "major_code": "7520207", "year": 2025, "campus": "TP.HCM", "score": 21.00, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ kỹ thuật điện, điện tử", "major_code": "7510301", "year": 2025, "campus": "TP.HCM", "score": 20.00, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ thông tin", "major_code": "7480201", "year": 2025, "campus": "TP.HCM", "score": 23.47, "subject_blocks": ["A00", "A01"]},
+    {"major": "An toàn thông tin", "major_code": "7480202", "year": 2025, "campus": "TP.HCM", "score": 23.09, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ đa phương tiện", "major_code": "7329001", "year": 2025, "campus": "TP.HCM", "score": 21.35, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Quản trị kinh doanh", "major_code": "7340101", "year": 2025, "campus": "TP.HCM", "score": 17.20, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Marketing", "major_code": "7340115", "year": 2025, "campus": "TP.HCM", "score": 21.25, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Kế toán", "major_code": "7340301", "year": 2025, "campus": "TP.HCM", "score": 16.25, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Kỹ thuật điều khiển và tự động hóa", "major_code": "7520216", "year": 2025, "campus": "TP.HCM", "score": 19.80, "subject_blocks": ["A00", "A01"]},
+    {"major": "Ngành Công nghệ Internet vạn vật (IoT)", "major_code": "7520208", "year": 2025, "campus": "TP.HCM", "score": 17.25, "subject_blocks": ["A00", "A01"]},
+    {"major": "Công nghệ thông tin chất lượng cao", "major_code": "7480201_CLC", "year": 2025, "campus": "TP.HCM", "score": 21.50, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Marketing chất lượng cao", "major_code": "7340115_CLC", "year": 2025, "campus": "TP.HCM", "score": 18.75, "subject_blocks": ["A00", "A01", "D01"]},
+    {"major": "Truyền thông đa phương tiện", "major_code": "7320104", "year": 2025, "campus": "TP.HCM", "score": 24.00, "subject_blocks": ["A00", "A01", "D01"]}
+  ],
+  "majors": [
+    {
+      "name": "Công nghệ thông tin",
+      "code": "7480201",
+      "description": "Đào tạo kỹ sư có kiến thức toàn diện về phát triển phần mềm, hệ thống thông tin, cơ sở dữ liệu và ứng dụng công nghệ thông tin trong các lĩnh vực.",
+      "career_opportunities": [
+        "Lập trình viên phần mềm",
+        "Kỹ sư phát triển ứng dụng web/mobile",
+        "Chuyên gia phân tích hệ thống",
+        "Kiến trúc sư giải pháp IT",
+        "Quản lý dự án công nghệ"
+      ],
+      "average_salary": "12-25 triệu/tháng (fresher), 30-60 triệu/tháng (3-5 năm kinh nghiệm)",
+      "curriculum_highlights": [
+        "Lập trình hướng đối tượng (Java, C++, Python)",
+        "Phát triển ứng dụng web (HTML, CSS, JavaScript, React, Node.js)",
+        "Cơ sở dữ liệu và Big Data",
+        "Điện toán đám mây (Cloud Computing)",
+        "DevOps và CI/CD"
+      ]
+    },
+    {
+      "name": "An toàn thông tin",
+      "code": "7480202",
+      "description": "Đào tạo chuyên gia về bảo mật mạng, mã hóa, phòng chống tấn công mạng và quản lý an ninh thông tin cho tổ chức.",
+      "career_opportunities": [
+        "Chuyên gia bảo mật mạng",
+        "Pentester / Ethical Hacker",
+        "Chuyên viên phân tích rủi ro an ninh",
+        "Quản trị viên hệ thống bảo mật",
+        "Chuyên gia điều tra số"
+      ],
+      "average_salary": "15-28 triệu/tháng (fresher), 35-70 triệu/tháng (3-5 năm kinh nghiệm)",
+      "curriculum_highlights": [
+        "Mật mã học và bảo mật hệ thống",
+        "An ninh mạng và phòng chống tấn công",
+        "Bảo mật ứng dụng web",
+        "Forensics và điều tra số",
+        "Quản lý rủi ro và tuân thủ"
+      ]
+    },
+    {
+      "name": "Khoa học máy tính",
+      "code": "7480101",
+      "description": "Tập trung vào nền tảng khoa học và nghiên cứu về thuật toán, trí tuệ nhân tạo, học máy và khoa học dữ liệu.",
+      "career_opportunities": [
+        "Data Scientist / Nhà khoa học dữ liệu",
+        "Machine Learning Engineer",
+        "Research Scientist",
+        "Algorithm Engineer",
+        "AI Consultant"
+      ],
+      "average_salary": "15-30 triệu/tháng (fresher), 40-80 triệu/tháng (3-5 năm kinh nghiệm)",
+      "curriculum_highlights": [
+        "Cấu trúc dữ liệu và thuật toán",
+        "Học máy và Deep Learning",
+        "Xử lý ngôn ngữ tự nhiên (NLP)",
+        "Computer Vision",
+        "Khoa học dữ liệu và Big Data Analytics"
+      ]
+    },
+    {
+      "name": "Trí tuệ nhân tạo",
+      "code": "7480107",
+      "description": "Chương trình đào tạo chuyên sâu về AI, học máy, học sâu và các ứng dụng AI trong đời sống và công nghiệp.",
+      "career_opportunities": [
+        "AI Engineer",
+        "Deep Learning Specialist",
+        "Computer Vision Engineer",
+        "NLP Engineer",
+        "AI Product Manager"
+      ],
+      "average_salary": "18-35 triệu/tháng (fresher), 45-100 triệu/tháng (3-5 năm kinh nghiệm)",
+      "curriculum_highlights": [
+        "Neural Networks và Deep Learning",
+        "Computer Vision nâng cao",
+        "Natural Language Processing",
+        "Reinforcement Learning",
+        "AI Ethics và Responsible AI"
+      ]
+    },
+    {
+      "name": "Kỹ thuật Điện tử viễn thông",
+      "code": "7520207",
+      "description": "Đào tạo kỹ sư về hệ thống viễn thông, mạng di động, IoT và các công nghệ truyền thông hiện đại.",
+      "career_opportunities": [
+        "Kỹ sư mạng viễn thông",
+        "Chuyên gia 5G/6G",
+        "IoT Engineer",
+        "Network Architect",
+        "Kỹ sư hệ thống nhúng"
+      ],
+      "average_salary": "10-20 triệu/tháng (fresher), 25-50 triệu/tháng (3-5 năm kinh nghiệm)",
+      "curriculum_highlights": [
+        "Công nghệ mạng di động 4G/5G",
+        "Internet vạn vật (IoT)",
+        "Hệ thống nhúng và vi xử lý",
+        "Xử lý tín hiệu số",
+        "Truyền thông quang"
+      ]
+    },
+    {
+      "name": "Quản trị kinh doanh",
+      "code": "7340101",
+      "description": "Kết hợp kiến thức quản trị với công nghệ, đào tạo nhà quản lý hiện đại có khả năng ứng dụng công nghệ số trong kinh doanh.",
+      "career_opportunities": [
+        "Quản lý dự án",
+        "Business Analyst",
+        "Product Manager",
+        "Marketing Manager",
+        "E-commerce Manager"
+      ],
+      "average_salary": "8-15 triệu/tháng (fresher), 20-45 triệu/tháng (3-5 năm kinh nghiệm)",
+      "curriculum_highlights": [
+        "Quản trị chiến lược",
+        "Marketing số (Digital Marketing)",
+        "Thương mại điện tử",
+        "Quản lý chuỗi cung ứng",
+        "Phân tích dữ liệu kinh doanh"
+      ]
+    }
+  ],
+  "scholarships": [
+    {
+      "name": "Học bổng Khuyến khích tài năng",
+      "description": "Dành cho thí sinh đạt điểm cao trong kỳ tuyển sinh",
+      "conditions": [
+        "Điểm xét tuyển từ 28.0 trở lên",
+        "Thuộc top 10% thí sinh đạt điểm cao nhất"
+      ],
+      "value": "100% học phí năm đầu tiên"
+    },
+    {
+      "name": "Học bổng Học sinh giỏi",
+      "description": "Cho học sinh có thành tích xuất sắc trong học tập THPT",
+      "conditions": [
+        "Học sinh giỏi cấp tỉnh/thành phố",
+        "Giải nhất, nhì, ba các kỳ thi học sinh giỏi quốc gia"
+      ],
+      "value": "50-100% học phí 4 năm"
+    },
+    {
+      "name": "Học bổng Olympic",
+      "description": "Dành cho học sinh đạt giải trong các kỳ thi Olympic quốc tế/quốc gia",
+      "conditions": [
+        "Huy chương Olympic quốc tế",
+        "Giải Olympic quốc gia các môn Toán, Tin, Lý, Hóa"
+      ],
+      "value": "100% học phí + hỗ trợ sinh hoạt phí"
+    },
+    {
+      "name": "Học bổng Doanh nghiệp",
+      "description": "Tài trợ từ các đối tác doanh nghiệp của PTIT",
+      "conditions": [
+        "Thành tích học tập tốt",
+        "Cam kết làm việc cho doanh nghiệp sau khi tốt nghiệp"
+      ],
+      "value": "Tùy theo doanh nghiệp (thường 50-100% học phí)",
+      "partners": [
+        "Viettel",
+        "VNPT",
+        "FPT",
+        "VNG",
+        "Mobifone"
+      ]
+    },
+    {
+      "name": "Học bổng Khuyến học",
+      "description": "Hỗ trợ sinh viên có hoàn cảnh khó khăn nhưng có thành tích tốt",
+      "conditions": [
+        "Hoàn cảnh gia đình khó khăn",
+        "Điểm trung bình học tập từ 3.2/4.0 trở lên"
+      ],
+      "value": "3-5 triệu/học kỳ"
+    }
+  ],
+  "campuses": [
+    {
+      "name": "Hà Nội",
+      "address": "Km 10, Nguyễn Trãi, Hà Đông, Hà Nội",
+      "facilities": [
+        {
+          "name": "Thư viện",
+          "description": "Thư viện hiện đại với hơn 100,000 đầu sách, tài liệu điện tử và không gian học tập yên tĩnh"
+        },
+        {
+          "name": "Phòng thí nghiệm",
+          "description": "30+ phòng lab chuyên ngành: AI Lab, Security Lab, Network Lab, IoT Lab với trang thiết bị hiện đại"
+        },
+        {
+          "name": "Sân thể thao",
+          "description": "Sân bóng đá, bóng rổ, cầu lông, gym hiện đại phục vụ sinh viên"
+        },
+        {
+          "name": "Căng tin",
+          "description": "3 căng tin với đa dạng món ăn, giá sinh viên 20,000-40,000đ/suất"
+        }
+      ],
+      "dorms": [
+        {
+          "name": "KTX B1 (Cơ sở Hà Đông)",
+          "capacity": 40,
+          "room_type": "Phòng 4 người",
+          "amenities": ["Vệ sinh khép kín", "Điều hòa", "Bình nóng lạnh", "Giường", "Ga đệm", "Tủ", "Bàn ghế"],
+          "price": "1,800,000 đồng/sinh viên/tháng",
+          "note": "Miễn phí 100 số điện/phòng"
+        },
+        {
+          "name": "KTX B2 (Cơ sở Hà Đông)",
+          "capacity": 460,
+          "room_type": "Phòng 8 người",
+          "amenities": ["Vệ sinh khép kín", "Giường tầng", "Quạt", "Bình nóng lạnh"],
+          "price": "250,000 đồng/sinh viên/tháng",
+          "note": "Miễn phí 100 số điện/phòng"
+        },
+        {
+          "name": "KTX Cơ sở Ngọc Trục",
+          "capacity": 340,
+          "room_type": "Phòng 4 người",
+          "amenities": ["Vệ sinh khép kín", "Điều hòa", "Bình nóng lạnh", "Giường", "Ga đệm", "Tủ", "Bàn ghế"],
+          "price": "1,500,000 đồng/sinh viên/tháng",
+          "note": "Miễn phí 100 số điện/phòng. Sinh viên học tại Hà Đông được hỗ trợ chi phí đi lại 150,000 đồng/tháng"
+        }
+      ],
+      "dorm_payment_note": "Sinh viên đóng phí trước 4 tháng (do có 1 tháng đi học quân sự không ở KTX). Ưu tiên sinh viên thuộc diện chính sách, con em dân tộc thiểu số, mồ côi, hộ nghèo/cận nghèo, vùng đặc biệt khó khăn và sinh viên nữ.",
+      "student_count": 12000
+    },
+    {
+      "name": "TP.HCM",
+      "address": "97 Man Thiện, Phường Hiệp Phú, TP. Thủ Đức, TP.HCM",
+      "facilities": [
+        {
+          "name": "Thư viện",
+          "description": "Thư viện với không gian học nhóm, phòng đọc riêng và hệ thống tài liệu số đầy đủ"
+        },
+        {
+          "name": "Phòng thí nghiệm",
+          "description": "15+ phòng lab hiện đại phục vụ thực hành các môn chuyên ngành"
+        },
+        {
+          "name": "Khu vực nghỉ ngơi",
+          "description": "Khu vực xanh mát, quán cafe, khu vui chơi giải trí"
+        }
+      ],
+      "dorms": [],
+      "student_count": 5000
+    }
+  ],
+  "internship_partners": [
+    {
+      "company": "Viettel",
+      "positions": [
+        "Software Engineer Intern",
+        "Network Engineer Intern",
+        "Cybersecurity Intern"
+      ],
+      "description": "Tập đoàn viễn thông hàng đầu Việt Nam, cơ hội làm việc với công nghệ tiên tiến"
+    },
+    {
+      "company": "FPT Software",
+      "positions": [
+        "Full-stack Developer Intern",
+        "AI/ML Intern",
+        "QA Tester Intern"
+      ],
+      "description": "Công ty công nghệ lớn nhất Việt Nam, môi trường quốc tế"
+    },
+    {
+      "company": "VNG Corporation",
+      "positions": [
+        "Game Developer Intern",
+        "Data Analyst Intern",
+        "Product Manager Intern"
+      ],
+      "description": "Tập đoàn công nghệ hàng đầu với Zalo, ZaloPay, các game nổi tiếng"
+    },
+    {
+      "company": "VNPT",
+      "positions": [
+        "Telecom Engineer Intern",
+        "IoT Developer Intern",
+        "Cloud Engineer Intern"
+      ],
+      "description": "Tập đoàn Bưu chính Viễn thông Việt Nam, đối tác chiến lược của PTIT"
+    }
+  ],
+  "admission_methods": [
+    {
+      "method": "Xét tuyển theo điểm thi tốt nghiệp THPT",
+      "description": "Xét theo tổng điểm 3 môn thuộc khối xét tuyển (A00, A01, D01, D07...)",
+      "weight": "70% chỉ tiêu"
+    },
+    {
+      "method": "Xét tuyển học bạ",
+      "description": "Xét điểm trung bình 3 môn trong khối xét tuyển qua 3 năm THPT (hoặc 5 học kỳ)",
+      "weight": "15% chỉ tiêu"
+    },
+    {
+      "method": "Xét tuyển kết hợp chứng chỉ quốc tế",
+      "description": "Kết hợp điểm học bạ với chứng chỉ IELTS, TOEFL, SAT...",
+      "weight": "10% chỉ tiêu"
+    },
+    {
+      "method": "Xét tuyển thẳng",
+      "description": "Học sinh giỏi quốc gia, Olympic quốc tế, có thành tích xuất sắc",
+      "weight": "5% chỉ tiêu"
+    }
+  ],
+  "tuition": {
+    "regular": "820,000 - 1,020,000 đồng/tín chỉ",
+    "advanced": "1,140,000 đồng/tín chỉ",
+    "high_quality": "1,350,000 - 1,470,000 đồng/tín chỉ",
+    "international": "1,500,000 đồng/tín chỉ",
+    "note": "Số tín chỉ trung bình mỗi học kỳ: 18-22 tín chỉ. Học phí có thể thay đổi theo từng năm học."
+  },
+  "contact": {
+    "website": "https://xettuyen.ptit.edu.vn",
+    "email": "tuyensinh@ptit.edu.vn",
+    "phone": "024 3354 7461",
+    "facebook": "https://www.facebook.com/PTITHaNoi",
+    "hanoi_address": "Km 10, Nguyễn Trãi, Hà Đông, Hà Nội",
+    "hcm_address": "97 Man Thiện, Phường Hiệp Phú, TP. Thủ Đức, TP.HCM"
+  }
+}
