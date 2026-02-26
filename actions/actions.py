@@ -50,7 +50,7 @@ def compute_admission_estimate(user_score: float, cutoff_score: float) -> tuple:
         return (70, "Khả năng trúng tuyển TỐT. Bạn có điểm cao hơn điểm chuẩn.")
     elif diff >= 0:
         return (50, "Khả năng trúng tuyển TRUNG BÌNH. Điểm của bạn ngang ngửa với điểm chuẩn năm trước.")
-    elif diff >= -0.5:
+    elif diff >= -1:
         return (30, "Khả năng trúng tuyển THẤP. Điểm của bạn thấp hơn điểm chuẩn một chút.")
     else:
         return (10, "Khả năng trúng tuyển RẤT THẤP. Bạn nên cân nhắc các ngành khác hoặc cơ sở khác.")
@@ -100,7 +100,7 @@ class ActionLookupScore(Action):
                     results.append(item)
 
         if results:
-            msg = f"📊 Điểm chuẩn ngành **{major}** năm {year}:\n\n"
+            msg = f"Điểm chuẩn ngành **{major}** năm {year}:\n\n"
             for r in results:
                 blocks = ", ".join(r.get("subject_blocks", []))
                 msg += f"▪ Cơ sở {r.get('campus')}: **{r.get('score')} điểm** (Khối {blocks})\n"
@@ -200,10 +200,11 @@ class ActionEstimateAdmissionChance(Action):
         major = tracker.get_slot("major")
         score_str = tracker.get_slot("score")
         campus = tracker.get_slot("campus")
+        subject_block = tracker.get_slot("subject_block")
         
         if not major or not score_str:
             dispatcher.utter_message(
-                text="Để dự đoán khả năng trúng tuyển, bạn cần cho mình biết ngành và điểm số của bạn nhé!"
+                text="Để dự đoán khả năng trúng tuyển, bạn cần cho mình biết ngành và điểm số của bạn nhé! Nhớ thêm cụm từ 'ước tính khả năng trúng tuyển' vào câu hỏi để mình hiểu ý bạn hơn đấy!"
             )
             return []
         
@@ -215,6 +216,15 @@ class ActionEstimateAdmissionChance(Action):
             dispatcher.utter_message(text="Điểm số không hợp lệ. Vui lòng nhập số điểm đúng định dạng (ví dụ: 27.5)")
             return []
         
+        # Xử lý subject_block: uppercase để phòng trường hợp người dùng viết thường
+        if subject_block:
+            subject_block = subject_block.strip().upper()
+            # Kiểm tra xem khối có hợp lệ không
+            valid_blocks = ["A00", "A01", "D01", "a00", "a01", "d01"]
+            if subject_block not in valid_blocks:
+                dispatcher.utter_message(text="PTIT không có thông tin ngành học nào sử dụng khối đó!")
+                return []
+        
         data = load_ptit_data()
         cutoff_scores = data.get("cutoff_scores", [])
         
@@ -225,6 +235,12 @@ class ActionEstimateAdmissionChance(Action):
         for item in cutoff_scores:
             item_major = normalize_string(item.get("major", ""))
             if item_major == major_normalized and str(item.get("year")) == str(year):
+                # Nếu có subject_block thì chỉ lọc các ngành có khối đó
+                if subject_block:
+                    item_blocks = item.get("subject_blocks", [])
+                    if subject_block not in item_blocks:
+                        continue
+                
                 if campus:
                     campus_normalized = normalize_string(campus)
                     item_campus = normalize_string(item.get("campus", ""))
@@ -234,20 +250,28 @@ class ActionEstimateAdmissionChance(Action):
                     matching_cutoffs.append(item)
         
         if not matching_cutoffs:
-            dispatcher.utter_message(
-                text=f"Mình không tìm thấy điểm chuẩn ngành {major} năm {year}."
-            )
+            if subject_block:
+                dispatcher.utter_message(
+                    text=f"Mình không tìm thấy điểm chuẩn ngành {major} năm {year} khối {subject_block}."
+                )
+            else:
+                dispatcher.utter_message(
+                    text=f"Mình không tìm thấy điểm chuẩn ngành {major} năm {year}."
+                )
             return []
         
         # Hiển thị kết quả cho từng cơ sở
-        msg = f"📊 Dự đoán khả năng trúng tuyển ngành **{major}** với {user_score} điểm:\n\n"
+        block_msg = f"khối {subject_block}" if subject_block else ""
+        msg = f"Dự đoán khả năng trúng tuyển ngành **{major}** {block_msg} với {user_score} điểm:\n\n"
         
         for cutoff in matching_cutoffs:
             cutoff_score = cutoff.get("score")
             campus_name = cutoff.get("campus")
+            blocks_str = ", ".join(cutoff.get("subject_blocks", []))
             percentage, message = compute_admission_estimate(user_score, cutoff_score)
             
             msg += f"**Cơ sở {campus_name}** (Điểm chuẩn {year}: {cutoff_score}):\n"
+            msg += f"  • Khối: {blocks_str}\n"
             msg += f"  • Khả năng: {percentage}%\n"
             msg += f"  • Nhận xét: {message}\n\n"
         
@@ -263,6 +287,7 @@ class ActionSuggestMajors(Action):
     
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict) -> List[Dict]:
         score_str = tracker.get_slot("score")
+        subject_block = tracker.get_slot("subject_block")
         
         if not score_str:
             dispatcher.utter_message(text="Bạn có thể cho mình biết điểm số của bạn để mình gợi ý không?")
@@ -276,6 +301,15 @@ class ActionSuggestMajors(Action):
             dispatcher.utter_message(text="Điểm số không hợp lệ.")
             return []
         
+        # Xử lý subject_block: uppercase để phòng trường hợp người dùng viết thường
+        if subject_block:
+            subject_block = subject_block.strip().upper()
+            # Kiểm tra xem khối có hợp lệ không
+            valid_blocks = ["A00", "A01", "D01"]
+            if subject_block not in valid_blocks:
+                dispatcher.utter_message(text="PTIT không có thông tin ngành học nào sử dụng khối đó!\nNếu bạn đang dùng khối viết thường thì hãy chuyển thành viết hoa (kiểu A00, D01) nhé!")
+                return []
+        
         data = load_ptit_data()
         cutoff_scores = data.get("cutoff_scores", [])
         year = "2025"  # Sử dụng điểm chuẩn năm 2025 làm tham khảo
@@ -284,6 +318,12 @@ class ActionSuggestMajors(Action):
         all_candidates = []
         for item in cutoff_scores:
             if str(item.get("year")) == str(year):
+                # Nếu có subject_block thì chỉ lọc các ngành có khối đó
+                if subject_block:
+                    item_blocks = item.get("subject_blocks", [])
+                    if subject_block not in item_blocks:
+                        continue
+                
                 cutoff = item.get("score")
                 diff = cutoff - user_score  # Hiệu số (điểm chuẩn - điểm user)
                 
@@ -296,13 +336,19 @@ class ActionSuggestMajors(Action):
                         "cutoff": cutoff,
                         "diff": diff,
                         "percentage": percentage,
-                        "message": message
+                        "message": message,
+                        "blocks": item.get("subject_blocks", [])
                     })
         
         if not all_candidates:
-            dispatcher.utter_message(
-                text="Điểm bạn vượt ngoài phạm vi điểm của trường, bạn nên cân nhắc chọn trường khác phù hợp với khả năng của bản thân hơn."
-            )
+            if subject_block:
+                dispatcher.utter_message(
+                    text=f"Không tìm thấy ngành phù hợp với điểm {user_score} khối {subject_block}. Bạn có thể thử với khối khác hoặc cải thiện điểm số."
+                )
+            else:
+                dispatcher.utter_message(
+                    text="Điểm bạn vượt ngoài phạm vi điểm của trường, bạn nên cân nhắc chọn trường khác phù hợp với khả năng của bản thân hơn."
+                )
             return []
         
         # Tách thành 2 nhóm: dương (điểm chuẩn > điểm user) và âm (điểm chuẩn < điểm user)
@@ -319,11 +365,19 @@ class ActionSuggestMajors(Action):
         # Lấy tất cả ngành từ nhóm âm, sắp xếp theo diff giảm dần (gần 0 nhất lên đầu)
         if negative_group:
             negative_group.sort(key=lambda x: x["diff"], reverse=True)  # -0.5, -1, -2...
-            suitable_majors.extend(negative_group)
+            # Tối đa 5 ngành nếu không có subject_block, hoặc all nếu có subject_block
+            suitable_majors.extend(negative_group[:4])  # Thêm 4 ngành nữa để tổng là 5
         
-        msg = f"Gợi ý các ngành phù hợp với {user_score} điểm (dựa trên điểm chuẩn năm {year}):\n\n"
+        # Giới hạn tối đa 5 ngành nếu không có subject_block
+        if not subject_block and len(suitable_majors) > 5:
+            suitable_majors = suitable_majors[:5]
+        
+        block_msg = f"khối {subject_block}" if subject_block else ""
+        msg = f"Gợi ý các ngành phù hợp với {user_score} điểm {block_msg} (dựa trên điểm chuẩn năm {year}):\n\n"
         for i, major in enumerate(suitable_majors, 1):
-            msg += f"{i}. {major['major']} - {major['campus']}\n"
+            blocks_str = ", ".join(major['blocks'])
+            msg += f"{i}. **{major['major']}** - {major['campus']}\n"
+            msg += f"   Khối: {blocks_str}\n"
             if major['diff'] >= 0:
                 msg += f"   Điểm chuẩn {year}: {major['cutoff']} (cần thêm {major['diff']:.2f} điểm)\n"
             else:
@@ -369,7 +423,7 @@ class ActionCompareMajors(Action):
             dispatcher.utter_message(text="Xin lỗi, mình không tìm thấy thông tin về một trong hai ngành bạn hỏi.")
             return []
         
-        msg = f"📊 So sánh **{info1['name']}** và **{info2['name']}**:\n\n"
+        msg = f"So sánh **{info1['name']}** và **{info2['name']}**:\n\n"
         
         msg += f"**{info1['name']} ({info1['code']})**\n"
         msg += f"• Mô tả: {info1['description']}\n"
@@ -407,7 +461,7 @@ class ActionShowMajorDetail(Action):
             dispatcher.utter_message(text=f"Xin lỗi, mình không tìm thấy thông tin về ngành {major}.")
             return []
         
-        msg = f"🎓 **{info['name']} ({info['code']})**\n\n"
+        msg = f"**{info['name']} ({info['code']})**\n\n"
         msg += f"**Giới thiệu:**\n{info['description']}\n\n"
         
         msg += f"**Cơ hội nghề nghiệp:**\n"
@@ -434,7 +488,7 @@ class ActionShowScholarships(Action):
             dispatcher.utter_message(text="Xin lỗi, mình không có thông tin về học bổng.")
             return []
         
-        msg = "🎓 **Các loại học bổng tại PTIT:**\n\n"
+        msg = "**Các loại học bổng tại PTIT:**\n\n"
         
         for sch in scholarships:
             msg += f"**{sch['name']}**\n"
@@ -470,7 +524,7 @@ class ActionShowJobOpportunities(Action):
                         normalize_string(m.get("code", "")) == major_normalized), None)
             
             if info:
-                msg = f"💼 **Cơ hội việc làm ngành {info['name']}:**\n\n"
+                msg = f"**Cơ hội việc làm ngành {info['name']}:**\n\n"
                 for job in info.get("career_opportunities", []):
                     msg += f"• {job}\n"
                 msg += f"\n**Mức lương:**\n{info.get('average_salary', 'N/A')}"
@@ -479,7 +533,7 @@ class ActionShowJobOpportunities(Action):
                 dispatcher.utter_message(text=f"Không tìm thấy thông tin về ngành {major}.")
         else:
             # Hiển thị thông tin chung
-            msg = "💼 **Cơ hội việc làm tại PTIT:**\n\n"
+            msg = "**Cơ hội việc làm tại PTIT:**\n\n"
             msg += "Sinh viên PTIT có tỷ lệ có việc làm cao sau tốt nghiệp (>90%).\n\n"
             msg += "**Các công ty đối tác:**\n"
             
@@ -506,7 +560,7 @@ class ActionShowInternships(Action):
             dispatcher.utter_message(text="Xin lỗi, mình không có thông tin về thực tập.")
             return []
         
-        msg = "💼 **Các đối tác thực tập của PTIT:**\n\n"
+        msg = "**Các đối tác thực tập của PTIT:**\n\n"
         
         for partner in partners:
             msg += f"**{partner['company']}**\n"
@@ -549,9 +603,9 @@ class ActionShowFacility(Action):
             )
             return []
         
-        msg = f"🏫 **Cơ sở {matching_campus['name']}**\n\n"
-        msg += f"📍 Địa chỉ: {matching_campus.get('address')}\n"
-        msg += f"👥 Số sinh viên: ~{matching_campus.get('student_count', 'N/A'):,} sinh viên\n\n"
+        msg = f"**Cơ sở {matching_campus['name']}**\n\n"
+        msg += f"Địa chỉ: {matching_campus.get('address')}\n"
+        msg += f"Số sinh viên: ~{matching_campus.get('student_count', 'N/A'):,} sinh viên\n\n"
         msg += "**Cơ sở vật chất:**\n\n"
         
         for facility in matching_campus.get("facilities", []):
@@ -630,7 +684,7 @@ class ActionShowCampusComparison(Action):
             dispatcher.utter_message(text="Xin lỗi, mình không đủ thông tin để so sánh.")
             return []
         
-        msg = "📊 **So sánh 2 cơ sở PTIT:**\n\n"
+        msg = "**So sánh 2 cơ sở PTIT:**\n\n"
         
         for campus in campuses:
             msg += f"**{campus['name']}**\n"
@@ -725,4 +779,32 @@ class ActionShowEnterprisePartners(Action):
         msg += "\nNgoài ra, PTIT còn hợp tác với nhiều doanh nghiệp khác như Samsung, Mobifone, CMC, TMA Solutions, VNG, Sendo, Tiki... tạo cơ hội rộng mở cho sinh viên."
         
         dispatcher.utter_message(text=msg)
+        return []
+
+
+class ActionHandleFollowUp(Action):
+    """Xử lý câu hỏi follow-up dựa trên ngữ cảnh trước đó"""
+    
+    def name(self) -> Text:
+        return "action_handle_follow_up"
+    
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict) -> List[Dict]:
+        # Lấy thông tin từ các slot đã lưu
+        major = tracker.get_slot("major")
+        year = tracker.get_slot("year")
+        campus = tracker.get_slot("campus")
+        
+        # Tạo thông điệp tùy theo ngữ cảnh
+        context_msg = "Dựa trên cuộc trò chuyện trước:\n"
+        
+        if major:
+            context_msg += f"- Ngành: {major}\n"
+        if year:
+            context_msg += f"- Năm: {year}\n"
+        if campus:
+            context_msg += f"- Cơ sở: {campus}\n"
+        
+        context_msg += "\nBạn có thể hỏi thêm thông tin cụ thể về điểm chuẩn, học bổng, cơ hội việc làm, hoặc các chủ đề khác!"
+        
+        dispatcher.utter_message(text=context_msg)
         return []

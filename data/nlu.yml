@@ -57,6 +57,7 @@ nlu:
 # --- Affirm (Đồng ý / Có) ---
 - intent: affirm
   examples: |
+    - chào
     - có
     - đúng
     - được
@@ -95,7 +96,7 @@ nlu:
     - không đúng
     - không đồng ý
     - từ chối
-
+    - không phải vậy
 # --- Điểm chuẩn theo năm & ngành ---
 - intent: ask_ptit_cutoff_year_major
   examples: |
@@ -124,6 +125,14 @@ nlu:
     - Điểm [Công nghệ thông tin](major) [TP.HCM](campus) năm [2025](year)
     - [An toàn thông tin](major) cơ sở [Hà Nội](campus)
     - Điểm ngành [CNTT](major)
+    - Điểm chuẩn [CNTT](major) năm [2025](year)
+    - [IT](major) [2024](year) bao nhiêu điểm
+    - Năm [2023](year) ngành [Khoa học máy tính](major) điểm chuẩn
+    - [ATTT](major) [2020](year)
+    - Điểm chuẩn năm [2021](year) [Kế toán](major)
+    - [Marketing](major) [2022](year) lấy bao nhiêu
+    - Năm [2025](year) [QTKD](major) cơ sở [Hà Nội](campus)
+    - [2024](year) [Thiết kế game](major) điểm chuẩn là bao nhiêu
 
 
 
@@ -163,6 +172,8 @@ nlu:
     - Học viện có đội ngũ giảng viên không?
     - PTIT có nghiên cứu AI không?
     - Đại học PTIT có uy tín không?
+    - Có nên vào  PTIT không?
+    - PTIT có gì hot?
 
 # --- Các ngành đào tạo & chỉ tiêu ---
 - intent: ask_ptit_programs
@@ -396,6 +407,13 @@ nlu:
     - Bảng điểm chuẩn năm [2023](year)
     - Danh sách điểm chuẩn các ngành
     - Điểm chuẩn tất cả ngành năm [2024](year)
+    - Danh sách điểm chuẩn các môn năm [2025](year)
+    - Điểm chuẩn các môn [2024](year)
+    - Điểm chuẩn toàn bộ ngành [2023](year)
+    - Liệt kê điểm chuẩn các ngành ở [Hà Nội](campus)
+    - Điểm chuẩn tất cả các ngành năm [2025](year) cơ sở [Hà Nội](campus)
+    - Danh sách điểm chuẩn các môn năm [2025](year) ở cơ sở [Hà Nội](campus)
+    - Cho mình xem toàn bộ điểm chuẩn năm [2024](year) [TP.HCM](campus)
 
 # --- Thông tin doanh nghiệp liên kết ---
 - intent: ask_ptit_enterprise_partners
@@ -451,11 +469,9 @@ nlu:
   examples: |
     - Cơ hội thực tập tại PTIT
     - Có chương trình thực tập không?
-    - Thực tập ở đâu?
     - Thời gian thực tập
     - Các đối tác thực tập
     - Trường có hỗ trợ thực tập không?
-    - Thực tập có lương không?
 
 # --- Điều kiện tốt nghiệp ---
 - intent: ask_ptit_graduation_requirements
@@ -606,7 +622,11 @@ nlu:
 # --- Dự đoán khả năng trúng tuyển ---
 - intent: check_admission_chance
   examples: |
+    - Bạn có thể ước tính khả năng trúng tuyển không?
+    - Bạn có thể ước lượng khả năng trúng tuyển không?
+    - Dự đoán khả năng trúng tuyển của mình
     - Mình [28 điểm](score) có đỗ ngành [CNTT](major) không?
+    - Mình [28 điểm](score) thì đỗ ngành [CNTT](major) không nhỉ?
     - Điểm [27.5](score) đậu [An toàn thông tin](major) được không?
     - Tôi [25 điểm](score) khối [A00](subject_block) vào được [Quản trị kinh doanh](major) không?
     - [26.5 điểm](score) trúng tuyển [ĐTVT](major) cơ sở [Hà Nội](campus) không?
@@ -617,6 +637,18 @@ nlu:
     - Điểm [30](score) có chắc chắn đỗ [ATTT](major) không?
     - [24 điểm](score) có đậu [Marketing](major) không?
     - Với [25 điểm](score) đỗ được [Kế toán](major) ở [TP.HCM](campus) không?
+    - Ngành [Truyền thông đa phương tiện](major), điểm [27.5](score) điểm
+    - [28](score) điểm, ngành [Công nghệ đa phương tiện](major) khối [A00](subject_block)
+    - Ước tính khả năng trúng tuyển ngành [AI](major), tôi [25 điểm](score) khối [A00](subject_block)
+    - Ước tính khả năng trúng tuyển ngành [CNTT](major), tôi [26](score) khối [A01](subject_block)
+    - Tôi [27 điểm](score) khối [D01](subject_block), ngành [KHMT](major) có đỗ không?
+    - Ngành [ATTT](major), tôi [28](score) khối [A00](subject_block)
+    - Tôi [24 điểm](score) khối [a00](subject_block) ngành [Marketing](major)
+    - Ước tính khả năng trúng tuyển ngành [ATTT](major), [25 điểm](score) khối [A00](subject_block)
+    - Ước tính ngành [CNTT](major), [26 điểm](score) khối [A01](subject_block)
+    - Ngành [AI](major), [27 điểm](score) khối [D01](subject_block)
+    - Dự đoán [KHMT](major), [25](score) khối [a00](subject_block)
+    - Khả năng trúng tuyển [Marketing](major), [24 điểm](score) khối [A00](subject_block)
 
 # --- Gợi ý ngành dựa trên điểm ---
 - intent: suggest_major_by_score
@@ -671,7 +703,6 @@ nlu:
     - [Cơ sở Hà Nội](campus)
     - [Cơ sở TP.HCM](campus)
     - [Cơ sở 1](campus)
-    - [Cơ sở 2](campus)
     - Thông tin [Hà Nội](campus)
     - Muốn biết [cơ sở Hà Nội](campus)
     - Cho mình xem cơ sở [TP.HCM](campus)
@@ -774,105 +805,362 @@ nlu:
     - Chương trình học có nhiều môn chuyên ngành không?
 
 # --- Synonyms cho entities ---
-- synonym: Công nghệ thông tin
-  examples: |
-    - CNTT
-    - Cong nghe thong tin
-    - công nghệ thông tin
-    - cntt
-    - IT
-    - it
-    - Khoa CNTT
-    - Information Technology
-
 - synonym: An toàn thông tin
   examples: |
     - ATTT
-    - An toan thong tin
-    - an toàn thông tin
     - attt
+    - an toàn thông tin
+    - An toan thong tin
+    - an toan thong tin
+    - Information Security
+    - information security
     - IS
     - is
-    - Information Security
 
-- synonym: Khoa học máy tính
+- synonym: An toàn thông tin CLC
+  examples: |
+    - ATTTC
+    - atttc
+    - an toàn thông tin clc
+    - An toan thong tin CLC
+    - an toan thong tin clc
+    - Information Security
+    - information security
+    - IS
+    - is
+
+- synonym: Báo chí
+  examples: |
+    - BC
+    - bc
+    - báo chí
+    - Bao chi
+    - bao chi
+    - Journalism
+    - journalism
+
+- synonym: Công nghệ Internet vạn vật (IoT)
+  examples: |
+    - Công nghệ Internet vạn vật
+    - CNIVV
+    - cnivv
+    - công nghệ internet vạn vật (iot)
+    - Cong nghe Internet van vat (IoT)
+    - cong nghe internet van vat (iot)
+    - Internet of Things
+    - internet of things
+    - IOT
+    - iot
+
+- synonym: Công nghệ Kỹ thuật điện, điện tử
+  examples: |
+    - CNKTĐĐT
+    - cnktđđt
+    - công nghệ kỹ thuật điện, điện tử
+    - Cong nghe Ky thuat đien, đien tu
+    - cong nghe ky thuat đien, đien tu
+    - Electrical and Electronic Engineering
+    - electrical and electronic engineering
+    - EAEE
+    - eaee
+
+- synonym: Công nghệ thông tin
+  examples: |
+    - CNTT
+    - cntt
+    - công nghệ thông tin
+    - Cong nghe thong tin
+    - cong nghe thong tin
+    - Information Technology
+    - information technology
+    - IT
+    - it
+
+- synonym: Công nghệ thông tin (Chương trình CLC)
+  examples: |
+    - Công nghệ thông tin CLC
+    - công nghệ thông tin (chương trình clc)
+    - Cong nghe thong tin (Chuong trinh CLC)
+    - cong nghe thong tin (chuong trinh clc)
+    - CNTT CLC
+
+- synonym: Công nghệ thông tin (Cử nhân định hướng ứng dụng)
+  examples: |
+    - Công nghệ thông tin hướng ứng dụng
+    - CNTTUD
+    - cnttud
+    - công nghệ thông tin (cử nhân định hướng ứng dụng)
+    - Cong nghe thong tin (Cu nhan đinh huong ung dung)
+    - cong nghe thong tin (cu nhan đinh huong ung dung)
+
+- synonym: Công nghệ thông tin Việt – Nhật
+  examples: |
+    - CNTTVN
+    - CNTTV–N
+    - CNTT Viet – Nhat
+    - cnttvn
+    - công nghệ thông tin việt – nhật
+    - Cong nghe thong tin Viet – Nhat
+    - cong nghe thong tin viet – nhat
+
+- synonym: Công nghệ tài chính (Fintech)
+  examples: |
+    - Công nghệ tài chính
+    - CNTC
+    - cntc
+    - công nghệ tài chính (fintech)
+    - Cong nghe tai chinh (Fintech)
+    - cong nghe tai chinh (fintech)
+    - Fintech
+    - fintech
+
+- synonym: Công nghệ vi mạch bán dẫn
+  examples: |
+    - CNVMBD
+    - cnvmbd
+    - công nghệ vi mạch bán dẫn
+    - Cong nghe vi mach ban dan
+    - cong nghe vi mach ban dan
+    - Semiconductor Technology
+    - semiconductor technology
+    - ST
+    - st
+
+- synonym: Công nghệ đa phương tiện
+  examples: |
+    - dpt
+    - DPT
+    - CNĐPT
+    - cnđpt
+    - công nghệ đa phương tiện
+    - Cong nghe đa phuong tien
+    - cong nghe đa phuong tien
+    - Multimedia Technology
+    - multimedia technology
+    - MT
+    - mt
+
+- synonym: Khoa học máy tính (định hướng Khoa học dữ liệu)
   examples: |
     - KHMT
-    - Khoa hoc may tinh
+    - khmt
     - khoa học máy tính
+    - Khoa hoc may tinh
+    - khoa hoc may tinh
     - Computer Science
-    - cs
+    - computer science
     - CS
+    - cs
 
-- synonym: Trí tuệ nhân tạo
+- synonym: Khoa học máy tính (định hướng Khoa học dữ liệu)
   examples: |
-    - AI
-    - ai
-    - ttnt
-    - Học máy
-    - Artificial Intelligence
-    - trí tuệ nhân tạo
-    - Tri tue nhan tao
-    - TTNT
-
-- synonym: Truyền thông đa phương tiện
-  examples: |
-    - TTĐPT
-    - Truyen thong da phuong tien
-    - truyền thông đa phương tiện
-    - Multimedia
+    - khoa học máy tính (định hướng khoa học dữ liệu)
+    - Khoa hoc may tinh (đinh huong Khoa hoc du lieu)
+    - khoa hoc may tinh (đinh huong khoa hoc du lieu)
 
 - synonym: Kế toán
   examples: |
-    - Ke toan
+    - KT
+    - kt
     - kế toán
+    - Ke toan
+    - ke toan
     - Accounting
+    - accounting
+    - act
+
+- synonym: Kế toán chất lượng cao (chuẩn quốc tế ACCA)
+  examples: |
+    - Kế toán chất lượng cao
+    - KTCLC
+    - ktclc
+    - kế toán chất lượng cao (chuẩn quốc tế acca)
+    - Ke toan chat luong cao (chuan quoc te ACCA)
+    - ke toan chat luong cao (chuan quoc te acca)
+    - Accounting
+    - accounting
+
+- synonym: Kỹ thuật dữ liệu (ngành Mạng máy tính và truyền thông dữ liệu)
+  examples: |
+    - Kỹ thuật dữ liệu
+    - KTDL
+    - ktdl
+    - kỹ thuật dữ liệu (ngành mạng máy tính và truyền thông dữ liệu)
+    - Ky thuat du lieu (nganh Mang may tinh va truyen thong du lieu)
+    - ky thuat du lieu (nganh mang may tinh va truyen thong du lieu)
+    - Computer Networks and Data Communications
+    - computer networks and data communications
+    - CNADC
+    - cnadc
+
+- synonym: Kỹ thuật điều khiển và tự động hóa
+  examples: |
+    - KTĐKVTĐH
+    - ktđkvtđh
+    - kỹ thuật điều khiển và tự động hóa
+    - Ky thuat đieu khien va tu đong hoa
+    - ky thuat đieu khien va tu đong hoa
+    - Control and Automation
+    - control and automation
+    - CAA
+    - caa
+
+- synonym: Kỹ thuật điện tử, viễn thông
+  examples: |
+    - KTĐTVT
+    - ktđtvt
+    - kỹ thuật điện tử, viễn thông
+    - Ky thuat đien tu, vien thong
+    - ky thuat đien tu, vien thong
+    - Electronics and Telecommunications
+    - electronics and telecommunications
+    - EAT
+    - eat
+    - viễn thông
+    - vien thong
+    - vt
+
+- synonym: Logistics và quản trị chuỗi cung ứng
+  examples: |
+    - Logistic
+    - LVQTCCU
+    - lvqtccu
+    - logistics và quản trị chuỗi cung ứng
+    - Logistics va quan tri chuoi cung ung
+    - logistics va quan tri chuoi cung ung
+    - Logistics and Supply Chain Management
+    - logistics and supply chain management
+    - LASCM
+    - lascm
 
 - synonym: Marketing
   examples: |
     - marketing
-    - MKT
     - mkt
-    - Maketing
+    - MKT
 
-- synonym: Thiết kế và phát triển Game
+- synonym: Marketing chất lượng cao
   examples: |
-    - thiết kế game
-    - phát triển game
-    - game design
-    - game
-    - game development
+    - MCLC
+    - mclc
+    - marketing chất lượng cao
+    - Marketing chat luong cao
+    - marketing chat luong cao
+    - Marketing
+    - marketing
+
+- synonym: Mạng máy tính và Truyền thông dữ liệu
+  examples: |
+    - MMTVTTDL
+    - mmtvttdl
+    - mạng máy tính và truyền thông dữ liệu
+    - Mang may tinh va Truyen thong du lieu
+    - mang may tinh va truyen thong du lieu
+    - Computer Networks and Data Communications
+    - computer networks and data communications
+    - CNADC
+    - cnadc
+
+- synonym: Quan hệ công chúng (ngành Marketing)
+  examples: |
+    - Quan hệ công chúng
+    - QHCC
+    - qhcc
+    - quan hệ công chúng (ngành marketing)
+    - Quan he cong chung (nganh Marketing)
+    - quan he cong chung (nganh marketing)
 
 - synonym: Quản trị kinh doanh
   examples: |
     - QTKD
-    - Quan tri kinh doanh
+    - qtkd
     - quản trị kinh doanh
+    - Quan tri kinh doanh
+    - quan tri kinh doanh
     - Business Administration
+    - business administration
+    - BA
+    - ba
+
+- synonym: Thiết kế và phát triển Game
+  examples: |
+    - TKVPTG
+    - tkvptg
+    - thiết kế và phát triển game
+    - Thiet ke va phat trien Game
+    - thiet ke va phat trien game
+    - Game Design and Development
+    - game design and development
+    - GDAD
+    - gdad
+    - game
+    - Game
+    - thiết kế game
+    - thiet ke game
+
+- synonym: Thiết kế và phát triển Game (ngành Công nghệ đa phương tiện)
+  examples: |
+    - Thiết kế và phát triển Game cho đa phương tiện
+    - TKVPTG
+    - tkvptg
+    - thiết kế và phát triển game (ngành công nghệ đa phương tiện)
+    - Thiet ke va phat trien Game (nganh Cong nghe đa phuong tien)
+    - thiet ke va phat trien game (nganh cong nghe đa phuong tien)
 
 - synonym: Thương mại điện tử
   examples: |
     - TMĐT
-    - Thuong mai dien tu
+    - tmđt
     - thương mại điện tử
+    - Thuong mai đien tu
+    - thuong mai đien tu
     - E-commerce
+    - e-commerce
 
-- synonym: Công nghệ điện tử viễn thông
+- synonym: Truyền thông đa phương tiện
   examples: |
-    - CĐTVT
-    - Cong nghe dien tu vien thong
-    - công nghệ điện tử viễn thông
-    - Electronics and Telecommunications
-    - Điện tử viễn thông
-    - ĐTVT
-    - Kỹ thuật Điện tử viễn thông
+    - TTĐPT
+    - ttđpt
+    - truyền thông đa phương tiện
+    - Truyen thong đa phuong tien
+    - truyen thong đa phuong tien
+    - Multimedia Communication
+    - multimedia communication
+    - MC
+    - mc
 
-- synonym: Công nghệ kỹ thuật điện, điện tử"
+- synonym: Truyền thông đa phương tiện CLC
   examples: |
-    - CĐKTĐĐT
-    - Cong nghe ky thuat dien dien tu
-    - công nghệ kỹ thuật điện, điện tử
-    - Electrical and Electronic Engineering
+    - TTĐPTC
+    - ttđptc
+    - truyền thông đa phương tiện clc
+    - Truyen thong đa phuong tien CLC
+    - truyen thong đa phuong tien clc
+
+- synonym: Trí tuệ nhân tạo
+  examples: |
+    - TTNT
+    - ttnt
+    - trí tuệ nhân tạo
+    - Tri tue nhan tao
+    - tri tue nhan tao
+    - Artificial Intelligence
+    - artificial intelligence
+    - AI
+    - ai
+
+- synonym: Trí tuệ nhân tạo vạn vật (AIoT)
+  examples: |
+    - Trí tuệ nhân tạo vạn vật
+    - TTNTVV
+    - ttntvv
+    - trí tuệ nhân tạo vạn vật (aiot)
+    - Tri tue nhan tao van vat (AIoT)
+    - tri tue nhan tao van vat (aiot)
+    - Artificial Intelligence of Things
+    - artificial intelligence of things
+    - AIot
+    - aiot
 
 - synonym: Hà Nội
   examples: |
@@ -882,6 +1170,7 @@ nlu:
     - HN
     - cơ sở 1
     - Hà Đông
+    - cơ sở Hà Nội
 
 - synonym: TP.HCM
   examples: |
@@ -897,4 +1186,16 @@ nlu:
 - regex: score
   examples: |
     - \d+[.,]?\d*\s*điểm
-    - \d+[.,]?\d+
+    - \d+[.,]?\d*
+    - \d+[.,]?\d*\s*đ
+    - \d+
+
+- regex: year
+  examples: |
+    - 202[0-5]
+    - năm\s+202[0-5]
+    - ở\s+202[0-5]
+- regex: subject_block
+  examples: |
+    - (?i)[AD]\d{2}
+    - (?i)khối\s+[AD]\d{2}
