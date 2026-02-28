@@ -1,0 +1,1245 @@
+version: "3.1"
+
+nlu:
+# --- Greetings (Chào hỏi) ---
+- intent: greet
+  examples: |
+    - Xin chào
+    - Chào bạn
+    - Hello bot
+    - Hey
+    - Hi
+    - Chào buổi sáng
+    - Chào buổi chiều
+    - Chào buổi tối
+    - Bot ơi chào
+    - Xin chào PTIT bot
+    - Chào bạn nhé
+    - Hey bot xin hỏi
+    - Hi bạn
+    - Bot trả lời mình nhé
+    - Hello bạn
+    - Chào
+    - Ây
+
+# --- Thank you (Cảm ơn) ---
+- intent: thanks
+  examples: |
+    - Cảm ơn bạn
+    - Thanks
+    - Tks nha
+    - Cảm ơn bot
+    - Xin cảm ơn
+    - Cảm ơn rất nhiều
+    - Rất biết ơn bạn
+    - Mình cảm ơn
+    - Cảm ơn nhé
+    - Thanks bot
+    - Cảm ơn nhiều lắm
+    - Tks bạn
+    - Bot dễ thương cảm ơn
+    - Cảm ơn đã giúp
+    - Thank you
+    - Tks bot nhiều
+    - Cảm ơn bạn rất nhiều lắm
+
+# --- Goodbye (Tạm biệt) ---
+- intent: goodbye
+  examples: |
+    - Tạm biệt
+    - Chào nhé
+    - Hẹn gặp lại
+    - Bye
+    - Bye bot
+    - See you
+    - Bot tạm biệt
+    - Mình đi đây
+    - Kết thúc rồi cảm ơn
+    - Hẹn gặp bạn lần sau
+    - Chào tạm biệt
+    - Bye bạn
+    - Thôi nhé
+    - Tạm biệt nhé
+    - Goodbye
+    - Hẹn gặp bot
+
+# --- Affirm (Đồng ý / Có) ---
+- intent: affirm
+  examples: |
+    - chào
+    - có
+    - đúng
+    - được
+    - ok
+    - oke
+    - có ạ
+    - vâng
+    - đồng ý
+    - chắc chắn
+    - phải
+    - đúng rồi
+    - đúng vậy
+    - ừ
+    - ừm
+    - yes
+    - yeah
+    - yep
+    - sure
+    - tất nhiên
+
+# --- Deny (Từ chối / Không) ---
+- intent: deny
+  examples: |
+    - không
+    - không có
+    - ko
+    - không ạ
+    - chưa
+    - thôi
+    - không cần
+    - không muốn
+    - không phải
+    - sai rồi
+    - no
+    - nope
+    - không đúng
+    - không đồng ý
+    - từ chối
+    - không phải vậy
+# --- Điểm chuẩn theo năm & ngành ---
+- intent: ask_ptit_cutoff_year_major
+  examples: |
+    - Cho mình hỏi điểm chuẩn ngành [Công nghệ thông tin](major) năm [2025](year) cơ sở [Hà Nội](campus) là bao nhiêu?
+    - Ngành [An toàn thông tin](major) năm [2024](year) lấy bao nhiêu điểm vậy?
+    - Điểm chuẩn [Kế toán](major) PTIT [TP.HCM](campus) năm [2023](year)
+    - Năm [2025](year), ngành [Khoa học máy tính](major) điểm đầu vào là bao nhiêu?
+    - Trường lấy điểm chuẩn ngành [Marketing](major) [2025](year) thế nào?
+    - Bạn ơi tra giúp mình điểm chuẩn [Trí tuệ nhân tạo](major) năm [2024](year)
+    - Ngành [IoT](major) năm [2023](year) ở [TP.HCM](campus) lấy bao nhiêu?
+    - Cho hỏi điểm trúng tuyển [Quản trị kinh doanh](major) năm [2025](year)
+    - Xem giúp tôi điểm ngành [Thương mại điện tử](major) năm [2022](year)
+    - Mức điểm chuẩn [2025](year) ngành [Truyền thông đa phương tiện](major)
+    - Điểm chuẩn ngành [Báo chí](major) năm [2024](year)
+    - Tra điểm chuẩn [Công nghệ điện tử viễn thông](major) [2023](year)
+    - Điểm chuẩn ngành [Thiết kế game](major) [2025](year)
+    - Bot ơi tra giúp điểm ngành [Công nghệ đa phương tiện](major) [2024](year)
+    - Điểm chuẩn ngành [Quản trị mạng](major) [2025](year) ở [Hà Nội](campus)
+    - Cho mình điểm chuẩn ngành [Công nghệ thông tin](major) của PTIT
+    - Điểm chuẩn [An toàn thông tin](major) là bao nhiêu
+    - Ngành [Khoa học máy tính](major) lấy điểm chuẩn bao nhiêu
+    - [Truyền thông đa phương tiện](major) điểm chuẩn
+    - Tra điểm [Kỹ thuật Điện tử viễn thông](major)
+    - [Marketing](major) điểm chuẩn năm [2025](year)
+    - Năm [2024](year) ngành [CNTT](major) cơ sở [Hà Nội](campus)
+    - Điểm [Công nghệ thông tin](major) [TP.HCM](campus) năm [2025](year)
+    - [An toàn thông tin](major) cơ sở [Hà Nội](campus)
+    - Điểm ngành [CNTT](major)
+    - Điểm chuẩn [CNTT](major) năm [2025](year)
+    - [IT](major) [2024](year) bao nhiêu điểm
+    - Năm [2023](year) ngành [Khoa học máy tính](major) điểm chuẩn
+    - [ATTT](major) [2020](year)
+    - Điểm chuẩn năm [2021](year) [Kế toán](major)
+    - [Marketing](major) [2022](year) lấy bao nhiêu
+    - Năm [2025](year) [QTKD](major) cơ sở [Hà Nội](campus)
+    - [2024](year) [Thiết kế game](major) điểm chuẩn là bao nhiêu
+
+
+
+# --- Phương thức tuyển sinh ---
+- intent: ask_ptit_admission_methods
+  examples: |
+    - Trường có những phương thức xét tuyển nào?
+    - PTIT tuyển sinh theo cách gì?
+    - Có xét tuyển học bạ không?
+    - Phương thức xét tuyển kết hợp là thế nào?
+    - Điều kiện xét tuyển tài năng là gì?
+    - Có xét tuyển bằng SAT/ACT không?
+    - PTIT dùng thi đánh giá năng lực không?
+    - Cách PTIT xét tuyển?
+    - Có xét bằng tiếng Anh quốc tế không?
+    - Phương thức tuyển sinh chính năm 2025?
+    - Cách tuyển sinh theo chứng chỉ IELTS?
+    - PTIT xét tuyển qua học bạ + IELTS ra sao?
+    - Quy chế tuyển sinh đại học PTIT?
+    - Xét điểm thi THPT như thế nào?
+    - Nên chọn phương thức nào?
+
+# --- Giới thiệu Trường & thông tin chung ---
+- intent: ask_ptit_school_info
+  examples: |
+    - Giới thiệu sơ lược về PTIT
+    - PTIT là trường gì?
+    - Học viện Công nghệ Bưu chính Viễn thông đào tạo gì?
+    - PTIT có bao nhiêu cơ sở?
+    - Môi trường học tập PTIT như thế nào?
+    - PTIT thuộc Bộ nào?
+    - Ưu điểm khi học tại PTIT?
+    - Sinh viên PTIT ra trường lương cao không?
+    - PTIT top bao nhiêu về công nghệ?
+    - Có cơ sở tại TP.HCM không?
+    - PTIT có phải trường trọng điểm quốc gia?
+    - Học viện có đội ngũ giảng viên không?
+    - PTIT có nghiên cứu AI không?
+    - Đại học PTIT có uy tín không?
+    - Có nên vào  PTIT không?
+    - PTIT có gì hot?
+    - Trường PTIT ở đâu
+    - Cho mình biết về PTIT
+    - PTIT có tốt không
+    - PTIT là gì vậy
+    - Học viện PTIT có uy tín không
+    - PTIT có mấy cơ sở
+
+# --- Các ngành đào tạo & chỉ tiêu ---
+- intent: ask_ptit_programs
+  examples: |
+    - Trường đang đào tạo những ngành nào?
+    - Chỉ tiêu tuyển sinh từng ngành là bao nhiêu?
+    - Có bao nhiêu chỉ tiêu cho cơ sở Hà Nội?
+    - Cơ sở TP.HCM có những ngành nào?
+    - Tổng chỉ tiêu tuyển sinh 2025 là bao nhiêu?
+    - PTIT có chương trình chất lượng cao không?
+    - Các chương trình liên kết quốc tế?
+    - Ngành Trí tuệ nhân tạo tuyển bao nhiêu?
+    - Danh sách ngành đào tạo tại PTIT?
+    - Ngành Khoa học dữ liệu có không?
+    - Mã ngành PTIT là gì?
+    - Chương trình Fintech có trong PTIT không?
+    - PTIT có chương trình thạc sĩ không?
+    - Các khối ngành kỹ thuật?
+    - Chỉ tiêu ngành CNTT bao nhiêu
+    - PTIT đào tạo mấy ngành
+    - PTIT học những cái gì
+    - Chỉ tiêu năm 2025 PTIT
+
+# --- Liên hệ & Contact ---
+- intent: ask_ptit_contact
+  examples: |
+    - Địa chỉ PTIT ở đâu?
+    - Số điện thoại phòng tuyển sinh?
+    - Email liên hệ tuyển sinh?
+    - Cơ sở Hà Nội ở quận nào?
+    - Liên hệ TP.HCM ở đâu?
+    - Fanpage PTIT?
+    - Website tuyển sinh là gì?
+    - Hotline hỗ trợ?
+    - PTIT có channel Zalo không?
+    - Địa chỉ fanpage Facebook của PTIT?
+    - Địa chỉ gửi mail liên hệ?
+    - Số Fax PTIT?
+
+# --- Học phí & chi phí ---
+- intent: ask_ptit_tuition
+  examples: |
+    - Học phí PTIT 2025 là bao nhiêu?
+    - Học phí hệ đại trà?
+    - Học phí chương trình chất lượng cao?
+    - Học phí chương trình quốc tế?
+    - Phí học một học kỳ là bao nhiêu?
+    - Học phí ngành CNTT?
+    - Học phí PTIT Hà Nội vs TP.HCM?
+    - Học phí có tăng không?
+    - Có phụ phí ngoài học phí không?
+    - Mức thu học phí đại học PTIT?
+    - Chênh lệch học phí giữa ngành?
+    - Một tín bao nhiêu tiền?
+    - Bao nhiêu 1 tín?
+    - Tín chỉ cao không?
+    - Học phí PTIT mỗi năm bao nhiêu
+    - Học phí ngành CNTT là mấy
+    - Chi phí học PTIT
+    - Học phí CLC bao nhiêu
+    - Học phí ngành ATTT năm 2025
+
+# --- Học bổng & hỗ trợ tài chính ---
+- intent: ask_ptit_scholarships
+  examples: |
+    - PTIT có chính sách học bổng gì không?
+    - Điều kiện để nhận học bổng là gì?
+    - Học bổng toàn phần có không?
+    - Làm sao để miễn học phí?
+    - Học bổng Tài năng Tinh hoa?
+    - Yêu cầu duy trì học bổng?
+    - Học bổng khuyến khích học tập?
+    - Suất học bổng 500 triệu là gì?
+    - Học bổng dành cho giải quốc gia?
+    - Các học bổng quốc tế?
+
+# --- Hồ sơ xét tuyển ---
+- intent: ask_ptit_documents_required
+  examples: |
+    - Hồ sơ xét tuyển cần gì?
+    - Thủ tục nộp hồ sơ trực tuyến như thế nào?
+    - Có cần xác nhận của trường cấp 3 không?
+    - Nộp chứng chỉ IELTS có cần bản gốc không?
+    - Hướng dẫn nộp lệ phí xét tuyển?
+    - Cách khai thông tin hồ sơ?
+
+# --- Thời gian tuyển sinh & mốc quan trọng ---
+- intent: ask_ptit_deadlines
+  examples: |
+    - Khi nào công bố điểm chuẩn?
+    - Thời gian đăng ký nguyện vọng là khi nào?
+    - Deadline nộp lệ phí xét tuyển?
+    - Ngày công bố trúng tuyển đợt 1?
+    - Thời hạn xác nhận nhập học?
+    - Lịch tuyển sinh 2025?
+    - Bao giờ nhập học trực tiếp?
+
+# --- Tra cứu bảng dữ liệu điểm chuẩn lookup ---
+- intent: ask_ptit_lookup
+  examples: |
+    - Giúp mình tra cứu điểm chuẩn nhé
+    - Bot có thể tìm điểm theo ngành và năm giúp mình?
+    - Điểm chuẩn ngành [Công nghệ thông tin](major) năm [2025](year) là bao nhiêu?
+    - Tra cứu điểm chuẩn PTIT
+    - Đây là lookup điểm chuẩn chi tiết
+    - Xem bảng điểm chuẩn theo {major} {year}
+    - Tra lookup {major} {campus}
+    - Lấy dữ liệu bảng lookup
+    - Cho tôi xem điểm chuẩn bảng
+    - Xuất điểm chuẩn {major} năm (year)
+
+# --- Bot Identity (Giới thiệu bot) ---
+- intent: bot_identity
+  examples: |
+    - Bạn là ai?
+    - Bot làm được gì?
+    - Giới thiệu về bạn
+    - Bạn có thể giúp gì cho mình?
+    - Chức năng của bot là gì?
+    - Bạn được tạo ra để làm gì?
+    - Chatbot tư vấn tuyển sinh à?
+    - Ai tạo ra bạn?
+    - Bạn tên gì?
+
+# --- Small Talk ---
+- intent: small_talk
+  examples: |
+    - Hôm nay thế nào?
+    - Bạn khỏe không?
+    - Chúc bạn một ngày tốt lành
+    - Bot dễ thương quá
+    - Cảm ơn bot nhiều lắm
+    - Bạn giỏi thật đấy
+    - Hay quá!
+
+# --- Hỏi về các ngành học ---
+- intent: ask_major
+  examples: |
+    - PTIT có những ngành nào?
+    - Liệt kê các ngành đào tạo
+    - Trường có ngành gì?
+    - Các khoa của PTIT
+    - Trường đào tạo những ngành nào?
+    - Danh sách các ngành
+    - Các chuyên ngành tại PTIT
+    - PTIT có mấy ngành?
+    - Các ngành học ở PTIT
+    - Ngành nào hot nhất?
+    - Cho tôi xem danh sách ngành
+    - Tổng hợp các ngành
+    - Danh sách ngành của PTIT
+    - Các ngành học tại PTIT
+    - Liệt kê ngành PTIT
+    - PTIT có mấy ngành vậy
+    - Danh sách chuyên ngành
+
+# --- Hỏi chi tiết về 1 ngành cụ thể ---
+- intent: ask_major_detail
+  examples: |
+    - Ngành [Công nghệ thông tin](major) học những gì?
+    - Cho tôi biết thông tin về ngành [An toàn thông tin](major)
+    - [Khoa học máy tính](major) ra trường làm gì?
+    - Chương trình đào tạo ngành [Trí tuệ nhân tạo](major)
+    - Thông tin chi tiết ngành [CNTT](major)
+    - Ngành [Kỹ thuật Điện tử viễn thông](major) có tốt không?
+    - [ATTT](major) học gì?
+    - Giới thiệu ngành [AI](major)
+    - [Quản trị kinh doanh](major) lương ra trường
+    - Tìm hiểu về [KHMT](major)
+    - Ngành [AI](major)
+    - Ngành [CNTT](major)
+    - [Công nghệ thông tin](major)
+    - [An toàn thông tin](major)
+    - [ATTT](major)
+    - [AI](major)
+    - [ĐTVT](major)
+    - [KHMT](major)
+    - [QTKD](major)
+    - Tìm hiểu [Công nghệ thông tin](major)
+    - Cho mình xem ngành [AI](major)
+    - Hỏi về ngành [CNTT](major)
+    - Thông tin [ATTT](major)
+    - Chi tiết ngành [Khoa học máy tính](major)
+    - Ngành [IoT](major)
+    - [Internet vạn vật](major)
+    - [Fintech](major)
+    - [Công nghệ tài chính](major)
+    - Ngành [thiết kế game](major)
+    - [Game](major)
+    - [Marketing](major)
+    - [MKT](major)
+    - Ngành [Kế toán](major)
+    - [Logistics](major)
+    - [Thương mại điện tử](major)
+    - [TMĐT](major)
+    - [Truyền thông đa phương tiện](major)
+    - [TTĐPT](major)
+    - [Công nghệ đa phương tiện](major)
+    - [CNĐPT](major)
+    - [Vi mạch bán dẫn](major)
+    - [Kỹ thuật dữ liệu](major)
+    - Ngành [IoT](major)
+    - [Internet vạn vật](major)
+    - [Fintech](major)
+    - [Công nghệ tài chính](major)
+    - Ngành [thiết kế game](major)
+    - [Game](major)
+    - [Marketing](major)
+    - [MKT](major)
+    - Ngành [Kế toán](major)
+    - [Logistics](major)
+    - [Thương mại điện tử](major)
+    - [TMĐT](major)
+    - [Truyền thông đa phương tiện](major)
+    - [TTĐPT](major)
+    - [Công nghệ đa phương tiện](major)
+    - [CNĐPT](major)
+    - [Vi mạch bán dẫn](major)
+    - [Kỹ thuật dữ liệu](major)
+    - Nói về ngành [Công nghệ thông tin](major)
+    - Thông tin về ngành [An toàn thông tin](major)
+    - Ngành [Khoa học máy tính](major) có gì nổi bật?
+    - Chương trình học ngành [Trí tuệ nhân tạo](major) có gì đặc biệt?
+
+# --- Xu hướng điểm chuẩn ---
+- intent: ask_ptit_cutoff_trend
+  examples: |
+    - Điểm chuẩn PTIT có xu hướng thế nào?
+    - Xu hướng điểm chuẩn các năm gần đây
+    - Điểm chuẩn PTIT tăng hay giảm?
+    - Xu hướng điểm chuẩn ngành công nghệ
+    - Điểm chuẩn các ngành có thay đổi không?
+    - So sánh điểm chuẩn qua các năm
+    - Biến động điểm chuẩn PTIT
+
+# --- Liệt kê tất cả điểm chuẩn ---
+- intent: ask_ptit_list_all_cutoff_scores
+  examples: |
+    - Điểm chuẩn tất cả các ngành năm [2022](year)
+    - Cho mình xem điểm chuẩn các ngành năm [2023](year)
+    - Liệt kê điểm chuẩn năm [2024](year)
+    - Tất cả điểm chuẩn [2025](year)
+    - Điểm chuẩn các ngành [2022](year)
+    - Xem điểm chuẩn hết các ngành
+    - Bảng điểm chuẩn năm [2023](year)
+    - Danh sách điểm chuẩn các ngành
+    - Điểm chuẩn tất cả ngành năm [2024](year)
+    - Danh sách điểm chuẩn các môn năm [2025](year)
+    - Điểm chuẩn các môn [2024](year)
+    - Điểm chuẩn toàn bộ ngành [2023](year)
+    - Liệt kê điểm chuẩn các ngành ở [Hà Nội](campus)
+    - Điểm chuẩn tất cả các ngành năm [2025](year) cơ sở [Hà Nội](campus)
+    - Danh sách điểm chuẩn các môn năm [2025](year) ở cơ sở [Hà Nội](campus)
+    - Cho mình xem toàn bộ điểm chuẩn năm [2024](year) [TP.HCM](campus)
+
+# --- Thông tin doanh nghiệp liên kết ---
+- intent: ask_ptit_enterprise_partners
+  examples: |
+    - Trường liên kết các doanh nghiệp nào
+    - PTIT hợp tác với công ty gì
+    - Các đối tác của PTIT
+    - Doanh nghiệp liên kết với trường
+    - PTIT làm việc với doanh nghiệp nào
+    - Nói về FPT
+    - Thông tin về Viettel
+    - PTIT có hợp tác với Samsung không
+
+# --- Thông tin ký túc xá ---
+- intent: ask_ptit_dormitory_info
+  examples: |
+    - Thông tin về ký túc xá PTIT
+    - KTX PTIT như thế nào?
+    - Ký túc xá có điều hòa không?
+    - Chi phí ở ký túc xá
+    - Địa chỉ ký túc xá [Hà Nội](campus)
+    - Quy định ở KTX
+    - Ký túc xá có wifi không?
+    - Liên hệ ban quản lý KTX
+    - Ký túc xá [TP.HCM](campus)
+    - Hỗ trợ chỗ ở cho sinh viên
+    - Học bổng ký túc xá
+    - Giới thiệu về KTX trường
+    - KTX PTIT có tiện nghi gì
+    - Thông tin chung về KTX
+
+# --- Ngôn ngữ giảng dạy ---
+- intent: ask_ptit_language_of_instruction
+  examples: |
+    - PTIT giảng dạy bằng tiếng gì?
+    - Có học bằng tiếng Anh không?
+    - Chương trình quốc tế giảng dạy thế nào?
+    - Ngôn ngữ giảng dạy tại PTIT
+    - Có lớp song ngữ không?
+    - Yêu cầu tiếng Anh như thế nào?
+
+# --- Bằng cấp sau tốt nghiệp ---
+- intent: ask_ptit_degree_awarded
+  examples: |
+    - Tốt nghiệp PTIT được cấp bằng gì?
+    - Loại bằng tốt nghiệp
+    - Bằng Kỹ sư hay Cử nhân?
+    - Bằng cấp PTIT
+    - Chứng chỉ tốt nghiệp
+    - Sau khi học xong được bằng gì?
+    - Thời gian học là bao lâu
+    - Mất bao lâu để tốt nghiệp?
+
+# --- Cơ hội thực tập ---
+- intent: ask_ptit_internship_opportunities
+  examples: |
+    - Cơ hội thực tập tại PTIT
+    - Có chương trình thực tập không?
+    - Thời gian thực tập
+    - Các đối tác thực tập
+    - Trường có hỗ trợ thực tập không?
+    - Sinh viên PTIT có cơ hội thực tập tại doanh nghiệp không
+    - Các địa điểm thực tập của PTIT
+    - Trường liên kết với công ty nào cho thực tập
+
+# --- Điều kiện tốt nghiệp ---
+- intent: ask_ptit_graduation_requirements
+  examples: |
+    - Điều kiện tốt nghiệp PTIT
+    - Cần bao nhiêu tín chỉ để tốt nghiệp?
+    - Yêu cầu tốt nghiệp
+    - Chuẩn đầu ra tiếng Anh
+    - GPA tốt nghiệp tối thiểu
+    - Điều kiện để lấy bằng
+    - Yêu cầu về học phí
+
+# --- Hoạt động ngoại khóa ---
+- intent: ask_ptit_extracurricular_activities
+  examples: |
+    - Hoạt động ngoại khóa tại PTIT
+    - Có câu lạc bộ nào không?
+    - CLB công nghệ
+    - Hoạt động tình nguyện
+    - Câu lạc bộ thể thao
+    - Đội nhóm văn hóa văn nghệ
+    - Cuộc thi học thuật
+    - Khởi nghiệp tại PTIT
+
+# --- Cơ hội học sau đại học ---
+- intent: ask_ptit_postgraduate_opportunities
+  examples: |
+    - PTIT có đào tạo thạc sĩ không?
+    - Học tiếp sau đại học
+    - Chương trình cao học
+    - Tiến sĩ tại PTIT
+    - Học bổng sau đại học
+    - Điều kiện học thạc sĩ
+
+# --- Học phí theo tín chỉ ---
+- intent: ask_ptit_tuition_per_credit
+  examples: |
+    - Học phí bao nhiêu tiền một tín?
+    - Mức phí mỗi tín chỉ
+    - Giá một tín chỉ
+    - Học phí tính theo tín chỉ
+    - Tín chỉ giá bao nhiêu?
+    - Chi phí học theo tín
+
+# --- Phương thức thanh toán học phí ---
+- intent: ask_ptit_tuition_payment_methods
+  examples: |
+    - Cách đóng học phí
+    - Thanh toán học phí như thế nào?
+    - Có thể chuyển khoản học phí không?
+    - Đóng học phí qua app gì?
+    - Phương thức thanh toán học phí
+    - Đóng học phí online
+    - Tài khoản ngân hàng đóng học phí
+
+# --- Miễn giảm học phí ---
+- intent: ask_ptit_tuition_exemption
+  examples: |
+    - Chính sách miễn giảm học phí
+    - Ai được giảm học phí?
+    - Miễn học phí cho ai?
+    - Hỗ trợ tài chính cho sinh viên
+    - Học bổng toàn phần
+    - Giảm học phí hộ nghèo
+    - Con liệt sĩ được miễn học phí không?
+    - Đối tượng được miễn giảm học phí
+    - Hộ nghèo được miễn giảm không?
+    - Sinh viên có hoàn cảnh khó khăn được hỗ trợ gì?
+    - Con thương binh, bệnh binh được miễn giảm học phí không?
+
+# --- Phòng học ---
+- intent: ask_ptit_classrooms
+  examples: |
+    - Phòng học PTIT như thế nào?
+    - Giảng đường có điều hòa không?
+    - Trang thiết bị phòng học
+    - Phòng học có máy chiếu không?
+    - Smart classroom
+    - Phòng học hiện đại không?
+    - Phòng học có wifi không?
+    - Phòng học có đủ chỗ ngồi không?
+    - Phòng học có camera không?
+
+# --- Phòng lab ---
+- intent: ask_ptit_labs
+  examples: |
+    - Phòng lab PTIT
+    - Phòng thực hành
+    - Lab CNTT như thế nào?
+    - Samsung Lab
+    - AI Lab
+    - Cyber Security Lab
+    - Phòng lab có cấu hình tốt không?
+    - Có những lab nào
+    - Lab có hỗ trợ thực tập không?
+    - Lab có mở cửa cho sinh viên không?
+
+# --- Thư viện ---
+- intent: ask_ptit_library
+  examples: |
+    - Thư viện PTIT
+    - Thư viện số
+    - Giờ mở cửa thư viện
+    - Không gian tự học
+    - Thư viện có sách gì?
+    - Truy cập thư viện online
+    - Có thư viện không?
+    - Thời gian mở cưa thư viện là lúc nào?
+
+# --- Gợi ý chọn ngành ---
+- intent: ask_ptit_major_recommendation
+  examples: |
+    - Tư vấn chọn ngành
+    - Nên học ngành gì tại PTIT?
+    - Ngành nào phù hợp với mình?
+    - Gợi ý ngành học
+    - Ngành nào dễ xin việc?
+    - Chọn ngành hot
+    - Ngành tiềm năng
+    - Ngành nào lương cao?
+    - Nên chọn ngành nào?
+
+# --- Khuôn viên trường ---
+- intent: ask_ptit_campus_facilities
+  examples: |
+    - Khuôn viên PTIT như thế nào?
+    - Cơ sở vật chất trường
+    - Campus PTIT
+    - Tòa nhà A2
+    - Sân vận động
+    - Không gian xanh
+    - Smart Campus
+
+# --- So sánh với trường khác (toxic/kick war) ---
+- intent: ask_toxic_kick_war
+  examples: |
+    - PTIT có tốt hơn Bách Khoa không?
+    - So sánh PTIT với UET
+    - PTIT hay HUST?
+    - Trường nào tốt hơn?
+    - PTIT so với các trường khác
+    - Big 3 công nghệ
+    - PTIT đứng thứ mấy?
+    - Trồn lường có gì hay?
+    - PTIT ở đâu trong chuỗi thức ăn?
+    - PTIT có phải là trường tốt nhất về [CNTT](major) không?
+
+# --- Dự đoán khả năng trúng tuyển ---
+- intent: check_admission_chance
+  examples: |
+    - Bạn có thể ước tính khả năng trúng tuyển không?
+    - Bạn có thể ước lượng khả năng trúng tuyển không?
+    - Dự đoán khả năng trúng tuyển của mình
+    - Mình [28 điểm](score) có đỗ ngành [CNTT](major) không?
+    - Mình [28 điểm](score) thì đỗ ngành [CNTT](major) không nhỉ?
+    - Điểm [27.5](score) đậu [An toàn thông tin](major) được không?
+    - Tôi [25 điểm](score) khối [A00](subject_block) vào được [Quản trị kinh doanh](major) không?
+    - [26.5 điểm](score) trúng tuyển [ĐTVT](major) cơ sở [Hà Nội](campus) không?
+    - Khả năng đỗ [Trí tuệ nhân tạo](major) với [29 điểm](score)
+    - Ước tính cơ hội đỗ [KHMT](major) với [27 điểm](score)
+    - Dự đoán trúng tuyển [AI](major) điểm [28.5](score)
+    - Mình [26 điểm](score) có cơ hội vào [CNTT](major) không?
+    - Điểm [30](score) có chắc chắn đỗ [ATTT](major) không?
+    - [24 điểm](score) có đậu [Marketing](major) không?
+    - Với [25 điểm](score) đỗ được [Kế toán](major) ở [TP.HCM](campus) không?
+    - Ngành [Truyền thông đa phương tiện](major), điểm [27.5](score) điểm
+    - [28](score) điểm, ngành [Công nghệ đa phương tiện](major) khối [A00](subject_block)
+    - Ước tính khả năng trúng tuyển ngành [AI](major), tôi [25 điểm](score) khối [A00](subject_block)
+    - Ước tính khả năng trúng tuyển ngành [CNTT](major), tôi [26](score) khối [A01](subject_block)
+    - Tôi [27 điểm](score) khối [D01](subject_block), ngành [KHMT](major) có đỗ không?
+    - Ngành [ATTT](major), tôi [28](score) khối [A00](subject_block)
+    - Tôi [24 điểm](score) khối [a00](subject_block) ngành [Marketing](major)
+    - Ước tính khả năng trúng tuyển ngành [ATTT](major), [25 điểm](score) khối [A00](subject_block)
+    - Ước tính ngành [CNTT](major), [26 điểm](score) khối [A01](subject_block)
+    - Ngành [AI](major), [27 điểm](score) khối [D01](subject_block)
+    - Dự đoán [KHMT](major), [25](score) khối [a00](subject_block)
+    - Khả năng trúng tuyển [Marketing](major), [24 điểm](score) khối [A00](subject_block)
+
+# --- Gợi ý ngành dựa trên điểm ---
+- intent: suggest_major_by_score
+  examples: |
+    - Mình [27 điểm](score) nên chọn ngành gì?
+    - [25.5 điểm](score) phù hợp với ngành nào?
+    - Với [28 điểm](score) khối [A00](subject_block) nên học gì?
+    - Gợi ý ngành cho điểm [26](score)
+    - [24 điểm](score) chọn ngành nào tại PTIT?
+    - Tư vấn ngành với [29 điểm](score)
+    - [23.5 điểm](score) nên đăng ký ngành gì?
+    - Ngành nào phù hợp với [22 điểm](score)?
+    - [30 điểm](score) nên học ngành nào?
+    - Tôi có [24 điểm](score) đỗ được ngành nào
+    - Có [24 điểm](score) đỗ được ngành nào
+    - [25 điểm](score) đỗ được ngành nào
+    - Với [26 điểm](score) thì đỗ được ngành nào
+    - [23 điểm](score) có thể đỗ ngành gì
+    - [27 điểm](score) vào được ngành nào
+    - [28.5 điểm](score) thì học ngành gì
+    - Điểm [22](score) chọn ngành nào
+    - [29 điểm](score) đăng ký ngành gì tốt
+
+# --- So sánh các ngành ---
+- intent: compare_majors
+  examples: |
+    - So sánh [CNTT](major) và [ATTT](major)
+    - [AI](major) khác [KHMT](major) như thế nào?
+    - Nên chọn [Công nghệ thông tin](major) hay [Khoa học máy tính](major)?
+    - Điểm khác biệt giữa [ĐTVT](major) và [CNTT](major)
+    - [An toàn thông tin](major) hay [CNTT](major) tốt hơn?
+    - So sánh lương [AI](major) với [KHMT](major)
+    - Ngành nào dễ xin việc hơn: [CNTT](major) hay [QTKD](major)?
+    - [Truyền thông đa phương tiện](major) và [Công nghệ đa phương tiện](major) khác nhau thế nào?
+    - Nên học [Khoa học máy tính](major) hay [Trí tuệ nhân tạo](major)?
+# --- Hỏi về cơ sở vật chất ---
+- intent: ask_facility
+  examples: |
+    - Cơ sở vật chất PTIT như thế nào?
+    - PTIT có thư viện không?
+    - Phòng lab có hiện đại không?
+    - Cơ sở [Hà Nội](campus) có gì?
+    - Cơ sở [TP.HCM](campus) có những gì?
+    - PTIT có sân chơi thể thao không?
+    - Thư viện PTIT rộng không?
+    - Có phòng máy tính không?
+    - Trường có căng tin không?
+    - WiFi trường có tốt không?
+    - PTIT có phòng gym không?
+    - [Hà Nội](campus)
+    - [TP.HCM](campus)
+    - [Cơ sở Hà Nội](campus)
+    - [Cơ sở TP.HCM](campus)
+    - [Cơ sở 1](campus)
+    - Thông tin [Hà Nội](campus)
+    - Muốn biết [cơ sở Hà Nội](campus)
+    - Cho mình xem cơ sở [TP.HCM](campus)
+    - Cơ sở [Hà Nội](campus) có gì đặc biệt?
+    - Cơ sở [TP.HCM](campus) có gì nổi bật?
+
+# --- Hỏi về ký túc xá ---
+- intent: ask_dorm
+  examples: |
+    - Ký túc xá có bao nhiêu người một phòng?
+    - Chi phí ở KTX
+    - Điều kiện để ở ký túc xá
+    - KTX [Hà Nội](campus) có điều hòa không?
+    - Phòng ký túc xá có gì?
+    - Giá thuê KTX một tháng
+    - Có KTX cho sinh viên năm 1 không?
+    - Đăng ký ký túc xá như thế nào?
+    - Thông tin KTX [Hà Nội](campus)
+    - Ký túc xá [cơ sở Hà Nội](campus)
+    - KTX [TP.HCM](campus) ra sao?
+    - Ký túc xá [cơ sở TP.HCM](campus)
+    - KTX có hỗ trợ sinh viên không?
+    - Ký túc xá có an ninh không?
+    - Chi phí ở KTX có đắt không?
+    - KTX có đầy đủ tiện nghi không?
+    - Ký túc xá mấy người 1 phòng
+    - Giá tiền thuê ký túc xá
+    - Quy trình đăng ký phòng KTX
+    - Phòng KTX Hà Nội có máy lạnh không
+
+# --- So sánh cơ sở Hà Nội và TP.HCM ---
+- intent: ask_campus_comparison
+  examples: |
+    - So sánh cơ sở Hà Nội và TP.HCM
+    - Nên học ở Hà Nội hay TP.HCM?
+    - Cơ sở nào tốt hơn?
+    - Khác biệt giữa 2 cơ sở
+    - Hà Nội hay TP.HCM có uy tín hơn?
+    - Cơ sở nào có nhiều sinh viên hơn?
+    - Cơ sở nào có nhiều ngành hơn?
+    - Cơ sở nào có học phí cao hơn?
+    - Cơ sở nào có cơ sở vật chất tốt hơn?
+    - Cơ sở nào có nhiều hoạt động ngoại khóa hơn?
+    - Cơ sở nào có nhiều cơ hội thực tập hơn?
+
+# --- Cơ hội việc làm ---
+- intent: ask_job_opportunity
+  examples: |
+    - Ra trường có dễ xin việc không?
+    - Cơ hội việc làm ngành [CNTT](major)
+    - Sinh viên PTIT lương bao nhiêu?
+    - Ra trường làm ở đâu?
+    - Tỷ lệ có việc làm sau tốt nghiệp
+    - Các công ty tuyển sinh viên PTIT
+    - Lương khởi điểm là bao nhiêu?
+    - Ngành [AI](major) lương ra trường
+    - PTIT có hỗ trợ tìm việc không?
+    - Cơ hội việc làm cho ngành [Khoa học máy tính](major)
+    - Sinh viên PTIT thường làm ở đâu?
+    - Mức lương trung bình của sinh viên PTIT sau khi ra trường
+    - Có nhiều công ty tuyển dụng sinh viên PTIT không?
+    - Ngành [An toàn thông tin](major) có dễ xin việc không?
+
+# --- Thực tập & đối tác doanh nghiệp ---
+- intent: ask_internship
+  examples: |
+    - PTIT có chương trình thực tập không?
+    - Các đối tác doanh nghiệp của PTIT
+    - Có cơ hội thực tập tại Viettel không?
+    - FPT có hợp tác với PTIT không?
+    - Chương trình thực tập như thế nào?
+    - Khi nào được đi thực tập?
+    - Thực tập có lương không?
+    - Thực tập ở đâu?
+    - Có nhiều cơ hội thực tập không?
+    - Sinh viên PTIT thường thực tập ở đâu?
+    - PTIT có chính sách thực tập cho sinh viên không
+    - Viettel có nhận sinh viên PTIT thực tập không
+    - Các đối tác doanh nghiệp hợp tác với PTIT
+
+# --- Đời sống sinh viên ---
+- intent: ask_student_life
+  examples: |
+    - Đời sống sinh viên PTIT như thế nào?
+    - Hoạt động ngoại khóa
+    - PTIT có sự kiện gì?
+    - Sinh viên có đi du lịch không?
+    - Có hoạt động thể thao không?
+    - CLB công nghệ nào hay?
+    - Cuộc sống ở PTIT vui không?
+    - Sinh viên PTIT có năng động không?
+    - PTIT có nhiều câu lạc bộ không?
+    - PTIT có clb nào?
+    - Các CLB ở PTIT?
+
+# --- Chương trình học ---
+- intent: ask_curriculum
+  examples: |
+    - Chương trình học ngành [CNTT](major) như thế nào?
+    - Học những môn gì ở [AI](major)?
+    - Thời gian đào tạo bao lâu?
+    - Có thực hành nhiều không?
+    - Chương trình có cập nhật không?
+    - Giáo trình có hiện đại không?
+    - Chương trình có nhiều môn tự chọn không?
+    - Chương trình học có khó không?
+    - Chương trình học có nhiều môn chuyên ngành không?
+
+# --- Synonyms cho entities ---
+- synonym: An toàn thông tin
+  examples: |
+    - ATTT
+    - attt
+    - an toàn thông tin
+    - An toan thong tin
+    - an toan thong tin
+    - Information Security
+    - information security
+    - IS
+    - is
+
+- synonym: An toàn thông tin CLC
+  examples: |
+    - ATTTC
+    - atttc
+    - an toàn thông tin clc
+    - An toan thong tin CLC
+    - an toan thong tin clc
+    - Information Security
+    - information security
+    - IS
+    - is
+
+- synonym: Báo chí
+  examples: |
+    - BC
+    - bc
+    - báo chí
+    - Bao chi
+    - bao chi
+    - Journalism
+    - journalism
+
+- synonym: Công nghệ Internet vạn vật (IoT)
+  examples: |
+    - Công nghệ Internet vạn vật
+    - CNIVV
+    - cnivv
+    - công nghệ internet vạn vật (iot)
+    - Cong nghe Internet van vat (IoT)
+    - cong nghe internet van vat (iot)
+    - Internet of Things
+    - internet of things
+    - IOT
+    - iot
+
+- synonym: Công nghệ Kỹ thuật điện, điện tử
+  examples: |
+    - CNKTĐĐT
+    - cnktđđt
+    - công nghệ kỹ thuật điện, điện tử
+    - Cong nghe Ky thuat đien, đien tu
+    - cong nghe ky thuat đien, đien tu
+    - Electrical and Electronic Engineering
+    - electrical and electronic engineering
+    - EAEE
+    - eaee
+    - điện tử
+    - điện
+
+- synonym: Công nghệ thông tin
+  examples: |
+    - CNTT
+    - cntt
+    - công nghệ thông tin
+    - Cong nghe thong tin
+    - cong nghe thong tin
+    - Information Technology
+    - information technology
+    - IT
+    - it
+
+- synonym: Công nghệ thông tin (Chương trình CLC)
+  examples: |
+    - Công nghệ thông tin CLC
+    - công nghệ thông tin (chương trình clc)
+    - Cong nghe thong tin (Chuong trinh CLC)
+    - cong nghe thong tin (chuong trinh clc)
+    - CNTT CLC
+
+- synonym: Công nghệ thông tin (Cử nhân định hướng ứng dụng)
+  examples: |
+    - Công nghệ thông tin hướng ứng dụng
+    - CNTTUD
+    - cnttud
+    - công nghệ thông tin (cử nhân định hướng ứng dụng)
+    - Cong nghe thong tin (Cu nhan đinh huong ung dung)
+    - cong nghe thong tin (cu nhan đinh huong ung dung)
+
+- synonym: Công nghệ thông tin Việt – Nhật
+  examples: |
+    - CNTTVN
+    - CNTTV–N
+    - CNTT Viet – Nhat
+    - cnttvn
+    - công nghệ thông tin việt – nhật
+    - Cong nghe thong tin Viet – Nhat
+    - cong nghe thong tin viet – nhat
+
+- synonym: Công nghệ tài chính (Fintech)
+  examples: |
+    - Công nghệ tài chính
+    - CNTC
+    - cntc
+    - công nghệ tài chính (fintech)
+    - Cong nghe tai chinh (Fintech)
+    - cong nghe tai chinh (fintech)
+    - Fintech
+    - fintech
+
+- synonym: Công nghệ vi mạch bán dẫn
+  examples: |
+    - CNVMBD
+    - cnvmbd
+    - công nghệ vi mạch bán dẫn
+    - Cong nghe vi mach ban dan
+    - cong nghe vi mach ban dan
+    - Semiconductor Technology
+    - semiconductor technology
+    - ST
+    - st
+
+- synonym: Công nghệ đa phương tiện
+  examples: |
+    - dpt
+    - DPT
+    - CNĐPT
+    - cnđpt
+    - công nghệ đa phương tiện
+    - Cong nghe đa phuong tien
+    - cong nghe đa phuong tien
+    - Multimedia Technology
+    - multimedia technology
+    - MT
+    - mt
+
+- synonym: Khoa học máy tính (định hướng Khoa học dữ liệu)
+  examples: |
+    - KHMT
+    - khmt
+    - khoa học máy tính
+    - Khoa hoc may tinh
+    - khoa hoc may tinh
+    - Computer Science
+    - computer science
+    - CS
+    - cs
+
+- synonym: Khoa học máy tính (định hướng Khoa học dữ liệu)
+  examples: |
+    - khoa học máy tính (định hướng khoa học dữ liệu)
+    - Khoa hoc may tinh (đinh huong Khoa hoc du lieu)
+    - khoa hoc may tinh (đinh huong khoa hoc du lieu)
+
+- synonym: Kế toán
+  examples: |
+    - KT
+    - kt
+    - kế toán
+    - Ke toan
+    - ke toan
+    - Accounting
+    - accounting
+    - act
+
+- synonym: Kế toán chất lượng cao (chuẩn quốc tế ACCA)
+  examples: |
+    - Kế toán chất lượng cao
+    - KTCLC
+    - ktclc
+    - kế toán chất lượng cao (chuẩn quốc tế acca)
+    - Ke toan chat luong cao (chuan quoc te ACCA)
+    - ke toan chat luong cao (chuan quoc te acca)
+    - Accounting
+    - accounting
+
+- synonym: Kỹ thuật dữ liệu (ngành Mạng máy tính và truyền thông dữ liệu)
+  examples: |
+    - Kỹ thuật dữ liệu
+    - KTDL
+    - ktdl
+    - kỹ thuật dữ liệu (ngành mạng máy tính và truyền thông dữ liệu)
+    - Ky thuat du lieu (nganh Mang may tinh va truyen thong du lieu)
+    - ky thuat du lieu (nganh mang may tinh va truyen thong du lieu)
+    - Computer Networks and Data Communications
+    - computer networks and data communications
+    - CNADC
+    - cnadc
+
+- synonym: Kỹ thuật điều khiển và tự động hóa
+  examples: |
+    - KTĐKVTĐH
+    - ktđkvtđh
+    - kỹ thuật điều khiển và tự động hóa
+    - Ky thuat đieu khien va tu đong hoa
+    - ky thuat đieu khien va tu đong hoa
+    - Control and Automation
+    - control and automation
+    - CAA
+    - caa
+
+- synonym: Kỹ thuật điện tử, viễn thông
+  examples: |
+    - KTĐTVT
+    - ktđtvt
+    - kỹ thuật điện tử, viễn thông
+    - Ky thuat đien tu, vien thong
+    - ky thuat đien tu, vien thong
+    - Electronics and Telecommunications
+    - electronics and telecommunications
+    - EAT
+    - eat
+    - viễn thông
+    - vien thong
+    - vt
+
+- synonym: Logistics và quản trị chuỗi cung ứng
+  examples: |
+    - Logistic
+    - LVQTCCU
+    - lvqtccu
+    - logistics và quản trị chuỗi cung ứng
+    - Logistics va quan tri chuoi cung ung
+    - logistics va quan tri chuoi cung ung
+    - Logistics and Supply Chain Management
+    - logistics and supply chain management
+    - LASCM
+    - lascm
+
+- synonym: Marketing
+  examples: |
+    - marketing
+    - mkt
+    - MKT
+
+- synonym: Marketing chất lượng cao
+  examples: |
+    - MCLC
+    - mclc
+    - marketing chất lượng cao
+    - Marketing chat luong cao
+    - marketing chat luong cao
+    - Marketing
+    - marketing
+
+- synonym: Mạng máy tính và Truyền thông dữ liệu
+  examples: |
+    - MMTVTTDL
+    - mmtvttdl
+    - mạng máy tính và truyền thông dữ liệu
+    - Mang may tinh va Truyen thong du lieu
+    - mang may tinh va truyen thong du lieu
+    - Computer Networks and Data Communications
+    - computer networks and data communications
+    - CNADC
+    - cnadc
+
+- synonym: Quan hệ công chúng (ngành Marketing)
+  examples: |
+    - Quan hệ công chúng
+    - QHCC
+    - qhcc
+    - quan hệ công chúng (ngành marketing)
+    - Quan he cong chung (nganh Marketing)
+    - quan he cong chung (nganh marketing)
+
+- synonym: Quản trị kinh doanh
+  examples: |
+    - QTKD
+    - qtkd
+    - quản trị kinh doanh
+    - Quan tri kinh doanh
+    - quan tri kinh doanh
+    - Business Administration
+    - business administration
+    - BA
+    - ba
+
+- synonym: Thiết kế và phát triển Game
+  examples: |
+    - TKVPTG
+    - tkvptg
+    - thiết kế và phát triển game
+    - Thiet ke va phat trien Game
+    - thiet ke va phat trien game
+    - Game Design and Development
+    - game design and development
+    - GDAD
+    - gdad
+    - game
+    - Game
+    - thiết kế game
+    - thiet ke game
+
+- synonym: Thiết kế và phát triển Game (ngành Công nghệ đa phương tiện)
+  examples: |
+    - Thiết kế và phát triển Game cho đa phương tiện
+    - TKVPTG
+    - tkvptg
+    - thiết kế và phát triển game (ngành công nghệ đa phương tiện)
+    - Thiet ke va phat trien Game (nganh Cong nghe đa phuong tien)
+    - thiet ke va phat trien game (nganh cong nghe đa phuong tien)
+
+- synonym: Thương mại điện tử
+  examples: |
+    - TMĐT
+    - tmđt
+    - thương mại điện tử
+    - Thuong mai đien tu
+    - thuong mai đien tu
+    - E-commerce
+    - e-commerce
+
+- synonym: Truyền thông đa phương tiện
+  examples: |
+    - TTĐPT
+    - ttđpt
+    - truyền thông đa phương tiện
+    - Truyen thong đa phuong tien
+    - truyen thong đa phuong tien
+    - Multimedia Communication
+    - multimedia communication
+    - MC
+    - mc
+
+- synonym: Truyền thông đa phương tiện CLC
+  examples: |
+    - TTĐPTC
+    - ttđptc
+    - truyền thông đa phương tiện clc
+    - Truyen thong đa phuong tien CLC
+    - truyen thong đa phuong tien clc
+
+- synonym: Trí tuệ nhân tạo
+  examples: |
+    - TTNT
+    - ttnt
+    - trí tuệ nhân tạo
+    - Tri tue nhan tao
+    - tri tue nhan tao
+    - Artificial Intelligence
+    - artificial intelligence
+    - AI
+    - ai
+
+- synonym: Trí tuệ nhân tạo vạn vật (AIoT)
+  examples: |
+    - Trí tuệ nhân tạo vạn vật
+    - TTNTVV
+    - ttntvv
+    - trí tuệ nhân tạo vạn vật (aiot)
+    - Tri tue nhan tao van vat (AIoT)
+    - tri tue nhan tao van vat (aiot)
+    - Artificial Intelligence of Things
+    - artificial intelligence of things
+    - AIot
+    - aiot
+
+- synonym: Hà Nội
+  examples: |
+    - Ha Noi
+    - hà nội
+    - Hanoi
+    - HN
+    - cơ sở 1
+    - Hà Đông
+    - cơ sở Hà Nội
+
+- synonym: TP.HCM
+  examples: |
+    - TP HCM
+    - TPHCM
+    - Ho Chi Minh
+    - HCM
+    - Sai Gon
+    - Sài Gòn
+    - cơ sở 2
+    - thành phố hồ chí minh
+
+- regex: score
+  examples: |
+    - \d+[.,]?\d*\s*điểm
+    - \d+[.,]?\d*
+    - \d+[.,]?\d*\s*đ
+    - \d+
+
+- regex: year
+  examples: |
+    - 202[0-5]
+    - năm\s+202[0-5]
+    - ở\s+202[0-5]
+- regex: subject_block
+  examples: |
+    - (?i)[AD]\d{2}
+    - (?i)khối\s+[AD]\d{2}

@@ -1,0 +1,410 @@
+version: "3.1"
+
+nlu:
+# --- Greetings (Chào hỏi) ---
+- intent: greet
+  examples: |
+    - Chào
+    - Ây
+    - Hi bot
+    - Hello mày
+    - Xin chào bot PTIT
+    - Chào buổi tối
+    - Hey bạn ơi
+    - Alo bot
+
+# --- Thank you (Cảm ơn) ---
+- intent: thanks
+  examples: |
+    - Thanks nha
+    - Cảm ơn nhiều
+    - Thank you
+    - Tks bot nhiều
+    - Cảm ơn bạn rất nhiều lắm
+
+# --- Goodbye (Tạm biệt) ---
+- intent: goodbye
+  examples: |
+    - Bye
+    - Tạm biệt nhé
+    - Goodbye
+    - Hẹn gặp bot
+    - Thôi nhé
+
+# --- Affirm (Đồng ý / Có) ---
+- intent: affirm
+  examples: |
+    - đồng ý luôn
+    - okay
+    - có chứ
+    - đúng vậy luôn
+    - được luôn
+    - okie
+
+# --- Deny (Từ chối / Không) ---
+- intent: deny
+  examples: |
+    - không nha
+    - ko đúng
+    - chưa đâu
+    - không muốn đâu
+    - nope nha
+
+# --- Điểm chuẩn theo năm & ngành ---
+- intent: ask_ptit_cutoff_year_major
+  examples: |
+    - Điểm chuẩn điện tử năm 2025 là mấy
+    - ATTT lấy bao nhiêu điểm
+    - Cho tôi xem điểm chuẩn AI năm 2025
+    - KHMT năm 2023 điểm chuẩn bao nhiêu vậy
+    - Ngành QTKD năm 2025 điểm là mấy
+    - ĐTVT năm 2024 bao nhiêu điểm
+    - Năm 2022 CNTT điểm chuẩn
+    - KT năm 2025 lấy mấy điểm
+    - MKT 2024 điểm chuẩn là bao nhiêu
+    - TMĐT năm 2023 lấy điểm mấy
+
+# --- Phương thức tuyển sinh ---
+- intent: ask_ptit_admission_methods
+  examples: |
+    - PTIT xét tuyển như nào
+    - Có xét học bạ ko
+    - Xét tuyển bằng IELTS được không
+    - Tuyển sinh PTIT theo phương thức gì
+    - Có xét điểm SAT không
+    - PTIT có xét tuyển thẳng không
+    - Phương thức xét tuyển của PTIT
+
+# --- Giới thiệu Trường & thông tin chung ---
+- intent: ask_ptit_school_info
+  examples: |
+    - PTIT là gì vậy
+    - Trường PTIT ở đâu
+    - Học viện PTIT có uy tín không
+    - PTIT có mấy cơ sở
+    - Cho mình biết về PTIT
+    - PTIT có gì hot
+    - PTIT có tốt không
+
+# --- Các ngành đào tạo & chỉ tiêu ---
+- intent: ask_ptit_programs
+  examples: |
+    - Chỉ tiêu tuyển sinh năm 2025 thế nào
+    - Tổng chỉ tiêu ngành CNTT
+    - PTIT tuyển bao nhiêu chỉ tiêu
+    - Chỉ tiêu từng ngành năm 2025
+    - Ngành nào tuyển nhiều nhất
+    - Số lượng chỉ tiêu cơ sở Hà Nội
+    - Chương trình CLC tuyển mấy chỉ tiêu
+
+# --- Liên hệ & Contact ---
+- intent: ask_ptit_contact
+  examples: |
+    - Số điện thoại PTIT là gì
+    - Email tuyển sinh PTIT
+    - Địa chỉ cơ sở PTIT tại Hà Nội
+    - Liên hệ PTIT như thế nào
+    - Số điện thoại phòng tuyển sinh
+    - Thông tin liên hệ PTIT
+    - Địa chỉ cơ sở HCM
+    - Hotline hỗ trợ tuyển sinh PTIT
+
+# --- Học phí & chi phí ---
+- intent: ask_ptit_tuition
+  examples: |
+    - Học phí PTIT mỗi năm bao nhiêu
+    - Học phí ngành CNTT một năm
+    - Chi phí học tại PTIT ra sao
+    - Học phí chương trình CLC
+    - Mức học phí ngành ATTT năm 2025
+    - Học phí PTIT có đắt không
+
+# --- Học bổng & hỗ trợ tài chính ---
+- intent: ask_ptit_scholarships
+  examples: |
+    - PTIT có học bổng không
+    - Học bổng PTIT ra sao
+    - Điều kiện nhận học bổng
+    - Học bổng toàn phần PTIT
+    - Chính sách học bổng như nào
+
+# --- Hồ sơ xét tuyển ---
+- intent: ask_ptit_documents_required
+  examples: |
+    - Hồ sơ xét tuyển PTIT gồm những gì
+    - Cần chuẩn bị giấy tờ gì để nộp hồ sơ
+    - Danh sách giấy tờ cần thiết để xét tuyển
+
+# --- Thời gian tuyển sinh & mốc quan trọng ---
+- intent: ask_ptit_deadlines
+  examples: |
+    - Khi nào công bố điểm chuẩn
+    - Deadline nộp hồ sơ
+    - Thời gian đăng ký nguyện vọng
+
+# --- Tra cứu bảng dữ liệu điểm chuẩn lookup ---
+- intent: ask_ptit_lookup
+  examples: |
+    - Tra cứu điểm chuẩn CNTT
+    - Lookup điểm ATTT năm 2025
+    - Xem bảng điểm chuẩn AI
+
+# --- Bot Identity (Giới thiệu bot) ---
+- intent: bot_identity
+  examples: |
+    - Bot là ai
+    - Bạn tên gì vậy
+    - Giới thiệu về bot
+
+# --- Small Talk ---
+- intent: small_talk
+  examples: |
+    - Bot khỏe ko
+    - Hôm nay sao rồi
+    - Bạn ổn chứ
+
+# --- Hỏi về các ngành học ---
+- intent: ask_major
+  examples: |
+    - Liệt kê ngành PTIT
+    - PTIT có mấy ngành vậy
+    - Các ngành học tại PTIT
+    - Danh sách chuyên ngành
+
+# --- Hỏi chi tiết về 1 ngành cụ thể ---
+- intent: ask_major_detail
+  examples: |
+    - CNTT học gì
+    - Ngành ATTT ra trường làm gì
+    - AI có tốt không
+    - KHMT học những gì
+    - Thông tin về QTKD
+    - ĐTVT học mấy năm
+    - Ngành KT ra làm ở đâu
+    - MKT có khó không
+    - TMĐT học những môn gì
+    - TTĐPT là ngành gì
+
+# --- Xu hướng điểm chuẩn ---
+- intent: ask_ptit_cutoff_trend
+  examples: |
+    - Điểm chuẩn PTIT có tăng ko
+    - Xu hướng điểm CNTT
+    - Điểm chuẩn các năm thế nào
+
+# --- Liệt kê tất cả điểm chuẩn ---
+- intent: ask_ptit_list_all_cutoff_scores
+  examples: |
+    - Điểm chuẩn tất cả ngành 2025
+    - Liệt kê hết điểm chuẩn năm 2024
+    - Cho xem bảng điểm chuẩn đầy đủ
+
+# --- Thông tin doanh nghiệp liên kết ---
+- intent: ask_ptit_enterprise_partners
+  examples: |
+    - PTIT hợp tác DN nào
+    - Đối tác của PTIT
+    - PTIT liên kết với công ty gì
+
+# --- Thông tin ký túc xá ---
+- intent: ask_ptit_dormitory_info
+  examples: |
+    - Ký túc xá PTIT có tiện nghi gì
+    - Thông tin chung về KTX PTIT
+    - Giới thiệu về ký túc xá trường
+
+# --- Ngôn ngữ giảng dạy ---
+- intent: ask_ptit_language_of_instruction
+  examples: |
+    - PTIT dạy bằng tiếng gì
+    - Có lớp tiếng Anh ko
+    - Ngôn ngữ giảng dạy
+
+# --- Bằng cấp sau tốt nghiệp ---
+- intent: ask_ptit_degree_awarded
+  examples: |
+    - Tốt nghiệp được bằng gì
+    - Loại bằng tốt nghiệp PTIT
+    - Bằng Kỹ sư hay Cử nhân
+
+# --- Cơ hội thực tập ---
+- intent: ask_ptit_internship_opportunities
+  examples: |
+    - Sinh viên PTIT có cơ hội thực tập tại doanh nghiệp không
+    - Trường có liên kết với công ty nào cho thực tập
+    - Các địa điểm thực tập của PTIT
+
+# --- Điều kiện tốt nghiệp ---
+- intent: ask_ptit_graduation_requirements
+  examples: |
+    - Điều kiện tốt nghiệp PTIT
+    - Cần bao nhiêu tín chỉ để tốt nghiệp
+    - Yêu cầu tốt nghiệp
+
+# --- Hoạt động ngoại khóa ---
+- intent: ask_ptit_extracurricular_activities
+  examples: |
+    - Hoạt động ngoại khóa tại PTIT
+    - Có câu lạc bộ nào ko
+    - Câu lạc bộ công nghệ
+
+# --- Cơ hội học sau đại học ---
+- intent: ask_ptit_postgraduate_opportunities
+  examples: |
+    - PTIT có đào tạo thạc sĩ ko
+    - Học sau đại học
+    - Chương trình tiến sĩ
+
+# --- Học phí theo tín chỉ ---
+- intent: ask_ptit_tuition_per_credit
+  examples: |
+    - Giá một tín chỉ PTIT
+    - Mỗi tín chỉ bao nhiêu tiền
+    - Chi phí 1 tín
+    - Học phí theo tín chỉ
+
+# --- Phương thức thanh toán học phí ---
+- intent: ask_ptit_tuition_payment_methods
+  examples: |
+    - Đóng học phí như nào
+    - Thanh toán học phí thế nào
+    - Chuyển khoản học phí
+
+# --- Miễn giảm học phí ---
+- intent: ask_ptit_tuition_exemption
+  examples: |
+    - Chính sách miễn giảm học phí
+    - Ai được giảm học phí
+    - Miễn học phí cho ai
+
+# --- Phòng học ---
+- intent: ask_ptit_classrooms
+  examples: |
+    - Phòng học PTIT như nào
+    - Giảng đường có điều hòa ko
+    - Trang thiết bị phòng học
+
+# --- Phòng lab ---
+- intent: ask_ptit_labs
+  examples: |
+    - Lab PTIT
+    - Phòng thực hành
+    - Lab CNTT thế nào
+
+# --- Thư viện ---
+- intent: ask_ptit_library
+  examples: |
+    - Thư viện PTIT
+    - Thư viện số
+    - Giờ mở cửa thư viện
+
+# --- Gợi ý chọn ngành ---
+- intent: ask_ptit_major_recommendation
+  examples: |
+    - Tư vấn chọn ngành
+    - Nên học ngành gì PTIT
+    - Ngành nào phù hợp
+
+# --- Khuôn viên trường ---
+- intent: ask_ptit_campus_facilities
+  examples: |
+    - Khuôn viên PTIT
+    - Cơ sở vật chất trường
+    - Campus PTIT
+
+# --- So sánh với trường khác ---
+- intent: ask_toxic_kick_war
+  examples: |
+    - PTIT có tốt hơn Bách Khoa ko
+    - So sánh PTIT với UET
+    - PTIT hay HUST
+
+# --- Dự đoán khả năng trúng tuyển ---
+- intent: check_admission_chance
+  examples: |
+    - Mình 28 điểm trúng tuyển CNTT được không
+    - Tôi 27 điểm vào được ATTT không
+    - 26.5 điểm đậu AI không
+    - 25 điểm A00 vào QTKD được ko
+    - 29 điểm có đỗ KHMT không
+    - 24 điểm khối A01 đậu MKT không
+    - 30 điểm chắc trúng tuyển CNTT chứ
+    - Liệu 22 điểm có vào được IT cơ sở HN không
+    - 26 điểm đủ cho ngành game không
+
+# --- Gợi ý ngành dựa trên điểm ---
+- intent: suggest_major_by_score
+  examples: |
+    - 27 điểm nên chọn ngành gì
+    - 25.5 điểm phù hợp ngành nào
+    - Với 28 điểm A00 nên học gì
+    - 26 điểm chọn ngành nào
+    - 24 điểm dể ngành gì PTIT
+    - Có 23 điểm nên xét tuyển ngành gì
+    - Có 29 điểm thôi
+    - Với 30 điểm nên chọn ngành nào
+
+# --- So sánh các ngành ---
+- intent: compare_majors
+  examples: |
+    - So sánh CNTT và ATTT
+    - AI khác KHMT thế nào
+    - Nên chọn CNTT hay KHMT
+    - ĐTVT và CNTT khác gì
+    - ATTT hay CNTT tốt hơn
+
+# --- Hỏi về cơ sở vật chất ---
+- intent: ask_facility
+  examples: |
+    - Cơ sở vật chất PTIT ra sao
+    - PTIT có thư viện ko
+    - Lab có hiện đại ko
+    - Cơ sở HN có gì
+    - Cơ sở HCM có gì
+
+# --- Hỏi về ký túc xá ---
+- intent: ask_dorm
+  examples: |
+    - Ký túc xá mấy người 1 phòng
+    - Giá tiền thuê ký túc xá mỗi tháng
+    - Quy trình đăng ký phòng KTX
+    - Phòng ở ký túc xá Hà Nội có máy lạnh không
+
+# --- So sánh cơ sở HN và TPHCM ---
+- intent: ask_campus_comparison
+  examples: |
+    - So sánh cơ sở HN và HCM
+    - Nên học ở HN hay HCM
+    - Cơ sở nào tốt hơn
+
+# --- Cơ hội việc làm ---
+- intent: ask_job_opportunity
+  examples: |
+    - Ra trường có dễ xin việc ko
+    - Cơ hội việc làm ngành CNTT
+    - Sinh viên PTIT lương bao nhiêu
+    - Tốt nghiệp làm ở đâu
+
+# --- Thực tập & đối tác DN ---
+- intent: ask_internship
+  examples: |
+    - PTIT có chính sách thực tập cho sinh viên không
+    - Các đối tác doanh nghiệp hợp tác với PTIT
+    - Viettel có nhận sinh viên PTIT thực tập không
+
+# --- Đời sống sinh viên ---
+- intent: ask_student_life
+  examples: |
+    - Đời sống sinh viên PTIT như thế nào
+    - Hoạt động ngoại khóa
+    - PTIT có sự kiện gì
+    - Sinh viên có đi du lịch ko
+    - Câu lạc bộ nào nổi bật
+
+# --- Chương trình học ---
+- intent: ask_curriculum
+  examples: |
+    - Chương trình học ngành CNTT như thế nào
+    - Học môn gì ở AI
+    - Thời gian đào tạo bao lâu
+    - Có thực hành nhiều ko
